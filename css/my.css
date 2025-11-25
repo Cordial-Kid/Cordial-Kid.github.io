@@ -1,1 +1,11 @@
 /* Here is your custom css styles. */
+/* 修改代码块英文字体 */
+.hljs {
+  font-family: "Consolas", "Menlo", "Monaco", "Courier New", monospace !important;
+  font-size: 14px; /* 可选：调整字体大小 */
+}
+
+code, pre {
+  font-family: "Consolas", "Menlo", "Monaco", "Courier New", monospace !important;
+  font-size: 14px !important;
+}
