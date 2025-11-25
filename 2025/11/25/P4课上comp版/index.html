@@ -5,11 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="「BUAA-CO」 P4课上题目及注意事项, Cordial-Kid">
-    <meta name="description" content="写在前面：笔者不是大佬，P4二战方过，这里记载了二战题目的comprehensive版本。
+    <meta name="description" content="写在前面：笔者不是大佬，P4二战方过，这里记载了二战题目的comprehensive版本。结尾有彩蛋
 
 为什么是comprehensive版本？因为做完挺早，等助教问答的时候顺手把题抄了。
-为什么没有一战题目？因为一战没心情回忆痛苦的过去。
-为什么二">
+为什么没有一战题目？因为一战没心情回忆痛苦的过去。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -403,7 +402,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    545
+                    623
                 </div>
                 
 
@@ -435,16 +434,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>写在前面</strong>：笔者不是大佬，P4二战方过，这里记载了二战题目的comprehensive版本。</p>
+                <p><strong>写在前面</strong>：笔者不是大佬，P4二战方过，这里记载了二战题目的comprehensive版本。<strong>结尾有彩蛋</strong></p>
 <ul>
 <li>为什么是comprehensive版本？因为做完挺早，等助教问答的时候顺手把题抄了。</li>
 <li>为什么没有一战题目？因为一战没心情回忆痛苦的过去。</li>
-<li>为什么二战如此神速？我也不知道，可能是题简单吧</li>
+<li>为什么二战如此神速？我也不知道，可能是题简单吧。</li>
 </ul>
 <h2 id="SSZE"><a href="#SSZE" class="headerlink" title="SSZE"></a>SSZE</h2><p>opcode &#x3D; 6’b000000<br>func &#x3D; 6’b001111</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">当GPR[rs]和GPR[rt]后缀 0 的个数相同时，将GPR[rd]置 1 ，否则置 0 ;</span><br></pre></td></tr></table></figure>
 
-<p><strong>Answer</strong>:重点在数0的个数，还有就是改指令的时候记得把通路改完整(这个以大家对自己verilog代码的理解都不成问题)</p>
+<p><strong>Answer</strong>:重点在数0的个数，还有就是改指令的时候记得把通路改完整(这个以大家对自己verilog代码的理解都不成问题)。</p>
 <h2 id="CABC"><a href="#CABC" class="headerlink" title="CABC"></a>CABC</h2><p>opcode &#x3D; 6’b111100</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><span class="line">cross1 = GPR[rs][23:16] || GPR[rs][7:0] || GPR[rt][31:24] || GPR[rt][15:8]</span><br><span class="line">cross2 = GPR[rt][7:0] || GPR[rt][23:16] || GPR[rs][15:8] || GPR[rs][31:24]</span><br><span class="line">xor_result = cross1 ^ cross2</span><br><span class="line">if (count_zeros(xor_result[31:16]) == count_zeros(xor_result[15:0])) &#123;</span><br><span class="line">    PC &lt;-- IMM_beq</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    GPR[rt] &lt;-- xor_result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -464,6 +463,9 @@
 <li>写函数的时候记得在<code>function</code>后面有<code>begin，end</code>把函数体包起来。</li>
 <li>祝大家P4一战顺利😉😊</li>
 </ol>
+<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">倘若那天</span><br><span class="line"></span><br><span class="line">把该说的话好好说</span><br><span class="line"></span><br><span class="line">该体谅的不执著</span><br><span class="line"></span><br><span class="line">如果那天我</span><br><span class="line"></span><br><span class="line">不受情绪挑拨</span><br><span class="line"></span><br><span class="line">你会怎么做</span><br><span class="line"></span><br><span class="line">那么多如果，可能如果我</span><br><span class="line"></span><br><span class="line">可惜没如果，只剩下结果</span><br></pre></td></tr></table></figure>
+
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>谨以此篇，纪念我的第一篇<code>github</code>博客。</p>
 
                 
             </div>
@@ -802,7 +804,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">620</span>
+                        class="white-color">698</span>
             
             
             
