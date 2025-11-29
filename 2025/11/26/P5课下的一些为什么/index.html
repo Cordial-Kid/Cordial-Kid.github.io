@@ -400,14 +400,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.7k
+                    4.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    18 分
+                    19 分
                 </div>
                 
 
@@ -449,7 +449,7 @@
 <p><code>F_IFU</code>和<code>P4</code>相比变化不大只是在输入中新增了<code>PCWE</code>。当<code>Stall</code>生效时，<code>IFU</code>中的<code>PC</code>不再更新，直到阻塞结束。</p>
 <h2 id="D-reg"><a href="#D-reg" class="headerlink" title="D_reg"></a>D_reg</h2><figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> D_reg (</span><br><span class="line">    <span class="keyword">input</span> clk,</span><br><span class="line">    <span class="keyword">input</span> reset,</span><br><span class="line">    <span class="keyword">input</span> Flush,   </span><br><span class="line">    <span class="keyword">input</span> WE,    </span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] F_PC,</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] F_Instr,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] D_PC,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] D_Instr</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
 
-<p>D级寄存器负责连接F级和D级流水线，因为课程组规定阻塞只能发生在<strong>D级</strong>，因此当阻塞指令生效时，<code>WE</code>禁止向<code>D级</code>寄存器写入指令，<code>Flush</code>刷新D级寄存器为<code>nop</code>，从而使得E级寄存器在下一级得到<code>nop</code>，从而实现阻塞。</p>
+<p>D级寄存器负责连接F级和D级流水线，因为课程组规定阻塞只能发生在<strong>D级</strong>，因此当阻塞指令生效时，<code>WE</code>禁止向<code>D级</code>寄存器写入指令，<code>Flush</code>刷新E级寄存器为<code>nop</code>，从而使得<code>nop</code>信号随着流水线流下去，从而实现阻塞。</p>
 <blockquote>
 <p>Q: PC和Instr要一直流水下去吗？<br>A: 是的。只有PC和instr随流水线一直流水下去我们才能判断每一级流水线的当前指令是什么。</p>
 </blockquote>
@@ -842,15 +842,15 @@
 </tr>
 </tbody></table>
 <h2 id="mips"><a href="#mips" class="headerlink" title="mips"></a>mips</h2><p>阻塞处理完，我们就要开始实例化模块并连接电路了，连接过程中实现<strong>外部转发</strong>，我们的五级流水线CPU就基本搭建完成了。总体来说，我们的设计主线是模块的实例化，在实例化过程中我们会发现某个需要使用的变量的缺失，这时我们在每一级的固定定义区定义我们需要的<code>wire</code>类型变量即可，大家完全不必纠结于在每一个模块开始时定义什么。</p>
+<p><strong>特别的，E_GRFa3,E_GRFwd系列的指令需要在开头定义，因为这些指令如果在对应模块定义的话就会出现在定义前使用的情况，使用时编译器会自动隐式定义为1位的wire变量，如果你在之后再次定义的话，编译器会报错重复定义</strong>。</p>
 <p>笔者这里在全局定义区定义了常用变量，大家可以参考这种定义方式，也可以放在固定的流水级，<strong>你开心就好</strong>😊</p>
 <figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">//各级PC和Instr</span></span><br><span class="line"><span class="keyword">wire</span> [<span class="number">31</span>:<span class="number">0</span>] F_pc,F_instr,D_pc,D_instr,E_pc,E_instr,M_pc,M_instr,W_pc,W_instr;</span><br><span class="line"><span class="comment">//阻塞信号</span></span><br><span class="line"><span class="keyword">wire</span> stall;</span><br><span class="line"><span class="comment">//各级流水线寄存器使能信号和刷新信号</span></span><br><span class="line"><span class="keyword">wire</span> D_reg_flush,E_reg_flush,M_reg_flush,W_reg_flush,D_reg_we,E_reg_we,M_reg_we,W_reg_we;</span><br><span class="line"><span class="comment">//PC的使能信号</span></span><br><span class="line"><span class="keyword">wire</span> PCwe;</span><br></pre></td></tr></table></figure>
 
 <p>接下来强调几个重要的模块。</p>
 <h3 id="stall"><a href="#stall" class="headerlink" title="stall"></a>stall</h3><p>阻塞模块是全局变量，需要作为单独一个实例来控制各个流水线寄存器的运作，Stall的取值可能会影响的变量是<code>PC_we</code>,<code>D_reg_we</code>,<code>E_reg_flush</code>。</p>
 <h3 id="D级"><a href="#D级" class="headerlink" title="D级"></a>D级</h3><p><code>D</code>级<code>GRF</code>实例化时<code>A3</code>接口和<code>WD</code>接口分别接<code>W_GRFa3</code>和<code>W_GRFwd</code>，从而实现GRF<strong>内部转发</strong>。而由于W级实现了内部转发，我们在转发<code>D_For_rs_data</code>和<code>D_For_rt_data</code>时只转发<code>E</code>，<code>M</code>即可：</p>
-<blockquote>
-<p>assign D_For_rs_data &#x3D; (D_rs &#x3D;&#x3D; 5’d0) ? 32’d0 :<br>                       (D_rs &#x3D;&#x3D; E_GRFa3) ? E_GRFwd :<br>                       (D_rs &#x3D;&#x3D; M_GRFa3) ? M_GRFwd :<br>                       D_rs_data;</p>
-</blockquote>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> D_For_rs_data = (D_rs == <span class="number">5&#x27;d0</span>) ? <span class="number">32&#x27;d0</span> :</span><br><span class="line">                       (D_rs == E_GRFa3) ? E_GRFwd :</span><br><span class="line">                       (D_rs == M_GRFa3) ? M_GRFwd :</span><br><span class="line">                       D_rs_data;</span><br></pre></td></tr></table></figure>
+
 <p>这里很多同学会问，转发时如何保证<code>E_GRFwd</code>，<code>M_GRFwd</code>已经算出来了呢，其实很简单，当你在执行转发时，是不是说明<strong>不需要阻塞了</strong>，那不需要阻塞是否意味着你要的东西已经算出来了呢？</p>
 <p>注意<code>D_NPC</code>和<code>D_CMP</code>用的<code>D_rs_data</code>和<code>D_rt_data</code>都是<strong>转发后的</strong>。</p>
 <h3 id="E级"><a href="#E级" class="headerlink" title="E级"></a>E级</h3><p>因为<code>E</code>级没有<code>GRF</code>，即没有内部转发，因此<code>E</code>级<code>E_For_rs_data</code>和<code>E_For_rt_data</code>需要转发<code>M</code>，<code>W</code>。并且在<code>E</code>级要实现<code>E_GRFa3</code>和<code>E_GRFwd</code>这两个转发必要的数据赋值，<code>E_GRFa3</code>实现没什么坑点，值得一提的是，<code>E_GRFwd</code>没有<code>DMrd</code>这个选项，因为在<code>E</code>级，还没有算出<code>M</code>级的结果。</p>
@@ -1219,7 +1219,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">5.4k</span>
+                        class="white-color">5.5k</span>
             
             
             
