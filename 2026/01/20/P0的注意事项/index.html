@@ -407,7 +407,7 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    6 分
                 </div>
                 
 
@@ -455,7 +455,7 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
 <li>output Module：负责根据当前状态和输入信号生成输出信号。</li>
 </ol>
 <p>我们以经典的推箱子问题为例说明：大致要求就是从初始状态出发，通过一系列操作将箱子推到目标位置。途中如果碰到障碍物或越界就算失败。</p>
-<p><a href="/images/%E6%8E%A8%E7%AE%B1%E5%AD%90%E7%94%B5%E8%B7%AF%E5%9B%BE.png">!推箱子电路图</a></p>
+<p><img src="/images/%E6%8E%A8%E7%AE%B1%E5%AD%90%E7%94%B5%E8%B7%AF%E5%9B%BE.png" alt="推箱子电路图"></p>
 <h3 id="可用真值表表示的状态机"><a href="#可用真值表表示的状态机" class="headerlink" title="可用真值表表示的状态机"></a>可用真值表表示的状态机</h3><p>设计时一般遵循以下步骤：</p>
 <ol>
 <li><strong>明确状态及其编码</strong>：这里要根据题目要求确定状态的数量，并为每个状态分配一个唯一的二进制编码。</li>
@@ -465,10 +465,10 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
 </ol>
 <p><code>project</code> –&gt; <code>Analyze Circuit</code> –&gt; <code>Input &amp; Output &amp; Table</code> –&gt; <code>填写输入输出变量及真值表</code> –&gt; <code>Generate Circuit</code></p>
 <p>典型例子有：红绿灯控制器。</p>
-<p><a href="/images/%E7%BA%A2%E7%BB%BF%E7%81%AF%E6%AC%A1%E6%80%81%E9%80%BB%E8%BE%91%E8%AE%A1%E7%AE%97%E5%9B%BE.png">!红绿灯次态逻辑计算图</a><br><a href="/images/%E7%BA%A2%E7%BB%BF%E7%81%AF%E6%AC%A1%E6%80%81%E9%80%BB%E8%BE%91%E7%9C%9F%E5%80%BC%E8%A1%A8.png">!红绿灯次态逻辑真值表</a><br>输出逻辑计算同理，在此不再赘述。</p>
+<p><img src="/images/%E7%BA%A2%E7%BB%BF%E7%81%AF%E6%AC%A1%E6%80%81%E9%80%BB%E8%BE%91%E8%AE%A1%E7%AE%97%E5%9B%BE.png" alt="红绿灯次态逻辑计算图"><br><img src="/images/%E7%BA%A2%E7%BB%BF%E7%81%AF%E6%AC%A1%E6%80%81%E9%80%BB%E8%BE%91%E7%9C%9F%E5%80%BC%E8%A1%A8.png" alt="红绿灯次态逻辑真值表"><br>输出逻辑计算同理，在此不再赘述。</p>
 <h3 id="常规逻辑表达式表示的状态机"><a href="#常规逻辑表达式表示的状态机" class="headerlink" title="常规逻辑表达式表示的状态机"></a>常规逻辑表达式表示的状态机</h3><p>设计不便于使用真值表的状态机时，就用最原始的，最正常的逻辑思路来计算下一状态即可。</p>
 <p>典型例子有：推箱子。</p>
-<p><a href="/images/%E6%8E%A8%E7%AE%B1%E5%AD%90%E6%AC%A1%E6%80%81%E9%80%BB%E8%BE%91%E8%AE%A1%E7%AE%97%E5%9B%BE.png">!推箱子次态逻辑计算图</a></p>
+<p><img src="/images/%E6%8E%A8%E7%AE%B1%E5%AD%90%E6%AC%A1%E6%80%81%E9%80%BB%E8%BE%91%E8%AE%A1%E7%AE%97%E5%9B%BE.png" alt="推箱子次态逻辑计算图"></p>
 <p>要注意的是次态逻辑的存储时要对次态逻辑的有效性进行判断，例如推箱子中如果出现了碰墙或者越界的情况，次态就不更新，保持不变。这就需要用到多路选择器来选择下一个<code>x</code>到底是<code>x_next</code>还是<code>x_current</code>。</p>
 <h3 id="关于Moore型和Mealy型"><a href="#关于Moore型和Mealy型" class="headerlink" title="关于Moore型和Mealy型"></a>关于Moore型和Mealy型</h3><p><strong>Moore型</strong>和<strong>Mealy型</strong>的状态转移图有很大区别，因为<strong>Mealy型</strong>状态机输出不仅和当前状态有关还和输入有关，因此<strong>Mealy型</strong>状态机中的状态通常比<strong>Moore型</strong>状态机少一个（少的一般是<strong>Moore型</strong>状态机的最后一个状态）。这在真值表中体现为输入影响输出，在状态转移图中体现为输出从<strong>在方框内表示</strong>转化为<strong>在边上表示</strong>。</p>
 <p>如果你使用的是<strong>真值表表示</strong>方法，那么要修改<code>次态转移逻辑</code>和<code>输出逻辑</code>的真值表。次态转移逻辑减少状态，输出逻辑增加<code>input signal</code>作为输入变量。</p>
@@ -476,19 +476,19 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
 <h2 id="一些可能的盲区"><a href="#一些可能的盲区" class="headerlink" title="一些可能的盲区"></a>一些可能的盲区</h2><ol>
 <li><strong>异步复位和同步复位</strong>：异步复位是指复位信号一旦被触发，无论时钟信号的状态如何，电路都会立即进入复位状态。而同步复位则是指复位信号只有在时钟信号的上升沿（或下降沿）到来时才会生效。在设计状态机时要根据题目要求选择合适的复位方式。他们的实现方式也不尽相同。</li>
 </ol>
-<p><a href="/images/%E5%BC%82%E6%AD%A5%E5%A4%8D%E4%BD%8D.png">!异步复位</a><br><a href="/images/%E5%90%8C%E6%AD%A5%E5%A4%8D%E4%BD%8D.png">!同步复位</a></p>
+<p><img src="/images/%E5%BC%82%E6%AD%A5%E5%A4%8D%E4%BD%8D.png" alt="异步复位"><br><img src="/images/%E5%90%8C%E6%AD%A5%E5%A4%8D%E4%BD%8D.png" alt="同步复位"></p>
 <ol start="2">
 <li><strong>“异步”置位和同步置位</strong>：同步置位则是指置位信号只有在时钟信号的上升沿（或下降沿）到来时才会生效。而“异步”置位跟字面意思不太一样，我们要求<code>reset</code>信号在<code>clk</code>信号为低电平时拉高，在<code>clk</code>信号高电平时接地，同时要求<code>clk</code>信号为高电平时能够在<code>register</code>中存储<code>reset</code>信号为高电平时希望设置的值。同步置位的实现方式和同步复位的方式类似，但是“异步”置位的实现就和异步复位大不相同了。</li>
 </ol>
 <p>因为<code>reset</code>信号的转瞬即逝，我们希望有某个模块可以留住<code>reset</code>的效果，<code>Counter</code>成为了最佳选项。电路连接如下图：</p>
-<p><a href="/images/%E2%80%9C%E5%BC%82%E6%AD%A5%E2%80%9D%E7%BD%AE%E4%BD%8D.png">!“异步”置位</a></p>
+<p><img src="/images/%E2%80%9C%E5%BC%82%E6%AD%A5%E2%80%9D%E7%BD%AE%E4%BD%8D.png" alt="“异步”置位"></p>
 <p>我们将<code>Counter</code>模块的<code>Data bits</code>设置为1位，<code>Action on overflow</code>设置为<code>Stay at value</code>,再将<code>cnt</code>作为选择信号来选择存入<code>register</code>的数据来源。我们分析可以得出，当<code>reset</code>为低电平时，除了初态，所有的状态<code>cnt</code>均为1。当<code>reset</code>为高电平时，<code>cnt</code>变为0。即使此时<code>reset</code>信号转为低电平，<code>cnt</code>依然保持0。因此在clk上升沿时，register模块存入的数据始终为<strong>x</strong>，从而实现了“异步”置位的效果。</p>
-<p>同步置位就很简单了，如下图：<br><a href="/images/%E5%90%8C%E6%AD%A5%E7%BD%AE%E4%BD%8D.png">!同步置位</a></p>
+<p>同步置位就很简单了，如下图：<br><img src="/images/%E5%90%8C%E6%AD%A5%E7%BD%AE%E4%BD%8D.png" alt="同步置位"></p>
 <ol start="3">
 <li>多个数比大小</li>
 </ol>
 <p>在设计多个数比大小的逻辑时，可以使用多个<code>Comparator</code>模块进行两两比较，然后将比较结果进行综合处理。这里需要用到分类讨论的知识。分类讨论的结果可以可以作为多路选择器的待选择信号，比较结果可以作为选择信号，从而实现不同情况下的输出。</p>
-<p><a href="/images/%E4%B8%89%E4%B8%AA%E6%95%B0%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F.png">!三个数比较大小</a></p>
+<p><img src="/images/%E4%B8%89%E4%B8%AA%E6%95%B0%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F.png" alt="三个数比较大小"></p>
 <h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">你身边的那位</span><br><span class="line">代替了我的座位</span><br><span class="line">他的手捧着玫瑰</span><br><span class="line">承诺余生都奉陪</span><br><span class="line">而我始终学不会</span><br><span class="line">已被风吹散的眼泪</span><br><span class="line">那逝去的幸福该怎么追回</span><br><span class="line">你身边的那位</span><br><span class="line">代替了我的称谓</span><br><span class="line">能懂你真心多贵</span><br><span class="line">不让你情绪破碎</span><br><span class="line">而我就应该后退</span><br><span class="line">藏进这回忆里昏睡</span><br><span class="line">往后的时光请你勇敢地飞</span><br><span class="line">勇敢地飞...</span><br></pre></td></tr></table></figure>
                 
             </div>
@@ -839,7 +839,7 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">3.5k</span>
+                        class="white-color">3.4k</span>
             
             
             
