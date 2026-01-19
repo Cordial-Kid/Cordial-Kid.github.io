@@ -4,10 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="「BUAA-CO」P5课上的方法论, Cordial-Kid">
-    <meta name="description" content="P5课上三题有明显得规律，第一题一般只涉及ALU的修改，第二题是b类型的跳转指令，第三题稍微难一点，涉及访存以及对转发阻塞逻辑的修改。下面我们结合题目详细说明一下解题思路和步骤。
-CCCopcode &amp;#x3D; 忘了
-tmp1 = GPR">
+    <meta name="keywords" content="「BUAA-CO」 P0, Cordial-Kid">
+    <meta name="description" content="简介为什么没有pre？因为pre的题对于我这样的小白来说还是太难了，而且后续也不会重点考察，个人认为没有什么参考价值。
+P0是对预习过程中的logisim的强化练习。我觉得可以大概分成两个部分。一部分是执行自定义指令，例如画一个电路图实现一">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +18,7 @@ tmp1 = GPR">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>「BUAA-CO」P5课上的方法论 | Cordial-Kid</title>
+    <title>「BUAA-CO」 P0 | Cordial-Kid</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -334,12 +333,12 @@ tmp1 = GPR">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">「BUAA-CO」P5课上的方法论</h1>
+                    <h1 class="description center-align post-title">「BUAA-CO」 P0</h1>
                 </div>
             </div>
         </div>
@@ -367,8 +366,8 @@ tmp1 = GPR">
                                 <span class="chip bg-color">BUAA</span>
                             </a>
                         
-                            <a href="/tags/verilog/">
-                                <span class="chip bg-color">verilog</span>
+                            <a href="/tags/logisim/">
+                                <span class="chip bg-color">logisim</span>
                             </a>
                         
                     </div>
@@ -392,7 +391,7 @@ tmp1 = GPR">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2025-11-30
+                    2026-01-20
                 </div>
                 
 
@@ -401,14 +400,14 @@ tmp1 = GPR">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.9k
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    7 分
                 </div>
                 
 
@@ -433,59 +432,64 @@ tmp1 = GPR">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>P5课上三题有明显得规律，第一题一般只涉及ALU的修改，第二题是b类型的跳转指令，第三题稍微难一点，涉及访存以及对转发阻塞逻辑的修改。下面我们结合题目详细说明一下解题思路和步骤。</p>
-<h2 id="CCC"><a href="#CCC" class="headerlink" title="CCC"></a>CCC</h2><p>opcode &#x3D; 忘了</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">tmp1 = GPR[rs]的前导零</span><br><span class="line">tmp2 = GPR[rt]的前导一</span><br><span class="line">if (tmp1 &gt; tmp2) GPR[rd] &lt;- GPR[rs][31:16] || GPR[rt][15:0]</span><br><span class="line">else GRP[rd] &lt;- GPR[rt][31:16] || GPR[rs][15:0]</span><br></pre></td></tr></table></figure>
-
-<p><strong>Answer</strong>:在<code>ALU</code>把<code>tmp1</code>和<code>tmp2</code>的值计算出来，并通过<code>ALUOp</code>控制<code>ALU</code>输出不同的结果。在<code>CTRL</code>模块新增指令，使得该指令写入<code>GPR[rd]</code>,并且写入数据为<code>ALU</code>输出结果。在<code>Stall</code>模块中<code>Tnew</code>和<code>Tuse</code>无脑跟<code>add</code>保持一致即可。</p>
-<h2 id="BLONEZ-应该吧"><a href="#BLONEZ-应该吧" class="headerlink" title="BLONEZ?(应该吧)"></a>BLONEZ?(应该吧)</h2><p>opcode &#x3D; 111111</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">tmp = GPR[rs]前导1</span><br><span class="line">GPR[31] &lt;- PC + 8;</span><br><span class="line">if (tmp1 &gt; GPT[rt][5:0]) </span><br><span class="line">PC &lt;- IMMbeq的跳转方式</span><br></pre></td></tr></table></figure>
-
-<p>这个是考场题目，但是比较简单，大家感兴趣可以看一看，我们用一道推荐题来说明这类型题目的解决方法。</p>
-<h2 id="BLZTAL"><a href="#BLZTAL" class="headerlink" title="BLZTAL"></a>BLZTAL</h2><p>opcode &#x3D; 100111</p>
-<p>看题：<br><img src="/images/BLZTAL.png" alt="BLZTAL"></p>
-<p><strong>Answer</strong>:对于<code>b</code>型指令，我们要在<code>D_CMP</code>模块中判断<code>b_jump</code>，如果是条件链接(像这道题)，我们就要将<code>D_CMP</code>模块中的<code>b_jump</code>指令随着流水线一直流水下去，从而满足每一级的<code>CTRL</code>判断<code>GRFA3sel</code>和<code>GRFWDsel</code>信号的需求;如果是无条件链接(像<strong>BLONEZ</strong>)，那CTRL直接生成控制信号写入<code>31</code>号寄存器，写入值是<code>PC + 8</code>即可。在<code>STALL</code>模块<code>Tuse</code>和<code>Tnew</code>与<code>Beq</code>保持一致。</p>
-<p>特别注意一下PC的变化基数是D_PC还是F_PC。</p>
-<p>还有一种情况可能会涉及清空延迟槽的指令，像这样：</p>
-<p><img src="/images/BONALL.png" alt="BONALL"></p>
-<p>为什么要清空延迟槽呢，我理解就是不想执行跳转类指令的下一条指令了，把他用Flush清除掉。具体实现需要在D_CMP增加一个接口Flush_check<code>assign Flush_check = (CMPOp == `CMP_BONALL &amp;&amp; !B_jump);</code>,在<code>mips</code>中将这一接口与<strong>D_reg_flush**相连，<code>assign D_reg_flush = (!stall &amp;&amp; D_flush_check);</code>值得注意的是，我们要保证此时流水线不是阻塞状态.如果是阻塞状态我们就等到它阻塞结束再清空，想想为什么呢？因为如果流水线阻塞在D级的话，D级放的其实是跳转类指令，相当于是</strong>把自己送走了**，后面的流水级就丢失了这条指令。</p>
-<h2 id="LBGET"><a href="#LBGET" class="headerlink" title="LBGET"></a>LBGET</h2><p>opcode &#x3D; 110101</p>
-<p><img src="/images/LBGET.png" alt="LBGET"></p>
-<p><strong>Answer</strong>:这是写入地址可选择类<code>condition: GPR[rt] &lt;- RD; else: GPR[rs] &lt;- RD</code>,我们只有在DM完成计算才能知道要写入哪个寄存器，那么<code>D，E，(M)</code>就都<strong>没GRFA3的视野</strong>，因此难以判断冲突条件是否成立。此时我们有两个选择：<strong>暴力阻塞</strong>;<strong>条件阻塞</strong>。</p>
-<p><strong>暴力阻塞</strong>:只要D级指令要访问GPR，并且访问地址非0，并且Tuse &lt; Tnew，我们就阻塞。对应代码实现</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> E_stall_rs = ((E_lbget ? <span class="number">1</span> : (E_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> E_stall_rt = ((E_lbget ? <span class="number">1</span> : (E_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rs = ((M_lbget ? <span class="number">1</span> : (M_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; M_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rt = ((M_lbget ? <span class="number">1</span> : (M_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; M_Tnew);</span><br></pre></td></tr></table></figure>
-
-<p><strong>条件阻塞</strong>：D级指令要访问GPR,并且访问地址非0，并且访问地址和当前级流水线的 <code>rs</code> 或 <code>rt</code> 冲突，并且 <code>Tuse &lt; Tnew</code>,我们阻塞。对应代码实现。</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> E_stall_rs = ((E_lbget ? (D_rs == E_rt || D_rs == E_rs) : (E_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> E_stall_rt = ((E_lbget ? (D_rt == E_rs || D_rt == E_rt) : (E_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rs = ((M_lbget ? (D_rs == M_rs || D_rs == M_rt) : (M_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; M_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rt = ((M_lbget ? (D_rt == M_rs || D_rt == M_rt) : (M_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; M_Tnew);</span><br></pre></td></tr></table></figure>
-
-<p>以上是两种阻塞方式，暴力阻塞可能会超时，条件阻塞也可能比测评机要求的周期少(可能是跑的太快了😥)。接着还有两种译码位置，<strong>M级译码</strong>和<strong>W级译码</strong></p>
-<p><strong>W级译码</strong>：对于判断条件Condition，我们不在DM进行计算，而是在顶层模块mips中进行判断，DM只需要更改DMOp从而输出判断需要的数据即可。这里你可能会发现，如果我要写入的数据来自DM并且和我判断需要的数据冲突了怎么办呢，那就只好再给DM开一个端口往后传判断需要的数据了。在W级判断出condition后传到<code>w_ctrl</code>,对<code>W_GRFA3</code>判断。显然，在这种情况下，<code>D</code>，<code>E</code>，<code>M</code>级都没有GRFA3的视野所以<code>E_Tnew = 3</code>,<code>M_Tnew = 2</code>,并且条件阻塞写法如下：</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Stall</span></span><br><span class="line"><span class="keyword">assign</span> E_stall_rs = ((E_lbget ? (D_rs == E_rt || D_rs == E_rs) : (E_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> E_stall_rt = ((E_lbget ? (D_rt == E_rs || D_rt == E_rt) : (E_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rs = ((M_lbget ? (D_rs == M_rs || D_rs == M_rt) : (M_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; M_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rt = ((M_lbget ? (D_rt == M_rs || D_rt == M_rt) : (M_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; M_Tnew);</span><br></pre></td></tr></table></figure>
-
-<p>这样就可以得到正确的运算结果，但是不难看出，这并不是最优解，我们在M级其实就可以拿到GRFA3，这样就可以删除M级冲突判断的不确定性，从而减少阻塞的发生，提高CPU性能。</p>
-<p>至于为什么会提到这种在W级译码的方式，21级的很多学长似乎采用了这种做法，优点是<strong>当condition判断需要的数据和DM输出的数据相同时，可以对电路做最小的改动实现功能</strong>，缺点也很明显<strong>运行效率较低并且当condition判断需要的数据和DM输出的数据不相同时需要新增接口</strong>。对了，笔者在测评机提交这种方法时出现了一个测试点TLE，所以这种方法大家听个思路，考场慎用吧。</p>
-<p><strong>W级译码</strong>：对于判断条件condition，我们在DM计算出并且随流水线流到W级，这样M级流水线寄存器就可以较早地拿到GRFA3。</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> M_GRFa3 = (M_GRFA3_sel == `GRFA3rt) ? M_rt :</span><br><span class="line">                 (M_GRFA3_sel == `GRFA3rd) ? M_rd :</span><br><span class="line">                 (M_GRFA3_sel == `GRFA331 ) ? <span class="number">5&#x27;d31</span> :</span><br><span class="line">                 (M_GRFA3_sel == `GRFA3rs) ? M_rs :</span><br><span class="line">                 (M_GRFA3_sel == `GRFA30 &amp;&amp; M_lbget &amp;&amp; M_condition1 == <span class="number">1</span>) ? M_rt :</span><br><span class="line">                 (M_GRFA3_sel == `GRFA30 &amp;&amp; M_lbget &amp;&amp; M_condition1 == <span class="number">0</span>) ? M_rs :</span><br><span class="line">                 <span class="number">5&#x27;d0</span>;</span><br></pre></td></tr></table></figure>
-
-<p>在Stall模块中因为要判断M_GRFA3，所以需要将condition信号传入Stall</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> STALL (</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] D_Instr,  </span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] E_Instr,</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] M_Instr,</span><br><span class="line">    <span class="keyword">input</span> Condition1,</span><br><span class="line">    <span class="keyword">output</span> Stall</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<p><code>M_GRFA3</code>已知，所以<code>E_Tnew = 2</code> ,<code>M_Tnew = 1</code>,并且条件阻塞判断如下:</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Stall</span></span><br><span class="line"><span class="keyword">assign</span> E_stall_rs = ((E_lbget ? (D_rs == E_rt || D_rs == E_rs) : (E_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> E_stall_rt = ((E_lbget ? (D_rt == E_rs || D_rt == E_rt) : (E_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rs = ((M_GRFA3 == D_rs) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; M_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rt = ((M_GRFA3 == D_rt) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; M_Tnew);</span><br></pre></td></tr></table></figure>
-
-<p>注意，关于GRFA3的译码，如果按照笔者个人的习惯，会将condition传入CTRL模块完成GRFA3_Sel译码,但是我们发现在M级，</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">m_ctrl(<span class="variable">.Condition</span>(condition),<span class="variable">.DMOp</span>(DMop)) ;</span><br><span class="line">m_dm(<span class="variable">.DMOp</span>(DMop),<span class="variable">.Condition</span>(condition));</span><br></pre></td></tr></table></figure>
-
-<p>ctrl和dm在交互，这就导致了输出信号会是<code>XXXXXXXX</code>,所以我们选择在外部译码。</p>
-<h2 id="CCS"><a href="#CCS" class="headerlink" title="CCS"></a>CCS</h2><p>这个是考试题</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">high_ones = memword[31:16] 1 的个数</span><br><span class="line">low_ones = memword[15:0] 1 的个数</span><br><span class="line">if high_ones &gt; low_ones &#123;</span><br><span class="line">    memword ^ GPR[rt] -&gt; GPR[31]</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">    memword -&gt; GPR[high_ones]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这道题目和上一题的区别在于GPR[high_ones]直到M级才知道，因此冲突判断直接无脑置1即可</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> E_stall_rs = ((E_lbget ? <span class="number">1</span> : (E_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> E_stall_rt = ((E_lbget ? <span class="number">1</span> : (E_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rs = ((M_GRFA3 == D_rs) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; M_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rt = ((M_GRFA3 == D_rt) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; M_Tnew);</span><br></pre></td></tr></table></figure>
-
-<p>剩下的操作跟LBGET一样，大家依葫芦画瓢应该问题不大。</p>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>笔者的个人仓库里有P5_pro,实现了<code>BLZTAL</code>,<code>LBGET</code>,<code>BONALL</code>,大家如果真的对自己的bug毫无想法可以参考一下哦😋。</p>
-
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>为什么没有pre？因为pre的题对于我这样的小白来说还是太难了，而且后续也不会重点考察，个人认为没有什么参考价值。</p>
+<p>P0是对预习过程中的logisim的强化练习。我觉得可以大概分成两个部分。一部分是执行自定义指令，例如画一个电路图实现一个32位二进制数的某几位的反转。另一部分是状态机的搭建。下面分两部分陈述。</p>
+<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><p>自定义指令的题目其实并不难，主要是考察你对logisim中各种元件的使用。个人觉得比较重要的几个元件有：</p>
+<ul>
+<li>多路选择器（MUX）</li>
+<li>Splitter</li>
+<li>Bit Extender</li>
+<li>组合逻辑门（AND, OR, NOT, XOR等）</li>
+<li>加法器（Adder）</li>
+<li>Bit Selector</li>
+<li>Comparator</li>
+</ul>
+<p>以上这些元件在预习过程中应当做到较为熟练地掌握。虽然并不全面，但是足以让你应对P0中的自定义指令题目。在做题时看清题意，按照题目要求一步一步设计即可，不需要过于复杂的设计思路。</p>
+<h2 id="状态机设计"><a href="#状态机设计" class="headerlink" title="状态机设计"></a>状态机设计</h2><p>状态机的设计有相对固定的套路，只要熟悉了套路状态机简直就在送分。首先要明确的是，状态机分为<strong>Moore型</strong>和<strong>Mealy型</strong>两种。<strong>Moore型</strong>状态机的输出仅与当前状态有关，而<strong>Mealy型</strong>状态机的输出与当前状态和输入均有关。同一个问题两种设计方式都可以，但是在设计时要根据题目要求选择合适的状态机类型。</p>
+<p>理论上来说所有的状态机类型题目都可以用真值表来解决，但是对于某些状态较多的题目来说，真值表会变得非常庞大，不易处理。此时我们可以用<strong>正常的逻辑</strong>来表示现态到次态的转化以及输出的生成。</p>
+<p>同时，电路图大致可分为4个模块。</p>
+<ol>
+<li>Tunnel Module：负责接收输入信号并进行初步处理。</li>
+<li>calculate next state Module：负责根据当前状态和输入信号计算下一个状态。</li>
+<li>state storage Module：负责存储当前状态，通常使用Register实现。</li>
+<li>output Module：负责根据当前状态和输入信号生成输出信号。</li>
+</ol>
+<p>我们以经典的推箱子问题为例说明：大致要求就是从初始状态出发，通过一系列操作将箱子推到目标位置。途中如果碰到障碍物或越界就算失败。</p>
+<p><a href="/images/%E6%8E%A8%E7%AE%B1%E5%AD%90%E7%94%B5%E8%B7%AF%E5%9B%BE.png">!推箱子电路图</a></p>
+<h3 id="可用真值表表示的状态机"><a href="#可用真值表表示的状态机" class="headerlink" title="可用真值表表示的状态机"></a>可用真值表表示的状态机</h3><p>设计时一般遵循以下步骤：</p>
+<ol>
+<li><strong>明确状态及其编码</strong>：这里要根据题目要求确定状态的数量，并为每个状态分配一个唯一的二进制编码。</li>
+<li><strong>绘制状态转移图</strong>：根据题目描述，绘制状态转移图，明确各状态之间的转移关系以及对应的输入条件。</li>
+<li><strong>编写状态转移表</strong>：将状态转移图转换为状态转移表，列出每个状态在不同输入条件下的下一个状态。</li>
+<li><strong>设计逻辑电路</strong>：根据状态转移表，设计组合逻辑电路来实现<strong>状态转移</strong>和<strong>输出</strong>逻辑。这里可以直接利用logisim内置的真值表工具来实现组合电路。具体步骤如下：</li>
+</ol>
+<p><code>project</code> –&gt; <code>Analyze Circuit</code> –&gt; <code>Input &amp; Output &amp; Table</code> –&gt; <code>填写输入输出变量及真值表</code> –&gt; <code>Generate Circuit</code></p>
+<p>典型例子有：红绿灯控制器。</p>
+<p><a href="/images/%E7%BA%A2%E7%BB%BF%E7%81%AF%E6%AC%A1%E6%80%81%E9%80%BB%E8%BE%91%E8%AE%A1%E7%AE%97%E5%9B%BE.png">!红绿灯次态逻辑计算图</a><br><a href="/images/%E7%BA%A2%E7%BB%BF%E7%81%AF%E6%AC%A1%E6%80%81%E9%80%BB%E8%BE%91%E7%9C%9F%E5%80%BC%E8%A1%A8.png">!红绿灯次态逻辑真值表</a><br>输出逻辑计算同理，在此不再赘述。</p>
+<h3 id="常规逻辑表达式表示的状态机"><a href="#常规逻辑表达式表示的状态机" class="headerlink" title="常规逻辑表达式表示的状态机"></a>常规逻辑表达式表示的状态机</h3><p>设计不便于使用真值表的状态机时，就用最原始的，最正常的逻辑思路来计算下一状态即可。</p>
+<p>典型例子有：推箱子。</p>
+<p><a href="/images/%E6%8E%A8%E7%AE%B1%E5%AD%90%E6%AC%A1%E6%80%81%E9%80%BB%E8%BE%91%E8%AE%A1%E7%AE%97%E5%9B%BE.png">!推箱子次态逻辑计算图</a></p>
+<p>要注意的是次态逻辑的存储时要对次态逻辑的有效性进行判断，例如推箱子中如果出现了碰墙或者越界的情况，次态就不更新，保持不变。这就需要用到多路选择器来选择下一个<code>x</code>到底是<code>x_next</code>还是<code>x_current</code>。</p>
+<h3 id="关于Moore型和Mealy型"><a href="#关于Moore型和Mealy型" class="headerlink" title="关于Moore型和Mealy型"></a>关于Moore型和Mealy型</h3><p><strong>Moore型</strong>和<strong>Mealy型</strong>的状态转移图有很大区别，因为<strong>Mealy型</strong>状态机输出不仅和当前状态有关还和输入有关，因此<strong>Mealy型</strong>状态机中的状态通常比<strong>Moore型</strong>状态机少一个（少的一般是<strong>Moore型</strong>状态机的最后一个状态）。这在真值表中体现为输入影响输出，在状态转移图中体现为输出从<strong>在方框内表示</strong>转化为<strong>在边上表示</strong>。</p>
+<p>如果你使用的是<strong>真值表表示</strong>方法，那么要修改<code>次态转移逻辑</code>和<code>输出逻辑</code>的真值表。次态转移逻辑减少状态，输出逻辑增加<code>input signal</code>作为输入变量。</p>
+<p>如果你使用的是<strong>常规逻辑表达式</strong>的方法，那么不要动<code>次态逻辑计算</code>的设计，只需要修改<code>输出逻辑</code>的设计即可。输出逻辑要使用<code>next state</code>（注意不是<code>current state</code>,也没有<code>input signal</code>）来作为该板块的输入计算输出。</p>
+<h2 id="一些可能的盲区"><a href="#一些可能的盲区" class="headerlink" title="一些可能的盲区"></a>一些可能的盲区</h2><ol>
+<li><strong>异步复位和同步复位</strong>：异步复位是指复位信号一旦被触发，无论时钟信号的状态如何，电路都会立即进入复位状态。而同步复位则是指复位信号只有在时钟信号的上升沿（或下降沿）到来时才会生效。在设计状态机时要根据题目要求选择合适的复位方式。他们的实现方式也不尽相同。</li>
+</ol>
+<p><a href="/images/%E5%BC%82%E6%AD%A5%E5%A4%8D%E4%BD%8D.png">!异步复位</a><br><a href="/images/%E5%90%8C%E6%AD%A5%E5%A4%8D%E4%BD%8D.png">!同步复位</a></p>
+<ol start="2">
+<li><strong>“异步”置位和同步置位</strong>：同步置位则是指置位信号只有在时钟信号的上升沿（或下降沿）到来时才会生效。而“异步”置位跟字面意思不太一样，我们要求<code>reset</code>信号在<code>clk</code>信号为低电平时拉高，在<code>clk</code>信号高电平时接地，同时要求<code>clk</code>信号为高电平时能够在<code>register</code>中存储<code>reset</code>信号为高电平时希望设置的值。同步置位的实现方式和同步复位的方式类似，但是“异步”置位的实现就和异步复位大不相同了。</li>
+</ol>
+<p>因为<code>reset</code>信号的转瞬即逝，我们希望有某个模块可以留住<code>reset</code>的效果，<code>Counter</code>成为了最佳选项。电路连接如下图：</p>
+<p><a href="/images/%E2%80%9C%E5%BC%82%E6%AD%A5%E2%80%9D%E7%BD%AE%E4%BD%8D.png">!“异步”置位</a></p>
+<p>我们将<code>Counter</code>模块的<code>Data bits</code>设置为1位，<code>Action on overflow</code>设置为<code>Stay at value</code>,再将<code>cnt</code>作为选择信号来选择存入<code>register</code>的数据来源。我们分析可以得出，当<code>reset</code>为低电平时，除了初态，所有的状态<code>cnt</code>均为1。当<code>reset</code>为高电平时，<code>cnt</code>变为0。即使此时<code>reset</code>信号转为低电平，<code>cnt</code>依然保持0。因此在clk上升沿时，register模块存入的数据始终为<strong>x</strong>，从而实现了“异步”置位的效果。</p>
+<p>同步置位就很简单了，如下图：<br><a href="/images/%E5%90%8C%E6%AD%A5%E7%BD%AE%E4%BD%8D.png">!同步置位</a></p>
+<ol start="3">
+<li>多个数比大小</li>
+</ol>
+<p>在设计多个数比大小的逻辑时，可以使用多个<code>Comparator</code>模块进行两两比较，然后将比较结果进行综合处理。这里需要用到分类讨论的知识。分类讨论的结果可以可以作为多路选择器的待选择信号，比较结果可以作为选择信号，从而实现不同情况下的输出。</p>
+<p><a href="/images/%E4%B8%89%E4%B8%AA%E6%95%B0%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F.png">!三个数比较大小</a></p>
+<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">你身边的那位</span><br><span class="line">代替了我的座位</span><br><span class="line">他的手捧着玫瑰</span><br><span class="line">承诺余生都奉陪</span><br><span class="line">而我始终学不会</span><br><span class="line">已被风吹散的眼泪</span><br><span class="line">那逝去的幸福该怎么追回</span><br><span class="line">你身边的那位</span><br><span class="line">代替了我的称谓</span><br><span class="line">能懂你真心多贵</span><br><span class="line">不让你情绪破碎</span><br><span class="line">而我就应该后退</span><br><span class="line">藏进这回忆里昏睡</span><br><span class="line">往后的时光请你勇敢地飞</span><br><span class="line">勇敢地飞...</span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -511,7 +515,7 @@ tmp1 = GPR">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Cordial-Kid.github.io/2025/11/30/P5%E8%AF%BE%E4%B8%8A%E7%9A%84%E6%96%B9%E6%B3%95%E8%AE%BA/">https://Cordial-Kid.github.io/2025/11/30/P5%E8%AF%BE%E4%B8%8A%E7%9A%84%E6%96%B9%E6%B3%95%E8%AE%BA/</a>
+                    <a href="https://Cordial-Kid.github.io/2026/01/20/P0%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">https://Cordial-Kid.github.io/2026/01/20/P0%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -553,8 +557,8 @@ tmp1 = GPR">
                                     <span class="chip bg-color">BUAA</span>
                                 </a>
                             
-                                <a href="/tags/verilog/">
-                                    <span class="chip bg-color">verilog</span>
+                                <a href="/tags/logisim/">
+                                    <span class="chip bg-color">logisim</span>
                                 </a>
                             
                         </div>
@@ -605,13 +609,13 @@ tmp1 = GPR">
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2025/11/30/P5%E8%AF%BE%E4%B8%8A%E7%9A%84%E6%96%B9%E6%B3%95%E8%AE%BA/">
+                <a href="/2026/01/20/P0%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="「BUAA-CO」P5课上的方法论">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="「BUAA-CO」 P0">
                         
-                        <span class="card-title">「BUAA-CO」P5课上的方法论</span>
+                        <span class="card-title">「BUAA-CO」 P0</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -622,7 +626,7 @@ tmp1 = GPR">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-11-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-20
                             </span>
                         <span class="publish-author">
                             
@@ -644,8 +648,8 @@ tmp1 = GPR">
                         <span class="chip bg-color">BUAA</span>
                     </a>
                     
-                    <a href="/tags/verilog/">
-                        <span class="chip bg-color">verilog</span>
+                    <a href="/tags/logisim/">
+                        <span class="chip bg-color">logisim</span>
                     </a>
                     
                 </div>
@@ -659,13 +663,13 @@ tmp1 = GPR">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2025/11/26/P5%E8%AF%BE%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E4%B8%BA%E4%BB%80%E4%B9%88/">
+                <a href="/2026/01/20/%E8%AE%A1%E7%BB%84%E5%BA%8F%E8%A8%80/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="「BUAA-CO」 P5课下幕后手记">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="「BUAA-CO」 序言">
                         
-                        <span class="card-title">「BUAA-CO」 P5课下幕后手记</span>
+                        <span class="card-title">「BUAA-CO」 序言</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -676,7 +680,7 @@ tmp1 = GPR">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-11-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-20
                             </span>
                         <span class="publish-author">
                             
@@ -695,10 +699,6 @@ tmp1 = GPR">
                     
                     <a href="/tags/BUAA/">
                         <span class="chip bg-color">BUAA</span>
-                    </a>
-                    
-                    <a href="/tags/verilog/">
-                        <span class="chip bg-color">verilog</span>
                     </a>
                     
                 </div>
@@ -830,7 +830,7 @@ tmp1 = GPR">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2019-2025</span>
+                <span id="year">2019-2026</span>
             
             <a href="/about" target="_blank">Cordial-Kid</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
@@ -839,7 +839,7 @@ tmp1 = GPR">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">7.4k</span>
+                        class="white-color">3.5k</span>
             
             
             
