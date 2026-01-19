@@ -1186,9 +1186,11 @@ article .article-tags .chip {
 }
 
 #articleContent img {
-    max-width: 100%;
-    height: auto;
-    cursor: pointer;
+    max-width: 80%;    /* 核心：图片最大宽度只占文章区80%，直接缩小图片！数值越小图越小，推荐80% */
+    height: auto;      /* 强制等比例缩放，图片绝对不会拉伸变形 */
+    cursor: pointer;   /* 保留点击放大的功能 */
+    display: block;    /* 配合居中必备 */
+    margin: 15px auto; /* 图片上下留15px间距+水平居中，美观度拉满 */
 }
 
 #articleContent video {
@@ -2300,4 +2302,18 @@ body.DarkMode .theme-btn:hover {
 /* about code styles */
 .code-wrapper .gutter .code-header {
     display: none !important;
+}
+
+/* 响应式图片适配 - 手机/平板自动缩小图片 */
+@media only screen and (max-width: 992px) {
+    #articleContent img {
+        max-width: 95%; /* 平板/手机上图片占95%宽度，不会太满挤屏幕 */
+        margin: 10px auto;
+    }
+}
+@media only screen and (max-width: 601px) {
+    #articleContent img {
+        max-width: 100%; /* 手机小屏占满宽度，阅读更舒服 */
+        margin: 8px auto;
+    }
 }
