@@ -4,9 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="「BUAA-CO」 P0, Cordial-Kid">
-    <meta name="description" content="简介为什么没有pre？因为pre的题对于我这样的小白来说还是太难了，而且后续也不会重点考察，个人认为没有什么参考价值。
-P0是对预习过程中的logisim的强化练习。我觉得可以大概分成两个部分。一部分是执行自定义指令，例如画一个电路图实现一">
+    <meta name="keywords" content="「BUAA-CO」 P1的注意事项, Cordial-Kid">
+    <meta name="description" content="简介P1主要是对verilog在预习阶段所学内容的强化，但是显然没有预习阶段的题目那么恶心。P1的题目大致可以分为两类：一类是组合逻辑电路的设计，另一类是时序逻辑电路状态机的设计。下面分别进行说明。
+组合逻辑电路设计组合逻辑电路的设计相对简">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +18,7 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>「BUAA-CO」 P0 | Cordial-Kid</title>
+    <title>「BUAA-CO」 P1的注意事项 | Cordial-Kid</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -333,12 +333,12 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">「BUAA-CO」 P0</h1>
+                    <h1 class="description center-align post-title">「BUAA-CO」 P1的注意事项</h1>
                 </div>
             </div>
         </div>
@@ -366,8 +366,8 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
                                 <span class="chip bg-color">BUAA</span>
                             </a>
                         
-                            <a href="/tags/logisim/">
-                                <span class="chip bg-color">logisim</span>
+                            <a href="/tags/verilog/">
+                                <span class="chip bg-color">verilog</span>
                             </a>
                         
                     </div>
@@ -400,14 +400,14 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    4 分
                 </div>
                 
 
@@ -432,64 +432,27 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>为什么没有pre？因为pre的题对于我这样的小白来说还是太难了，而且后续也不会重点考察，个人认为没有什么参考价值。</p>
-<p>P0是对预习过程中的logisim的强化练习。我觉得可以大概分成两个部分。一部分是执行自定义指令，例如画一个电路图实现一个32位二进制数的某几位的反转。另一部分是状态机的搭建。下面分两部分陈述。</p>
-<h2 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h2><p>自定义指令的题目其实并不难，主要是考察你对logisim中各种元件的使用。个人觉得比较重要的几个元件有：</p>
-<ul>
-<li>多路选择器（MUX）</li>
-<li>Splitter</li>
-<li>Bit Extender</li>
-<li>组合逻辑门（AND, OR, NOT, XOR等）</li>
-<li>加法器（Adder）</li>
-<li>Bit Selector</li>
-<li>Comparator</li>
-</ul>
-<p>以上这些元件在预习过程中应当做到较为熟练地掌握。虽然并不全面，但是足以让你应对P0中的自定义指令题目。在做题时看清题意，按照题目要求一步一步设计即可，不需要过于复杂的设计思路。</p>
-<h2 id="状态机设计"><a href="#状态机设计" class="headerlink" title="状态机设计"></a>状态机设计</h2><p>状态机的设计有相对固定的套路，只要熟悉了套路状态机简直就在送分。首先要明确的是，状态机分为<strong>Moore型</strong>和<strong>Mealy型</strong>两种。<strong>Moore型</strong>状态机的输出仅与当前状态有关，而<strong>Mealy型</strong>状态机的输出与当前状态和输入均有关。同一个问题两种设计方式都可以，但是在设计时要根据题目要求选择合适的状态机类型。</p>
-<p>理论上来说所有的状态机类型题目都可以用真值表来解决，但是对于某些状态较多的题目来说，真值表会变得非常庞大，不易处理。此时我们可以用<strong>正常的逻辑</strong>来表示现态到次态的转化以及输出的生成。</p>
-<p>同时，电路图大致可分为4个模块。</p>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>P1主要是对verilog在预习阶段所学内容的强化，但是显然没有预习阶段的题目那么恶心。P1的题目大致可以分为两类：一类是组合逻辑电路的设计，另一类是时序逻辑电路状态机的设计。下面分别进行说明。</p>
+<h2 id="组合逻辑电路设计"><a href="#组合逻辑电路设计" class="headerlink" title="组合逻辑电路设计"></a>组合逻辑电路设计</h2><p>组合逻辑电路的设计相对简单，主要考察对verilog语法的掌握以及对基本逻辑电路的理解。说白了就是程序设计换一种语言写而已，不会用很难的算法为难大家的。</p>
+<h2 id="时序逻辑电路状态机设计"><a href="#时序逻辑电路状态机设计" class="headerlink" title="时序逻辑电路状态机设计"></a>时序逻辑电路状态机设计</h2><p>状态机的设计相对复杂一些，主要考察对状态机原理的理解以及verilog实现状态机的能力。状态机的设计一般分为以下5个模块：</p>
 <ol>
-<li>Tunnel Module：负责接收输入信号并进行初步处理。</li>
-<li>calculate next state Module：负责根据当前状态和输入信号计算下一个状态。</li>
-<li>state storage Module：负责存储当前状态，通常使用Register实现。</li>
-<li>output Module：负责根据当前状态和输入信号生成输出信号。</li>
+<li>变量定义模块</li>
+<li>initial模块</li>
+<li>时序逻辑状态转移模块</li>
+<li>组合逻辑次态计算模块</li>
+<li>组合逻辑输出计算模块</li>
 </ol>
-<p>我们以经典的推箱子问题为例说明：大致要求就是从初始状态出发，通过一系列操作将箱子推到目标位置。途中如果碰到障碍物或越界就算失败。</p>
-<p><img src="/images/%E6%8E%A8%E7%AE%B1%E5%AD%90%E7%94%B5%E8%B7%AF%E5%9B%BE.png" alt="推箱子电路图"></p>
-<h3 id="可用真值表表示的状态机"><a href="#可用真值表表示的状态机" class="headerlink" title="可用真值表表示的状态机"></a>可用真值表表示的状态机</h3><p>设计时一般遵循以下步骤：</p>
-<ol>
-<li><strong>明确状态及其编码</strong>：这里要根据题目要求确定状态的数量，并为每个状态分配一个唯一的二进制编码。</li>
-<li><strong>绘制状态转移图</strong>：根据题目描述，绘制状态转移图，明确各状态之间的转移关系以及对应的输入条件。</li>
-<li><strong>编写状态转移表</strong>：将状态转移图转换为状态转移表，列出每个状态在不同输入条件下的下一个状态。</li>
-<li><strong>设计逻辑电路</strong>：根据状态转移表，设计组合逻辑电路来实现<strong>状态转移</strong>和<strong>输出</strong>逻辑。这里可以直接利用logisim内置的真值表工具来实现组合电路。具体步骤如下：</li>
-</ol>
-<p><code>project</code> –&gt; <code>Analyze Circuit</code> –&gt; <code>Input &amp; Output &amp; Table</code> –&gt; <code>填写输入输出变量及真值表</code> –&gt; <code>Generate Circuit</code></p>
-<p>典型例子有：红绿灯控制器。</p>
-<p><img src="/images/%E7%BA%A2%E7%BB%BF%E7%81%AF%E6%AC%A1%E6%80%81%E9%80%BB%E8%BE%91%E8%AE%A1%E7%AE%97%E5%9B%BE.png" alt="红绿灯次态逻辑计算图"><br><img src="/images/%E7%BA%A2%E7%BB%BF%E7%81%AF%E6%AC%A1%E6%80%81%E9%80%BB%E8%BE%91%E7%9C%9F%E5%80%BC%E8%A1%A8.png" alt="红绿灯次态逻辑真值表"><br>输出逻辑计算同理，在此不再赘述。</p>
-<h3 id="常规逻辑表达式表示的状态机"><a href="#常规逻辑表达式表示的状态机" class="headerlink" title="常规逻辑表达式表示的状态机"></a>常规逻辑表达式表示的状态机</h3><p>设计不便于使用真值表的状态机时，就用最原始的，最正常的逻辑思路来计算下一状态即可。</p>
-<p>典型例子有：推箱子。</p>
-<p><img src="/images/%E6%8E%A8%E7%AE%B1%E5%AD%90%E6%AC%A1%E6%80%81%E9%80%BB%E8%BE%91%E8%AE%A1%E7%AE%97%E5%9B%BE.png" alt="推箱子次态逻辑计算图"></p>
-<p>要注意的是次态逻辑的存储时要对次态逻辑的有效性进行判断，例如推箱子中如果出现了碰墙或者越界的情况，次态就不更新，保持不变。这就需要用到多路选择器来选择下一个<code>x</code>到底是<code>x_next</code>还是<code>x_current</code>。</p>
-<h3 id="关于Moore型和Mealy型"><a href="#关于Moore型和Mealy型" class="headerlink" title="关于Moore型和Mealy型"></a>关于Moore型和Mealy型</h3><p><strong>Moore型</strong>和<strong>Mealy型</strong>的状态转移图有很大区别，因为<strong>Mealy型</strong>状态机输出不仅和当前状态有关还和输入有关，因此<strong>Mealy型</strong>状态机中的状态通常比<strong>Moore型</strong>状态机少一个（少的一般是<strong>Moore型</strong>状态机的最后一个状态）。这在真值表中体现为输入影响输出，在状态转移图中体现为输出从<strong>在方框内表示</strong>转化为<strong>在边上表示</strong>。</p>
-<p>如果你使用的是<strong>真值表表示</strong>方法，那么要修改<code>次态转移逻辑</code>和<code>输出逻辑</code>的真值表。次态转移逻辑减少状态，输出逻辑增加<code>input signal</code>作为输入变量。</p>
-<p>如果你使用的是<strong>常规逻辑表达式</strong>的方法，那么不要动<code>次态逻辑计算</code>的设计，只需要修改<code>输出逻辑</code>的设计即可。输出逻辑要使用<code>next state</code>（注意不是<code>current state</code>,也没有<code>input signal</code>）来作为该板块的输入计算输出。</p>
-<h2 id="一些可能的盲区"><a href="#一些可能的盲区" class="headerlink" title="一些可能的盲区"></a>一些可能的盲区</h2><ol>
-<li><strong>异步复位和同步复位</strong>：异步复位是指复位信号一旦被触发，无论时钟信号的状态如何，电路都会立即进入复位状态。而同步复位则是指复位信号只有在时钟信号的上升沿（或下降沿）到来时才会生效。在设计状态机时要根据题目要求选择合适的复位方式。他们的实现方式也不尽相同。</li>
-</ol>
-<p><img src="/images/%E5%BC%82%E6%AD%A5%E5%A4%8D%E4%BD%8D.png" alt="异步复位"><br><img src="/images/%E5%90%8C%E6%AD%A5%E5%A4%8D%E4%BD%8D.png" alt="同步复位"></p>
-<ol start="2">
-<li><strong>“异步”置位和同步置位</strong>：同步置位则是指置位信号只有在时钟信号的上升沿（或下降沿）到来时才会生效。而“异步”置位跟字面意思不太一样，我们要求<code>reset</code>信号在<code>clk</code>信号为低电平时拉高，在<code>clk</code>信号高电平时接地，同时要求<code>clk</code>信号为高电平时能够在<code>register</code>中存储<code>reset</code>信号为高电平时希望设置的值。同步置位的实现方式和同步复位的方式类似，但是“异步”置位的实现就和异步复位大不相同了。</li>
-</ol>
-<p>因为<code>reset</code>信号的转瞬即逝，我们希望有某个模块可以留住<code>reset</code>的效果，<code>Counter</code>成为了最佳选项。电路连接如下图：</p>
-<p><img src="/images/%E2%80%9C%E5%BC%82%E6%AD%A5%E2%80%9D%E7%BD%AE%E4%BD%8D.png" alt="“异步”置位"></p>
-<p>我们将<code>Counter</code>模块的<code>Data bits</code>设置为1位，<code>Action on overflow</code>设置为<code>Stay at value</code>,再将<code>cnt</code>作为选择信号来选择存入<code>register</code>的数据来源。我们分析可以得出，当<code>reset</code>为低电平时，除了初态，所有的状态<code>cnt</code>均为1。当<code>reset</code>为高电平时，<code>cnt</code>变为0。即使此时<code>reset</code>信号转为低电平，<code>cnt</code>依然保持0。因此在clk上升沿时，register模块存入的数据始终为<strong>x</strong>，从而实现了“异步”置位的效果。</p>
-<p>同步置位就很简单了，如下图：<br><img src="/images/%E5%90%8C%E6%AD%A5%E7%BD%AE%E4%BD%8D.png" alt="同步置位"></p>
-<ol start="3">
-<li>多个数比大小</li>
-</ol>
-<p>在设计多个数比大小的逻辑时，可以使用多个<code>Comparator</code>模块进行两两比较，然后将比较结果进行综合处理。这里需要用到分类讨论的知识。分类讨论的结果可以可以作为多路选择器的待选择信号，比较结果可以作为选择信号，从而实现不同情况下的输出。</p>
-<p><img src="/images/%E4%B8%89%E4%B8%AA%E6%95%B0%E6%AF%94%E8%BE%83%E5%A4%A7%E5%B0%8F.png" alt="三个数比较大小"></p>
-<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">你身边的那位</span><br><span class="line">代替了我的座位</span><br><span class="line">他的手捧着玫瑰</span><br><span class="line">承诺余生都奉陪</span><br><span class="line">而我始终学不会</span><br><span class="line">已被风吹散的眼泪</span><br><span class="line">那逝去的幸福该怎么追回</span><br><span class="line">你身边的那位</span><br><span class="line">代替了我的称谓</span><br><span class="line">能懂你真心多贵</span><br><span class="line">不让你情绪破碎</span><br><span class="line">而我就应该后退</span><br><span class="line">藏进这回忆里昏睡</span><br><span class="line">往后的时光请你勇敢地飞</span><br><span class="line">勇敢地飞...</span><br></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1. 变量定义模块</span></span><br><span class="line"><span class="keyword">reg</span> [n-<span class="number">1</span>:<span class="number">0</span>] state; <span class="comment">// 当前状态</span></span><br><span class="line"><span class="keyword">reg</span> [n-<span class="number">1</span>:<span class="number">0</span>] next_state; <span class="comment">// 下一个状态</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. initial模块</span></span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span>  </span><br><span class="line">    state = INITIAL_STATE; <span class="comment">// 初始化状态</span></span><br><span class="line">    next_state = INITIAL_STATE; <span class="comment">// 初始化下一个状态</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 时序逻辑状态转移模块</span></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">posedge</span> reset) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (reset) <span class="keyword">begin</span></span><br><span class="line">        state &lt;= INITIAL_STATE; <span class="comment">// 复位状态</span></span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        state &lt;= next_state; <span class="comment">// 状态转移</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 组合逻辑次态计算模块</span></span><br><span class="line"><span class="keyword">always</span> @(*) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">case</span> (state)</span><br><span class="line">        STATE_0: <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span> (input_condition) <span class="keyword">begin</span></span><br><span class="line">                next_state = STATE_1;</span><br><span class="line">            <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">                next_state = STATE_0;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        STATE_1: <span class="keyword">begin</span></span><br><span class="line">            <span class="comment">// 其他状态转移逻辑</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="comment">// 其他状态...</span></span><br><span class="line">        <span class="keyword">default</span>: <span class="keyword">begin</span></span><br><span class="line">            next_state = INITIAL_STATE; <span class="comment">// 默认状态</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">endcase</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 5. 组合逻辑输出计算模块</span></span><br><span class="line"><span class="keyword">always</span> @(state) <span class="keyword">begin</span>   </span><br><span class="line">    out = (state == TARGET_STATE) ? <span class="number">1&#x27;b1</span> : <span class="number">1&#x27;b0</span>; <span class="comment">// 输出逻辑</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>掌握了这个基本框架之后你的状态机就不会经常因为时序问题出bug了。同样的，状态机的设计也可以分为两种方法：一种是使用真值表表示状态机，另一种是使用常规逻辑表达式表示状态机。按照另一种分类方式，可以分为Moore型和Mealy型状态机设计。思路跟P0大同小异，再套用上述提到的模板即可。笔者帮大家整理好了对比代码，上传到了<a target="_blank" rel="noopener" href="https://github.com/Cordial-Kid/BUAA-CO/tree/main/P1/Moore_and_Mealy">我的github仓库</a>，大家可以参考理解，重点关注一下组合逻辑输出计算模块的区别。下面我们重点讲一下状态机Plus版–一般用在<strong>string stream</strong>中，对应上机考试的最后一题。</p>
+<h2 id="状态机的Plus版"><a href="#状态机的Plus版" class="headerlink" title="状态机的Plus版"></a>状态机的Plus版</h2><p>Plus版一般是指在一个模块中设计两个相互独立但又有联系的状态机。举个例子：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">给定按时钟输入的 ASCII 字符流，其中包含若干个由 &quot;&#123;&quot; 与 &quot;&#125;&quot; 包围的简化 JSON 对象（对象之间由空格分隔）。每个键值对的键和值均用双引号包围 &quot;key&quot;:&quot;value&quot;。</span><br><span class="line">若对象中出现空字符串键或空字符串值（即 &quot;&quot;），则该对象非法，字段数记为 0。</span><br><span class="line">计算每个对象的字段数输出到 cur_num，并维护历史最大合法字段数输出到 max_num。</span><br></pre></td></tr></table></figure>
+
+<p>这是一道上机考试回忆版题目，可能有的细节不甚详尽，还请大家多多包涵。</p>
+<p>本题的解题思路是在一个模块中设计两个状态机：一个状态机用于维护”IDLE”、”READ”、”CHECK”三个状态，识别JSON对象的开始和结束，第二个状态机负责统计字段数并更新最大值。这里重点和难点是第二个状态机的设置。</p>
+<p>我们用变量number1来统计<code>&quot;</code>的数量，用tmp_cnt来统计两个引号之间的字段数，用cur_num来记录当前对象的字段数，用max_num来记录历史最大字段数。当number1为偶数时，如果tmp_cnt为0，说明出现了空字符串键或空字符串值，此时cur_num置0；否则cur_num加1。每当遇到<code>&#125;</code>时，比较cur_num和max_num的大小，更新max_num。</p>
+<p>详细代码实现参见个人GitHub仓库：<a target="_blank" rel="noopener" href="https://github.com/Cordial-Kid/BUAA-CO/blob/main/P1/json.v">https://github.com/Cordial-Kid/BUAA-CO/blob/main/P1/json.v</a></p>
+<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">若不是你突然闯进 我生活</span><br><span class="line">我怎会把死守的寂寞 放任了</span><br><span class="line">爱我的话你都说</span><br><span class="line">爱我的事你不做</span><br><span class="line">我却把甜言蜜语</span><br><span class="line">当作你爱我的躯壳</span><br><span class="line">你的悲伤难过我不参破</span><br><span class="line">我也会把曾今的且过 当施舍</span><br><span class="line">不去计较你太多</span><br><span class="line">从此你在我心里</span><br><span class="line">只剩绿色</span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -515,7 +478,7 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Cordial-Kid.github.io/2026/01/20/P0%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">https://Cordial-Kid.github.io/2026/01/20/P0%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</a>
+                    <a href="https://Cordial-Kid.github.io/2026/01/20/P1%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">https://Cordial-Kid.github.io/2026/01/20/P1%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -557,8 +520,8 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
                                     <span class="chip bg-color">BUAA</span>
                                 </a>
                             
-                                <a href="/tags/logisim/">
-                                    <span class="chip bg-color">logisim</span>
+                                <a href="/tags/verilog/">
+                                    <span class="chip bg-color">verilog</span>
                                 </a>
                             
                         </div>
@@ -604,9 +567,10 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2026/01/20/P1%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
                     <div class="card-image">
@@ -624,9 +588,9 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2026-01-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-20
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -639,6 +603,7 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -661,13 +626,13 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2026/01/20/%E8%AE%A1%E7%BB%84%E5%BA%8F%E8%A8%80/">
+                <a href="/2026/01/20/P0%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="「BUAA-CO」 序言">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="「BUAA-CO」 P0">
                         
-                        <span class="card-title">「BUAA-CO」 序言</span>
+                        <span class="card-title">「BUAA-CO」 P0</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -697,6 +662,10 @@ P0是对预习过程中的logisim的强化练习。我觉得可以大概分成�
                     
                     <a href="/tags/BUAA/">
                         <span class="chip bg-color">BUAA</span>
+                    </a>
+                    
+                    <a href="/tags/logisim/">
+                        <span class="chip bg-color">logisim</span>
                     </a>
                     
                 </div>
