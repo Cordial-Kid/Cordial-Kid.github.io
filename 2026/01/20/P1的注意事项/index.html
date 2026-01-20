@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="「BUAA-CO」 P1的注意事项, Cordial-Kid">
+    <meta name="keywords" content="「BUAA-CO」 P1, Cordial-Kid">
     <meta name="description" content="简介P1主要是对verilog在预习阶段所学内容的强化，但是显然没有预习阶段的题目那么恶心。P1的题目大致可以分为两类：一类是组合逻辑电路的设计，另一类是时序逻辑电路状态机的设计。下面分别进行说明。
 组合逻辑电路设计组合逻辑电路的设计相对简">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>「BUAA-CO」 P1的注意事项 | Cordial-Kid</title>
+    <title>「BUAA-CO」 P1 | Cordial-Kid</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -333,12 +333,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">「BUAA-CO」 P1的注意事项</h1>
+                    <h1 class="description center-align post-title">「BUAA-CO」 P1</h1>
                 </div>
             </div>
         </div>
@@ -444,9 +444,9 @@
 </ol>
 <figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1. 变量定义模块</span></span><br><span class="line"><span class="keyword">reg</span> [n-<span class="number">1</span>:<span class="number">0</span>] state; <span class="comment">// 当前状态</span></span><br><span class="line"><span class="keyword">reg</span> [n-<span class="number">1</span>:<span class="number">0</span>] next_state; <span class="comment">// 下一个状态</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. initial模块</span></span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span>  </span><br><span class="line">    state = INITIAL_STATE; <span class="comment">// 初始化状态</span></span><br><span class="line">    next_state = INITIAL_STATE; <span class="comment">// 初始化下一个状态</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 时序逻辑状态转移模块</span></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">posedge</span> reset) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (reset) <span class="keyword">begin</span></span><br><span class="line">        state &lt;= INITIAL_STATE; <span class="comment">// 复位状态</span></span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        state &lt;= next_state; <span class="comment">// 状态转移</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 组合逻辑次态计算模块</span></span><br><span class="line"><span class="keyword">always</span> @(*) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">case</span> (state)</span><br><span class="line">        STATE_0: <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span> (input_condition) <span class="keyword">begin</span></span><br><span class="line">                next_state = STATE_1;</span><br><span class="line">            <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">                next_state = STATE_0;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        STATE_1: <span class="keyword">begin</span></span><br><span class="line">            <span class="comment">// 其他状态转移逻辑</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="comment">// 其他状态...</span></span><br><span class="line">        <span class="keyword">default</span>: <span class="keyword">begin</span></span><br><span class="line">            next_state = INITIAL_STATE; <span class="comment">// 默认状态</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">endcase</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 5. 组合逻辑输出计算模块</span></span><br><span class="line"><span class="keyword">always</span> @(state) <span class="keyword">begin</span>   </span><br><span class="line">    out = (state == TARGET_STATE) ? <span class="number">1&#x27;b1</span> : <span class="number">1&#x27;b0</span>; <span class="comment">// 输出逻辑</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 
-<p>掌握了这个基本框架之后你的状态机就不会经常因为时序问题出bug了。同样的，状态机的设计也可以分为两种方法：一种是使用真值表表示状态机，另一种是使用常规逻辑表达式表示状态机。按照另一种分类方式，可以分为Moore型和Mealy型状态机设计。思路跟P0大同小异，再套用上述提到的模板即可。笔者帮大家整理好了对比代码，上传到了<a target="_blank" rel="noopener" href="https://github.com/Cordial-Kid/BUAA-CO/tree/main/P1/Moore_and_Mealy">我的github仓库</a>，大家可以参考理解，重点关注一下组合逻辑输出计算模块的区别。下面我们重点讲一下状态机Plus版–一般用在<strong>string stream</strong>中，对应上机考试的最后一题。</p>
+<p>掌握了这个基本框架之后你的状态机就不会经常因为时序问题出bug了。同样的，状态机的设计也可以分为两种方法：一种是使用真值表表示状态机，另一种是使用常规逻辑表达式表示状态机。按照另一种分类方式，可以分为Moore型和Mealy型状态机设计。思路跟P0大同小异，再套用上述提到的模板即可。笔者帮大家整理好了对比代码，上传到了<a target="_blank" rel="noopener" href="https://github.com/Cordial-Kid/BUAA-CO/tree/main/P1/Moore_and_Mealy">github仓库</a>，大家可以参考理解，重点关注一下组合逻辑输出计算模块的区别。下面我们重点讲一下状态机Plus版–一般用在<strong>string stream</strong>中，对应上机考试的最后一题。</p>
 <h2 id="状态机的Plus版"><a href="#状态机的Plus版" class="headerlink" title="状态机的Plus版"></a>状态机的Plus版</h2><p>Plus版一般是指在一个模块中设计两个相互独立但又有联系的状态机。举个例子：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">给定按时钟输入的 ASCII 字符流，其中包含若干个由 &quot;&#123;&quot; 与 &quot;&#125;&quot; 包围的简化 JSON 对象（对象之间由空格分隔）。每个键值对的键和值均用双引号包围 &quot;key&quot;:&quot;value&quot;。</span><br><span class="line">若对象中出现空字符串键或空字符串值（即 &quot;&quot;），则该对象非法，字段数记为 0。</span><br><span class="line">计算每个对象的字段数输出到 cur_num，并维护历史最大合法字段数输出到 max_num。</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">给定按时钟输入的 ASCII 字符流，其中包含若干个由 &quot;&#123;&quot; 与 &quot;&#125;&quot; 包围的简化 JSON 对象（对象之间由空格分隔）。每个键值对的键和值均用双引号包围 &quot;key&quot;:&quot;value&quot;。若对象中出现空字符串键或空字符串值（即 &quot;&quot;），则该对象非法，字段数记为 0。计算每个对象的字段数输出到 cur_num，并维护历史最大合法字段数输出到 max_num。</span><br></pre></td></tr></table></figure>
 
 <p>这是一道上机考试回忆版题目，可能有的细节不甚详尽，还请大家多多包涵。</p>
 <p>本题的解题思路是在一个模块中设计两个状态机：一个状态机用于维护”IDLE”、”READ”、”CHECK”三个状态，识别JSON对象的开始和结束，第二个状态机负责统计字段数并更新最大值。这里重点和难点是第二个状态机的设置。</p>
@@ -576,9 +576,9 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="「BUAA-CO」 P1的注意事项">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="「BUAA-CO」 P1">
                         
-                        <span class="card-title">「BUAA-CO」 P1的注意事项</span>
+                        <span class="card-title">「BUAA-CO」 P1</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
