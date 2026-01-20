@@ -400,7 +400,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.2k
                 </div>
                 
 
@@ -452,6 +452,9 @@
 <p>本题的解题思路是在一个模块中设计两个状态机：一个状态机用于维护”IDLE”、”READ”、”CHECK”三个状态，识别JSON对象的开始和结束，第二个状态机负责统计字段数并更新最大值。这里重点和难点是第二个状态机的设置。</p>
 <p>我们用变量number1来统计<code>&quot;</code>的数量，用tmp_cnt来统计两个引号之间的字段数，用cur_num来记录当前对象的字段数，用max_num来记录历史最大字段数。当number1为偶数时，如果tmp_cnt为0，说明出现了空字符串键或空字符串值，此时cur_num置0；否则cur_num加1。每当遇到<code>&#125;</code>时，比较cur_num和max_num的大小，更新max_num。</p>
 <p>详细代码实现参见个人GitHub仓库：<a target="_blank" rel="noopener" href="https://github.com/Cordial-Kid/BUAA-CO/blob/main/P1/json.v">https://github.com/Cordial-Kid/BUAA-CO/blob/main/P1/json.v</a></p>
+<h2 id="可能踩的坑"><a href="#可能踩的坑" class="headerlink" title="可能踩的坑"></a>可能踩的坑</h2><p>在只有在组合逻辑电路中才能实现<code>sum = sum + i</code>这类型的语句，在时序逻辑电路中是不允许的。</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">always</span> @(*) <span class="keyword">begin</span></span><br><span class="line">    sum = <span class="number">0</span>;    <span class="comment">//这一步很重要</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i = i + <span class="number">1</span>) <span class="keyword">begin</span></span><br><span class="line">        sum = sum + i;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
 <h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">若不是你突然闯进 我生活</span><br><span class="line">我怎会把死守的寂寞 放任了</span><br><span class="line">爱我的话你都说</span><br><span class="line">爱我的事你不做</span><br><span class="line">我却把甜言蜜语</span><br><span class="line">当作你爱我的躯壳</span><br><span class="line">你的悲伤难过我不参破</span><br><span class="line">我也会把曾今的且过 当施舍</span><br><span class="line">不去计较你太多</span><br><span class="line">从此你在我心里</span><br><span class="line">只剩绿色</span><br></pre></td></tr></table></figure>
                 
             </div>
@@ -567,18 +570,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2026/01/20/P1%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
+                <a href="/2026/01/20/P2%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="「BUAA-CO」 P1">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="「BUAA-CO」 P2">
                         
-                        <span class="card-title">「BUAA-CO」 P1</span>
+                        <span class="card-title">「BUAA-CO」 P2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -588,9 +590,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-01-20
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -603,7 +605,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -611,8 +612,8 @@
                         <span class="chip bg-color">BUAA</span>
                     </a>
                     
-                    <a href="/tags/verilog/">
-                        <span class="chip bg-color">verilog</span>
+                    <a href="/tags/mips/">
+                        <span class="chip bg-color">mips</span>
                     </a>
                     
                 </div>
@@ -806,7 +807,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">4.5k</span>
+                        class="white-color">5k</span>
             
             
             
