@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="「BUAA-CO」 P2, Cordial-Kid">
-    <meta name="description" content="简介P2主要是对mips指令集架构的理解，重点考察的也就是一些常见的指令，语法上不会像verilog一样坑人，只要是Copre下了点功夫的问题都不大。P2课下可能直接上手汇编代码比较轻松，但是P2在上机的时候一般会给出C语言代码，这个时候不">
+    <meta name="keywords" content="「BUAA-CO」 P4课下, Cordial-Kid">
+    <meta name="description" content="简介从P4开始，我们将开始搭建单周期CPU，使用的编程语言仅仅是verilog,并且对于verilog的要求仅限于语法，没有烦人的状态机。所以被P1搞红温的同学可以长舒一口气了😋。
+设计方案综述本次实验实现的指令包括add,sub,ori">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>「BUAA-CO」 P2 | Cordial-Kid</title>
+    <title>「BUAA-CO」 P4课下 | Cordial-Kid</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -332,12 +333,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">「BUAA-CO」 P2</h1>
+                    <h1 class="description center-align post-title">「BUAA-CO」 P4课下</h1>
                 </div>
             </div>
         </div>
@@ -365,8 +366,8 @@
                                 <span class="chip bg-color">BUAA</span>
                             </a>
                         
-                            <a href="/tags/mips/">
-                                <span class="chip bg-color">mips</span>
+                            <a href="/tags/verilog/">
+                                <span class="chip bg-color">verilog</span>
                             </a>
                         
                     </div>
@@ -390,7 +391,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2026-01-20
+                    2026-01-21
                 </div>
                 
 
@@ -399,14 +400,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    430
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -431,10 +432,71 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>P2主要是对mips指令集架构的理解，重点考察的也就是一些常见的指令，语法上不会像verilog一样坑人，只要是Copre下了点功夫的问题都不大。P2课下可能直接上手汇编代码比较轻松，但是P2在上机的时候一般会给出C语言代码，这个时候不管你看不看得懂，<strong>照着人肉汇编就对了</strong>，千万别自己乱创造。</p>
-<h2 id="关于递归"><a href="#关于递归" class="headerlink" title="关于递归"></a>关于递归</h2><p>递归一般是考试的最后一题，我的建议是大家提前写好push和pop的宏，然后直接照着C代码翻译就行了。递归的关键点在于保存现场和恢复现场。但是教程中说的那个caller调用和callee调用我是真的不懂什么意思，反正我就是直接把所有用到的寄存器都push一遍，函数返回前全部pop回来就完事了，反正也没说要节省空间。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>细细想来，好像没什么好说的，大家可以去看笔者的<a target="_blank" rel="noopener" href="https://github.com/Cordial-Kid/BUAA-CO/tree/main/P2">github仓库</a>,里面有P2的上机测试题目和参考答案，大家可以参考学习。(尤其是Factory,涉及大数乘法)</p>
-<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">后来我学会浪漫</span><br><span class="line">学会打扮自己的脸</span><br><span class="line">可距离我想讨你欢心</span><br><span class="line">已过了很多年</span><br><span class="line">你好像站在那段岁月看了我一眼</span><br><span class="line">就把我永远困在遗憾里面</span><br><span class="line">后来我偶尔也会</span><br><span class="line">打听你在谁的身边</span><br><span class="line">只是我再也不能冲动</span><br><span class="line">跑去见你一面</span><br><span class="line">想赢的那场比赛结束在很久以前</span><br><span class="line">最好的你和最好的我之间</span><br><span class="line">只能挥挥手告别</span><br></pre></td></tr></table></figure>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>从P4开始，我们将开始搭建单周期CPU，使用的编程语言仅仅是verilog,并且对于verilog的要求仅限于语法，没有烦人的状态机。所以被P1搞红温的同学可以长舒一口气了😋。</p>
+<h2 id="设计方案综述"><a href="#设计方案综述" class="headerlink" title="设计方案综述"></a>设计方案综述</h2><p>本次实验实现的指令包括add,sub,ori,lw,sw,beq,lui,sll,j,jal,jr,jalr，通过将各个元件模块化封装，再用<code>wire</code>连接，进而封装成完整的CPU。</p>
+<p>整体架构图如下：<br><img src="/images/v%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png" alt="整体架构图"></p>
+<p>下面将分模块详细介绍一下设计思路和实现方法。</p>
+<h2 id="关键模块实现"><a href="#关键模块实现" class="headerlink" title="关键模块实现"></a>关键模块实现</h2><h3 id="datapath"><a href="#datapath" class="headerlink" title="datapath"></a>datapath</h3><p>这一部分是除了CTRL之外的元件的集合，相当于顶层模块MIPS的两个子分支之一。其实理论上可以将DM，ALU，CTRL等元件直接揉到一起写成mips.v,但是笔者认为像这样分开来写思路更加清晰条理。</p>
+<p>datapath模块的顶层是将ifu，am，alu等组件封装起来，形成一个对CTRL的接口。代码如下：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> DATAPATH (</span><br><span class="line">    <span class="keyword">input</span> clk,</span><br><span class="line">    <span class="keyword">input</span> reset,</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">2</span>:<span class="number">0</span>] NPCOp,</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">2</span>:<span class="number">0</span>] WDSel,</span><br><span class="line">    <span class="keyword">input</span> WESel,</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">2</span>:<span class="number">0</span>] WRA3Sel,</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">2</span>:<span class="number">0</span>] ALUOp,</span><br><span class="line">    <span class="keyword">input</span> BSel,</span><br><span class="line">    <span class="keyword">input</span> EXTOp,</span><br><span class="line">    <span class="keyword">input</span> DMWr,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">5</span>:<span class="number">0</span>] opcode,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">5</span>:<span class="number">0</span>] func</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 首先对模块实例化，其次要定义连线，</span></span><br><span class="line">  <span class="comment">// 这里定义的wire是真的wire</span></span><br><span class="line">  <span class="keyword">wire</span> [<span class="number">31</span>:<span class="number">0</span>] ifu_pc;</span><br><span class="line">  <span class="keyword">wire</span> ALU_zero;</span><br><span class="line">  <span class="keyword">wire</span> [<span class="number">31</span>:<span class="number">0</span>] instr;</span><br><span class="line">  <span class="keyword">wire</span> [<span class="number">31</span>:<span class="number">0</span>] IFU_npc;</span><br><span class="line">  <span class="keyword">wire</span> [<span class="number">31</span>:<span class="number">0</span>] NPC_pc_4;</span><br><span class="line">  <span class="keyword">wire</span> [<span class="number">4</span>:<span class="number">0</span>] grf_A3;</span><br><span class="line">  <span class="keyword">wire</span> [<span class="number">31</span>:<span class="number">0</span>] grf_WD;</span><br><span class="line">  <span class="keyword">wire</span> [<span class="number">31</span>:<span class="number">0</span>] grf_RD1;</span><br><span class="line">  <span class="keyword">wire</span> [<span class="number">31</span>:<span class="number">0</span>] grf_RD2;</span><br><span class="line">  <span class="keyword">wire</span> [<span class="number">31</span>:<span class="number">0</span>] ALU_C;</span><br><span class="line">  <span class="keyword">wire</span> [<span class="number">31</span>:<span class="number">0</span>] ext_imm;</span><br><span class="line">  <span class="keyword">wire</span> [<span class="number">31</span>:<span class="number">0</span>] ALU_B;</span><br><span class="line">  <span class="keyword">wire</span> [<span class="number">31</span>:<span class="number">0</span>] dm_rd;</span><br></pre></td></tr></table></figure>
+
+<p>这里以IFU模块为例说明模块实例化如何实现，请看代码：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">IFU ifu (</span><br><span class="line">    <span class="variable">.NPC</span>(IFU_npc),</span><br><span class="line">    <span class="variable">.PC</span>(ifu_pc),</span><br><span class="line">    <span class="variable">.instruct</span>(instr),</span><br><span class="line">    <span class="variable">.clk</span>(clk),  <span class="comment">//out</span></span><br><span class="line">    <span class="variable">.reset</span>(reset)  <span class="comment">//out</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>其中IFU_npc代表NPC模块的输出NPC，也是IFU的输入。理论上讲这种格式应该是<strong>括号外</strong>是子模块的端口而<strong>括号内</strong>是父模块的信号。为了方便理解可以把他直观看成一根线，一根连接两个端口的线。</p>
+<h4 id="其他子模块"><a href="#其他子模块" class="headerlink" title="其他子模块"></a>其他子模块</h4><p>剩余子模块相对独立，正常翻译logisim代码即可。</p>
+<p>特别说明，为了方便表示电路中的所有连线，新增MUX模块，端口定义如下：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> MUX (</span><br><span class="line">    <span class="keyword">input</span>  [<span class="number">4</span>:<span class="number">0</span>] WRA3MUX1,</span><br><span class="line">    <span class="keyword">input</span>  [<span class="number">4</span>:<span class="number">0</span>] WRA3MUX2,</span><br><span class="line">    <span class="keyword">input</span>  [<span class="number">4</span>:<span class="number">0</span>] WRA3MUX3,</span><br><span class="line">    <span class="keyword">input</span>  [<span class="number">2</span>:<span class="number">0</span>] WRA3Sel,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">4</span>:<span class="number">0</span>] A3,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">input</span>  [<span class="number">31</span>:<span class="number">0</span>] WDMUX1,</span><br><span class="line">    <span class="keyword">input</span>  [<span class="number">31</span>:<span class="number">0</span>] WDMUX2,</span><br><span class="line">    <span class="keyword">input</span>  [<span class="number">31</span>:<span class="number">0</span>] WDMUX3,</span><br><span class="line">    <span class="keyword">input</span>  [ <span class="number">2</span>:<span class="number">0</span>] WDSel,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] WD,</span><br><span class="line"></span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] BMUX1,</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] BMUX2,</span><br><span class="line">    <span class="keyword">input</span> BSel,</span><br><span class="line">    <span class="keyword">output</span> [<span class="number">31</span>:<span class="number">0</span>] ALU_B</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h3 id="CTRL"><a href="#CTRL" class="headerlink" title="CTRL"></a>CTRL</h3><p>ctrl 要实现和datapath对接的接口，内部按照logisim设计时的与或关系来实现即可。</p>
+<h3 id="mips"><a href="#mips" class="headerlink" title="mips"></a>mips</h3><p>mips作为顶层电路，实现的是<code>CTRL</code>模块和<code>DATAPATH</code>模块的的拼接</p>
+<h3 id="Some-Tips"><a href="#Some-Tips" class="headerlink" title="Some Tips"></a>Some Tips</h3><ul>
+<li>关于连线：在datapath模块的线路拼接中，由于一根线的两端连接的元件一般不同，所以建议在给wire命名时加上相连的某个元件，在写代码时便于识别信号通路。例如<code>wire ALU_zero;</code></li>
+</ul>
+<p>但是在mips中的线路拼接时，由于只有两个元件，因此所有接口都是一一对应关系。子模块端口和父模块信号可以一样，不会混淆。例如</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">wire</span> [<span class="number">5</span>:<span class="number">0</span>] func; </span><br><span class="line"></span><br><span class="line">DATAPATH datapath(</span><br><span class="line">   <span class="comment">//.....</span></span><br><span class="line">   <span class="variable">.func</span>(func)     <span class="comment">//out</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line">CTRL ctrl(</span><br><span class="line">   <span class="comment">//.....</span></span><br><span class="line">   <span class="variable">.func</span>(func)     <span class="comment">//in </span></span><br><span class="line">);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>关于命名：个人习惯模块名称大写，实例化时的名字小写，例如 <code>DATAPATH datapath</code>。</li>
+</ul>
+<h3 id="Some-Bugs"><a href="#Some-Bugs" class="headerlink" title="Some Bugs"></a>Some Bugs</h3><ol>
+<li>IFU模块中的指令文档命名 <code>code.txt</code></li>
+<li>NPC模块中传入的<code>zero</code>一定仔细考虑好<code>BEQ</code>指令下<code>zero==0</code>和<code>zero!=0</code>的输出分别是什么，千万别搞混</li>
+<li>CTRL模块中的<code>JR</code>和<code>JALR</code>指令有<code>opcode==SPECIAL</code> (一定要记得),并且是<code>opcode</code>不是<code>func</code>。😭</li>
+<li>注意一下在对指令切片时放大logisim仔细瞅瞅，要不然就要硬搓Isim仿真了</li>
+</ol>
+<h2 id="Verilog仿真指南"><a href="#Verilog仿真指南" class="headerlink" title="Verilog仿真指南"></a>Verilog仿真指南</h2><p>verilog的testbench还是较为友好的，只需要开始时reset&#x3D;1，#100后reset &#x3D; 0。</p>
+<p>想要监测指令名称时看波形图<br>想要监测寄存器中的数据时，在 Isim 界面左侧选择 Memory 选项，如图：</p>
+<p><img src="/images/register%E6%9F%A5%E7%9C%8B%E7%A4%BA%E4%BE%8B.png" alt="register查看示例"></p>
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><ul>
+<li>Q:这个 addr 信号又是从哪里来的？地址信号 addr 位数为什么是 [11:2] 而不是 [9:0] ?</li>
+</ul>
+<p>A:  </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">addr由ALU计算得到。一条地址占32位2进制，也就是4个字节，截取 [11:2] 相当于将地址右移四位，将地址转换位第n条指令，从而便于在RAM读写。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Q:<br>思考上述两种控制器设计的译码方式，给出代码示例，并尝试对比各方式的优劣。</li>
+</ul>
+<p>A:</p>
+<p>指令对应的控制信号如何取值:</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">always</span> @(*) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (add == <span class="number">1</span>) <span class="keyword">begin</span></span><br><span class="line">        WESel = <span class="number">1</span>;</span><br><span class="line">        WRA3Sel[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+
+<p>控制信号每种取值对应的指令：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> NPCOp[<span class="number">0</span>] = beq | jalr | jr;</span><br><span class="line"><span class="keyword">assign</span> NPCOp[<span class="number">1</span>] = j | jal | jalr | jr;</span><br><span class="line"><span class="keyword">assign</span> NPCOp[<span class="number">2</span>] = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>优劣对比：</p>
+<ul>
+<li>Q:复位信号的设计都是同步复位，这与 P3 中的设计要求不同。请对比同步复位与异步复位这两种方式的 reset 信号与 clk 信号优先级的关系。</li>
+</ul>
+<p>A :</p>
+<p>异步复位：reset信号优先级大于clk</p>
+<p>同步复位：reset信号优先级小于clk</p>
+<ul>
+<li>Q:C 语言是一种弱类型程序设计语言。C 语言中不对计算结果溢出进行处理，这意味着 C 语言要求程序员必须很清楚计算结果是否会导致溢出。因此，如果仅仅支持 C 语言，MIPS 指令的所有计算指令均可以忽略溢出。 请说明为什么在忽略溢出的前提下，addi 与 addiu 是等价的，add 与 addu 是等价的。提示：阅读《MIPS32® Architecture For Programmers Volume II: The MIPS32® Instruction Set》中相关指令的 Operation 部分（详见文档 page 34、page 35）。</li>
+</ul>
+<p>A:</p>
+<p>在MIPS英文指令集中，对于add指令的定义是 <code>ADDU performs the same arithmetic operation but does not trap on overflow.</code>因此addu和add在忽略溢出的前提下是等价的。</p>
+<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">等不到天黑</span><br><span class="line">烟火不会太完美</span><br><span class="line">回忆烧成灰</span><br><span class="line">还是等不到结尾</span><br><span class="line">他层说的无所谓</span><br><span class="line">我怕一天一天被摧毁</span><br><span class="line">等不到天黑</span><br><span class="line">不敢凋谢的花蕾</span><br><span class="line">雨也在跟随</span><br><span class="line">放开刺痛的滋味</span><br><span class="line">今后不再怕天明</span><br><span class="line">我想只是害怕清醒</span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -460,7 +522,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Cordial-Kid.github.io/2026/01/20/P2%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">https://Cordial-Kid.github.io/2026/01/20/P2%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</a>
+                    <a href="https://Cordial-Kid.github.io/2026/01/21/P4%E8%AF%BE%E4%B8%8B/">https://Cordial-Kid.github.io/2026/01/21/P4%E8%AF%BE%E4%B8%8B/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -502,8 +564,8 @@
                                     <span class="chip bg-color">BUAA</span>
                                 </a>
                             
-                                <a href="/tags/mips/">
-                                    <span class="chip bg-color">mips</span>
+                                <a href="/tags/verilog/">
+                                    <span class="chip bg-color">verilog</span>
                                 </a>
                             
                         </div>
@@ -553,13 +615,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2026/01/21/P3%E8%AF%BE%E4%B8%8A/">
+                <a href="/2026/01/21/P4%E8%AF%BE%E4%B8%8A/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="「BUAA-CO」 P3课上">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="「BUAA-CO」 P4课上">
                         
-                        <span class="card-title">「BUAA-CO」 P3课上</span>
+                        <span class="card-title">「BUAA-CO」 P4课上</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -591,8 +653,8 @@
                         <span class="chip bg-color">BUAA</span>
                     </a>
                     
-                    <a href="/tags/logisim/">
-                        <span class="chip bg-color">logisim</span>
+                    <a href="/tags/verilog/">
+                        <span class="chip bg-color">verilog</span>
                     </a>
                     
                 </div>
@@ -606,13 +668,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2026/01/20/P1%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
+                <a href="/2026/01/21/P3%E8%AF%BE%E4%B8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="「BUAA-CO」 P1">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="「BUAA-CO」 P3课下">
                         
-                        <span class="card-title">「BUAA-CO」 P1</span>
+                        <span class="card-title">「BUAA-CO」 P3课下</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -623,7 +685,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-21
                             </span>
                         <span class="publish-author">
                             
@@ -644,8 +706,8 @@
                         <span class="chip bg-color">BUAA</span>
                     </a>
                     
-                    <a href="/tags/verilog/">
-                        <span class="chip bg-color">verilog</span>
+                    <a href="/tags/logisim/">
+                        <span class="chip bg-color">logisim</span>
                     </a>
                     
                 </div>

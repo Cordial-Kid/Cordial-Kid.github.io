@@ -4,8 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="「BUAA-CO」 P2, Cordial-Kid">
-    <meta name="description" content="简介P2主要是对mips指令集架构的理解，重点考察的也就是一些常见的指令，语法上不会像verilog一样坑人，只要是Copre下了点功夫的问题都不大。P2课下可能直接上手汇编代码比较轻松，但是P2在上机的时候一般会给出C语言代码，这个时候不">
+    <meta name="keywords" content="「BUAA-CO」P5课上, Cordial-Kid">
+    <meta name="description" content="P5课上三题有明显得规律，第一题一般只涉及ALU的修改，第二题是b类型的跳转指令，第三题稍微难一点，涉及访存以及对转发阻塞逻辑的修改。下面我们结合题目详细说明一下解题思路和步骤。
+CCCopcode &amp;#x3D; 忘了
+tmp1 = GPR">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>「BUAA-CO」 P2 | Cordial-Kid</title>
+    <title>「BUAA-CO」P5课上 | Cordial-Kid</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -332,12 +334,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">「BUAA-CO」 P2</h1>
+                    <h1 class="description center-align post-title">「BUAA-CO」P5课上</h1>
                 </div>
             </div>
         </div>
@@ -365,8 +367,8 @@
                                 <span class="chip bg-color">BUAA</span>
                             </a>
                         
-                            <a href="/tags/mips/">
-                                <span class="chip bg-color">mips</span>
+                            <a href="/tags/verilog/">
+                                <span class="chip bg-color">verilog</span>
                             </a>
                         
                     </div>
@@ -390,7 +392,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2026-01-20
+                    2026-01-21
                 </div>
                 
 
@@ -399,14 +401,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    430
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    8 分
                 </div>
                 
 
@@ -431,10 +433,60 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>P2主要是对mips指令集架构的理解，重点考察的也就是一些常见的指令，语法上不会像verilog一样坑人，只要是Copre下了点功夫的问题都不大。P2课下可能直接上手汇编代码比较轻松，但是P2在上机的时候一般会给出C语言代码，这个时候不管你看不看得懂，<strong>照着人肉汇编就对了</strong>，千万别自己乱创造。</p>
-<h2 id="关于递归"><a href="#关于递归" class="headerlink" title="关于递归"></a>关于递归</h2><p>递归一般是考试的最后一题，我的建议是大家提前写好push和pop的宏，然后直接照着C代码翻译就行了。递归的关键点在于保存现场和恢复现场。但是教程中说的那个caller调用和callee调用我是真的不懂什么意思，反正我就是直接把所有用到的寄存器都push一遍，函数返回前全部pop回来就完事了，反正也没说要节省空间。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>细细想来，好像没什么好说的，大家可以去看笔者的<a target="_blank" rel="noopener" href="https://github.com/Cordial-Kid/BUAA-CO/tree/main/P2">github仓库</a>,里面有P2的上机测试题目和参考答案，大家可以参考学习。(尤其是Factory,涉及大数乘法)</p>
-<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">后来我学会浪漫</span><br><span class="line">学会打扮自己的脸</span><br><span class="line">可距离我想讨你欢心</span><br><span class="line">已过了很多年</span><br><span class="line">你好像站在那段岁月看了我一眼</span><br><span class="line">就把我永远困在遗憾里面</span><br><span class="line">后来我偶尔也会</span><br><span class="line">打听你在谁的身边</span><br><span class="line">只是我再也不能冲动</span><br><span class="line">跑去见你一面</span><br><span class="line">想赢的那场比赛结束在很久以前</span><br><span class="line">最好的你和最好的我之间</span><br><span class="line">只能挥挥手告别</span><br></pre></td></tr></table></figure>
+                <p>P5课上三题有明显得规律，第一题一般只涉及ALU的修改，第二题是b类型的跳转指令，第三题稍微难一点，涉及访存以及对转发阻塞逻辑的修改。下面我们结合题目详细说明一下解题思路和步骤。</p>
+<h2 id="CCC"><a href="#CCC" class="headerlink" title="CCC"></a>CCC</h2><p>opcode &#x3D; 忘了</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">tmp1 = GPR[rs]的前导零</span><br><span class="line">tmp2 = GPR[rt]的前导一</span><br><span class="line">if (tmp1 &gt; tmp2) GPR[rd] &lt;- GPR[rs][31:16] || GPR[rt][15:0]</span><br><span class="line">else GRP[rd] &lt;- GPR[rt][31:16] || GPR[rs][15:0]</span><br></pre></td></tr></table></figure>
+
+<p><strong>Answer</strong>:在<code>ALU</code>把<code>tmp1</code>和<code>tmp2</code>的值计算出来，并通过<code>ALUOp</code>控制<code>ALU</code>输出不同的结果。在<code>CTRL</code>模块新增指令，使得该指令写入<code>GPR[rd]</code>,并且写入数据为<code>ALU</code>输出结果。在<code>Stall</code>模块中<code>Tnew</code>和<code>Tuse</code>无脑跟<code>add</code>保持一致即可。</p>
+<h2 id="BLONEZ-应该吧"><a href="#BLONEZ-应该吧" class="headerlink" title="BLONEZ?(应该吧)"></a>BLONEZ?(应该吧)</h2><p>opcode &#x3D; 111111</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">tmp = GPR[rs]前导1</span><br><span class="line">GPR[31] &lt;- PC + 8;</span><br><span class="line">if (tmp1 &gt; GPT[rt][5:0]) </span><br><span class="line">PC &lt;- IMMbeq的跳转方式</span><br></pre></td></tr></table></figure>
+
+<p>这个是考场题目，但是比较简单，大家感兴趣可以看一看，我们用一道推荐题来说明这类型题目的解决方法。</p>
+<h2 id="BLZTAL"><a href="#BLZTAL" class="headerlink" title="BLZTAL"></a>BLZTAL</h2><p>opcode &#x3D; 100111</p>
+<p>看题：<br><img src="/images/BLZTAL.png" alt="BLZTAL"></p>
+<p><strong>Answer</strong>:对于<code>b</code>型指令，我们要在<code>D_CMP</code>模块中判断<code>b_jump</code>，如果是条件链接(像这道题)，我们就要将<code>D_CMP</code>模块中的<code>b_jump</code>指令随着流水线一直流水下去，从而满足每一级的<code>CTRL</code>判断<code>GRFA3sel</code>和<code>GRFWDsel</code>信号的需求;如果是无条件链接(像<strong>BLONEZ</strong>)，那CTRL直接生成控制信号写入<code>31</code>号寄存器，写入值是<code>PC + 8</code>即可。在<code>STALL</code>模块<code>Tuse</code>和<code>Tnew</code>与<code>Beq</code>保持一致。</p>
+<p>对于链接类指令Tuse,Tnew参照<code>jal</code>就行</p>
+<p>特别注意一下PC的变化基数是D_PC还是F_PC。</p>
+<p>还有一种情况可能会涉及清空延迟槽的指令，像这样：</p>
+<p><img src="/images/BONALL.png" alt="BONALL"></p>
+<p>为什么要清空延迟槽呢，我理解就是不想执行跳转类指令的下一条指令了，把他用Flush清除掉。具体实现需要在D_CMP增加一个接口Flush_check<code>assign Flush_check = (CMPOp == `CMP_BONALL &amp;&amp; !B_jump);</code>,在<code>mips</code>中将这一接口与<strong>D_reg_flush**相连，<code>assign D_reg_flush = (!stall &amp;&amp; D_flush_check);</code>值得注意的是，我们要保证此时流水线不是阻塞状态.如果是阻塞状态我们就等到它阻塞结束再清空，想想为什么呢？因为如果流水线阻塞在D级的话，D级放的其实是跳转类指令，相当于是</strong>把自己送走了**，后面的流水级就丢失了这条指令。</p>
+<h2 id="LBGET"><a href="#LBGET" class="headerlink" title="LBGET"></a>LBGET</h2><p>opcode &#x3D; 110101</p>
+<p><img src="/images/LBGET.png" alt="LBGET"></p>
+<p><strong>Answer</strong>:这是写入地址可选择类<code>condition: GPR[rt] &lt;- RD; else: GPR[rs] &lt;- RD</code>,我们只有在DM完成计算才能知道要写入哪个寄存器，那么<code>D，E，(M)</code>就都<strong>没GRFA3的视野</strong>，因此难以判断冲突条件是否成立。此时我们有两个选择：<strong>暴力阻塞</strong>;<strong>条件阻塞</strong>。</p>
+<p><strong>暴力阻塞</strong>:只要D级指令要访问GPR，并且访问地址非0，并且Tuse &lt; Tnew，我们就阻塞。对应代码实现</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> E_stall_rs = ((E_lbget ? <span class="number">1</span> : (E_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> E_stall_rt = ((E_lbget ? <span class="number">1</span> : (E_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rs = ((M_lbget ? <span class="number">1</span> : (M_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; M_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rt = ((M_lbget ? <span class="number">1</span> : (M_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; M_Tnew);</span><br></pre></td></tr></table></figure>
+
+<p><strong>条件阻塞</strong>：D级指令要访问GPR,并且访问地址非0，并且访问地址和当前级流水线的 <code>rs</code> 或 <code>rt</code> 冲突，并且 <code>Tuse &lt; Tnew</code>,我们阻塞。对应代码实现。</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> E_stall_rs = ((E_lbget ? (D_rs == E_rt || D_rs == E_rs) : (E_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> E_stall_rt = ((E_lbget ? (D_rt == E_rs || D_rt == E_rt) : (E_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rs = ((M_lbget ? (D_rs == M_rs || D_rs == M_rt) : (M_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; M_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rt = ((M_lbget ? (D_rt == M_rs || D_rt == M_rt) : (M_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; M_Tnew);</span><br></pre></td></tr></table></figure>
+
+<p>以上是两种阻塞方式，暴力阻塞可能会超时，条件阻塞也可能比测评机要求的周期少(可能是跑的太快了😥)。接着还有两种译码位置，<strong>M级译码</strong>和<strong>W级译码</strong></p>
+<p><strong>W级译码</strong>：对于判断条件Condition，我们不在DM进行计算，而是在顶层模块mips中进行判断，DM只需要更改DMOp从而输出判断需要的数据即可。这里你可能会发现，如果我要写入的数据来自DM并且和我判断需要的数据冲突了怎么办呢，那就只好再给DM开一个端口往后传判断需要的数据了。在W级判断出condition后传到<code>w_ctrl</code>,对<code>W_GRFA3</code>判断。显然，在这种情况下，<code>D</code>，<code>E</code>，<code>M</code>级都没有GRFA3的视野所以<code>E_Tnew = 3</code>,<code>M_Tnew = 2</code>,并且条件阻塞写法如下：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Stall</span></span><br><span class="line"><span class="keyword">assign</span> E_stall_rs = ((E_lbget ? (D_rs == E_rt || D_rs == E_rs) : (E_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> E_stall_rt = ((E_lbget ? (D_rt == E_rs || D_rt == E_rt) : (E_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rs = ((M_lbget ? (D_rs == M_rs || D_rs == M_rt) : (M_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; M_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rt = ((M_lbget ? (D_rt == M_rs || D_rt == M_rt) : (M_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; M_Tnew);</span><br></pre></td></tr></table></figure>
+
+<p>这样就可以得到正确的运算结果，但是不难看出，这并不是最优解，我们在M级其实就可以拿到GRFA3，这样就可以删除M级冲突判断的不确定性，从而减少阻塞的发生，提高CPU性能。</p>
+<p>至于为什么会提到这种在W级译码的方式，21级的很多学长似乎采用了这种做法，优点是<strong>当condition判断需要的数据和DM输出的数据相同时，可以对电路做最小的改动实现功能</strong>，缺点也很明显<strong>运行效率较低并且当condition判断需要的数据和DM输出的数据不相同时需要新增接口</strong>。对了，笔者在测评机提交这种方法时出现了一个测试点TLE，所以这种方法大家听个思路，考场慎用吧。</p>
+<p><strong>M级译码</strong>：对于判断条件condition，我们在DM计算出并且随流水线流到W级，这样M级流水线寄存器就可以较早地拿到GRFA3。</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> M_GRFa3 = (M_GRFA3_sel == `GRFA3rt) ? M_rt :</span><br><span class="line">                 (M_GRFA3_sel == `GRFA3rd) ? M_rd :</span><br><span class="line">                 (M_GRFA3_sel == `GRFA331 ) ? <span class="number">5&#x27;d31</span> :</span><br><span class="line">                 (M_GRFA3_sel == `GRFA3rs) ? M_rs :</span><br><span class="line">                 (M_GRFA3_sel == `GRFA30 &amp;&amp; M_lbget &amp;&amp; M_condition1 == <span class="number">1</span>) ? M_rt :</span><br><span class="line">                 (M_GRFA3_sel == `GRFA30 &amp;&amp; M_lbget &amp;&amp; M_condition1 == <span class="number">0</span>) ? M_rs :</span><br><span class="line">                 <span class="number">5&#x27;d0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在Stall模块中因为要判断M_GRFA3，所以需要将condition信号传入Stall</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">module</span> STALL (</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] D_Instr,  </span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] E_Instr,</span><br><span class="line">    <span class="keyword">input</span> [<span class="number">31</span>:<span class="number">0</span>] M_Instr,</span><br><span class="line">    <span class="keyword">input</span> Condition1,</span><br><span class="line">    <span class="keyword">output</span> Stall</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p><code>M_GRFA3</code>已知，所以<code>E_Tnew = 2</code> ,<code>M_Tnew = 1</code>,并且条件阻塞判断如下:</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Stall</span></span><br><span class="line"><span class="keyword">assign</span> E_stall_rs = ((E_lbget ? (D_rs == E_rt || D_rs == E_rs) : (E_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> E_stall_rt = ((E_lbget ? (D_rt == E_rs || D_rt == E_rt) : (E_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rs = ((M_GRFA3 == D_rs) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; M_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rt = ((M_GRFA3 == D_rt) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; M_Tnew);</span><br></pre></td></tr></table></figure>
+
+<p>注意，关于GRFA3的译码，如果按照笔者个人的习惯，会将condition传入CTRL模块完成GRFA3_Sel译码,但是我们发现在M级，</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">m_ctrl(<span class="variable">.Condition</span>(condition),<span class="variable">.DMOp</span>(DMop)) ;</span><br><span class="line">m_dm(<span class="variable">.DMOp</span>(DMop),<span class="variable">.Condition</span>(condition));</span><br></pre></td></tr></table></figure>
+
+<p>ctrl和dm在交互，这就导致了输出信号会是<code>XXXXXXXX</code>,所以我们选择在外部译码。虽然我也不知道这么干为什么不行。。。</p>
+<h2 id="CCS"><a href="#CCS" class="headerlink" title="CCS"></a>CCS</h2><p>这个是考试题</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">high_ones = memword[31:16] 1 的个数</span><br><span class="line">low_ones = memword[15:0] 1 的个数</span><br><span class="line">if high_ones &gt; low_ones &#123;</span><br><span class="line">    memword ^ GPR[rt] -&gt; GPR[31]</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">    memword -&gt; GPR[high_ones]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这道题目和上一题的区别在于GPR[high_ones]直到M级才知道，因此冲突判断直接无脑置1即可</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> E_stall_rs = ((E_lbget ? <span class="number">1</span> : (E_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> E_stall_rt = ((E_lbget ? <span class="number">1</span> : (E_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; E_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rs = ((M_GRFA3 == D_rs) &amp;&amp; D_rs != <span class="number">0</span>) &amp;&amp; (rs_Tuse &lt; M_Tnew);</span><br><span class="line"><span class="keyword">assign</span> M_stall_rt = ((M_GRFA3 == D_rt) &amp;&amp; D_rt != <span class="number">0</span>) &amp;&amp; (rt_Tuse &lt; M_Tnew);</span><br></pre></td></tr></table></figure>
+
+<p>剩下的操作跟LBGET一样，大家依葫芦画瓢应该问题不大。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>笔者的个人仓库里有P5_pro,实现了<code>BLZTAL</code>,<code>LBGET</code>,<code>BONALL</code>,大家如果真的对自己的bug毫无想法可以参考一下哦😋。</p>
+<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">你是我的眼</span><br><span class="line">带我领略四季的变换</span><br><span class="line">你是我的眼</span><br><span class="line">带我穿越拥挤的人潮</span><br><span class="line">你是我的眼</span><br><span class="line">带我阅读浩瀚的书海</span><br><span class="line">因为你是我的眼</span><br><span class="line">让我看见</span><br><span class="line">这世界</span><br><span class="line">就在我眼前</span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -460,7 +512,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Cordial-Kid.github.io/2026/01/20/P2%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">https://Cordial-Kid.github.io/2026/01/20/P2%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</a>
+                    <a href="https://Cordial-Kid.github.io/2026/01/21/P5%E8%AF%BE%E4%B8%8A/">https://Cordial-Kid.github.io/2026/01/21/P5%E8%AF%BE%E4%B8%8A/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -502,8 +554,8 @@
                                     <span class="chip bg-color">BUAA</span>
                                 </a>
                             
-                                <a href="/tags/mips/">
-                                    <span class="chip bg-color">mips</span>
+                                <a href="/tags/verilog/">
+                                    <span class="chip bg-color">verilog</span>
                                 </a>
                             
                         </div>
@@ -553,13 +605,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2026/01/21/P3%E8%AF%BE%E4%B8%8A/">
+                <a href="/2026/01/21/P5%E8%AF%BE%E4%B8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="「BUAA-CO」 P3课上">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="「BUAA-CO」 P5课下">
                         
-                        <span class="card-title">「BUAA-CO」 P3课上</span>
+                        <span class="card-title">「BUAA-CO」 P5课下</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -591,8 +643,8 @@
                         <span class="chip bg-color">BUAA</span>
                     </a>
                     
-                    <a href="/tags/logisim/">
-                        <span class="chip bg-color">logisim</span>
+                    <a href="/tags/verilog/">
+                        <span class="chip bg-color">verilog</span>
                     </a>
                     
                 </div>
@@ -606,13 +658,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2026/01/20/P1%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
+                <a href="/2026/01/21/P4%E8%AF%BE%E4%B8%8A/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="「BUAA-CO」 P1">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="「BUAA-CO」 P4课上">
                         
-                        <span class="card-title">「BUAA-CO」 P1</span>
+                        <span class="card-title">「BUAA-CO」 P4课上</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -623,7 +675,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-21
                             </span>
                         <span class="publish-author">
                             
