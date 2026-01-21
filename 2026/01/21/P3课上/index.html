@@ -4,9 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="「BUAA-CO」 P1, Cordial-Kid">
-    <meta name="description" content="简介P1主要是对verilog在预习阶段所学内容的强化，但是显然没有预习阶段的题目那么恶心。P1的题目大致可以分为两类：一类是组合逻辑电路的设计，另一类是时序逻辑电路状态机的设计。下面分别进行说明。
-组合逻辑电路设计组合逻辑电路的设计相对简">
+    <meta name="keywords" content="「BUAA-CO」 P3课上, Cordial-Kid">
+    <meta name="description" content="简介P3课上考试加的指令都比较常规，个人认为P3考试最大的难点就是机房的鼠标。我只能劝你手别抖了😨。
+一些前置知识开始P3之后，你所了解的用于P0的元件已经不够用了，下面列举几个新的P3课上常用的元件。
+
+Bit Adder:输入一个n位">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>「BUAA-CO」 P1 | Cordial-Kid</title>
+    <title>「BUAA-CO」 P3课上 | Cordial-Kid</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -333,12 +335,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">「BUAA-CO」 P1</h1>
+                    <h1 class="description center-align post-title">「BUAA-CO」 P3课上</h1>
                 </div>
             </div>
         </div>
@@ -366,8 +368,8 @@
                                 <span class="chip bg-color">BUAA</span>
                             </a>
                         
-                            <a href="/tags/verilog/">
-                                <span class="chip bg-color">verilog</span>
+                            <a href="/tags/logisim/">
+                                <span class="chip bg-color">logisim</span>
                             </a>
                         
                     </div>
@@ -391,7 +393,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2026-01-20
+                    2026-01-21
                 </div>
                 
 
@@ -400,14 +402,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    510
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    1 分
                 </div>
                 
 
@@ -432,30 +434,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>P1主要是对verilog在预习阶段所学内容的强化，但是显然没有预习阶段的题目那么恶心。P1的题目大致可以分为两类：一类是组合逻辑电路的设计，另一类是时序逻辑电路状态机的设计。下面分别进行说明。</p>
-<h2 id="组合逻辑电路设计"><a href="#组合逻辑电路设计" class="headerlink" title="组合逻辑电路设计"></a>组合逻辑电路设计</h2><p>组合逻辑电路的设计相对简单，主要考察对verilog语法的掌握以及对基本逻辑电路的理解。说白了就是程序设计换一种语言写而已，不会用很难的算法为难大家的。</p>
-<h2 id="时序逻辑电路状态机设计"><a href="#时序逻辑电路状态机设计" class="headerlink" title="时序逻辑电路状态机设计"></a>时序逻辑电路状态机设计</h2><p>状态机的设计相对复杂一些，主要考察对状态机原理的理解以及verilog实现状态机的能力。状态机的设计一般分为以下5个模块：</p>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>P3课上考试加的指令都比较常规，个人认为P3考试最大的难点就是机房的鼠标。我只能劝你手别抖了😨。</p>
+<h2 id="一些前置知识"><a href="#一些前置知识" class="headerlink" title="一些前置知识"></a>一些前置知识</h2><p>开始P3之后，你所了解的用于P0的元件已经不够用了，下面列举几个新的P3课上常用的元件。</p>
 <ol>
-<li>变量定义模块</li>
-<li>initial模块</li>
-<li>时序逻辑状态转移模块</li>
-<li>组合逻辑次态计算模块</li>
-<li>组合逻辑输出计算模块</li>
+<li>Bit Adder:输入一个n位二进制数，输出总共有几位1。</li>
+<li>Bit Finder:输入一个n位二进制数，输出最低位的1&#x2F;最高位的1&#x2F;最低位的0&#x2F;最高位的0的index，还有一个输出端口代表n位二进制数是否含有1。</li>
+<li>Shifter：输入一个数以及移动的位数，输出得到的结果</li>
 </ol>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 1. 变量定义模块</span></span><br><span class="line"><span class="keyword">reg</span> [n-<span class="number">1</span>:<span class="number">0</span>] state; <span class="comment">// 当前状态</span></span><br><span class="line"><span class="keyword">reg</span> [n-<span class="number">1</span>:<span class="number">0</span>] next_state; <span class="comment">// 下一个状态</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. initial模块</span></span><br><span class="line"><span class="keyword">initial</span> <span class="keyword">begin</span>  </span><br><span class="line">    state = INITIAL_STATE; <span class="comment">// 初始化状态</span></span><br><span class="line">    next_state = INITIAL_STATE; <span class="comment">// 初始化下一个状态</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 时序逻辑状态转移模块</span></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk <span class="keyword">or</span> <span class="keyword">posedge</span> reset) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (reset) <span class="keyword">begin</span></span><br><span class="line">        state &lt;= INITIAL_STATE; <span class="comment">// 复位状态</span></span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        state &lt;= next_state; <span class="comment">// 状态转移</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 4. 组合逻辑次态计算模块</span></span><br><span class="line"><span class="keyword">always</span> @(*) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">case</span> (state)</span><br><span class="line">        STATE_0: <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span> (input_condition) <span class="keyword">begin</span></span><br><span class="line">                next_state = STATE_1;</span><br><span class="line">            <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">                next_state = STATE_0;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        STATE_1: <span class="keyword">begin</span></span><br><span class="line">            <span class="comment">// 其他状态转移逻辑</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="comment">// 其他状态...</span></span><br><span class="line">        <span class="keyword">default</span>: <span class="keyword">begin</span></span><br><span class="line">            next_state = INITIAL_STATE; <span class="comment">// 默认状态</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">endcase</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 5. 组合逻辑输出计算模块</span></span><br><span class="line"><span class="keyword">always</span> @(state) <span class="keyword">begin</span>   </span><br><span class="line">    out = (state == TARGET_STATE) ? <span class="number">1&#x27;b1</span> : <span class="number">1&#x27;b0</span>; <span class="comment">// 输出逻辑</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h2 id="rev"><a href="#rev" class="headerlink" title="rev"></a>rev</h2><p>题目：将GPR[rt] 的高index位翻转后放到低位，剩下的位数顺序排列到高位。然后将结果写到GPR[rt]</p>
+<p>解：先将GPR[rt]用<code>splitter</code>整体翻转，再左移+右移得到<code>0000...0+高index位反转结果</code>，和GPR[rt]左移得到的<code>剩余位数+000...000</code><br>相加就可以得到结果。总的来说就是位数转换都可以通过移位操作来实现。</p>
+<h2 id="blz"><a href="#blz" class="headerlink" title="blz"></a>blz</h2><p>题目：大概是数出GPR[rs] GPR[rt]的前导零的数量，然后比大小决定NPC的操作，以及向GRF写入tmp1或tmp2</p>
+<p>解：<strong>重点在数前导0</strong>，用<code>bit Finder</code>时记得考虑没有1的情况。</p>
+<h2 id="lwf"><a href="#lwf" class="headerlink" title="lwf"></a>lwf</h2><p>题目：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">lwf base rt offset</span><br><span class="line">从offset(base)的内存中读出一个数据 </span><br><span class="line">判断这个数和rt的and的各个数位之和的奇偶性 </span><br><span class="line">奇数则存入(rt+1)mod32寄存器 </span><br><span class="line">偶数则存入rt寄存器</span><br></pre></td></tr></table></figure>
 
-<p>掌握了这个基本框架之后你的状态机就不会经常因为时序问题出bug了。同样的，状态机的设计也可以分为两种方法：一种是使用真值表表示状态机，另一种是使用常规逻辑表达式表示状态机。按照另一种分类方式，可以分为Moore型和Mealy型状态机设计。思路跟P0大同小异，再套用上述提到的模板即可。笔者帮大家整理好了对比代码，上传到了<a target="_blank" rel="noopener" href="https://github.com/Cordial-Kid/BUAA-CO/tree/main/P1/Moore_and_Mealy">github仓库</a>，大家可以参考理解，重点关注一下组合逻辑输出计算模块的区别。下面我们重点讲一下状态机Plus版–一般用在<strong>string stream</strong>中，对应上机考试的最后一题。</p>
-<h2 id="状态机的Plus版"><a href="#状态机的Plus版" class="headerlink" title="状态机的Plus版"></a>状态机的Plus版</h2><p>Plus版一般是指在一个模块中设计两个相互独立但又有联系的状态机。举个例子：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">给定按时钟输入的 ASCII 字符流，其中包含若干个由 &quot;&#123;&quot; 与 &quot;&#125;&quot; 包围的简化 JSON 对象（对象之间由空格分隔）。每个键值对的键和值均用双引号包围 &quot;key&quot;:&quot;value&quot;。若对象中出现空字符串键或空字符串值（即 &quot;&quot;），则该对象非法，字段数记为 0。计算每个对象的字段数输出到 cur_num，并维护历史最大合法字段数输出到 max_num。</span><br></pre></td></tr></table></figure>
-
-<p>这是一道上机考试回忆版题目，可能有的细节不甚详尽，还请大家多多包涵。</p>
-<p>本题的解题思路是在一个模块中设计两个状态机：一个状态机用于维护”IDLE”、”READ”、”CHECK”三个状态，识别JSON对象的开始和结束，第二个状态机负责统计字段数并更新最大值。这里重点和难点是第二个状态机的设置。</p>
-<p>我们用变量number1来统计<code>&quot;</code>的数量，用tmp_cnt来统计两个引号之间的字段数，用cur_num来记录当前对象的字段数，用max_num来记录历史最大字段数。当number1为偶数时，如果tmp_cnt为0，说明出现了空字符串键或空字符串值，此时cur_num置0；否则cur_num加1。每当遇到<code>&#125;</code>时，比较cur_num和max_num的大小，更新max_num。</p>
-<p>详细代码实现参见个人GitHub仓库：<a target="_blank" rel="noopener" href="https://github.com/Cordial-Kid/BUAA-CO/blob/main/P1/json.v">https://github.com/Cordial-Kid/BUAA-CO/blob/main/P1/json.v</a></p>
-<h2 id="可能踩的坑"><a href="#可能踩的坑" class="headerlink" title="可能踩的坑"></a>可能踩的坑</h2><p>在只有在组合逻辑电路中才能实现<code>sum = sum + i</code>这类型的语句，在时序逻辑电路中是不允许的。</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">always</span> @(*) <span class="keyword">begin</span></span><br><span class="line">    sum = <span class="number">0</span>;    <span class="comment">//这一步很重要</span></span><br><span class="line">    <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; <span class="number">8</span>; i = i + <span class="number">1</span>) <span class="keyword">begin</span></span><br><span class="line">        sum = sum + i;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">若不是你突然闯进 我生活</span><br><span class="line">我怎会把死守的寂寞 放任了</span><br><span class="line">爱我的话你都说</span><br><span class="line">爱我的事你不做</span><br><span class="line">我却把甜言蜜语</span><br><span class="line">当作你爱我的躯壳</span><br><span class="line">你的悲伤难过我不参破</span><br><span class="line">我也会把曾今的且过 当施舍</span><br><span class="line">不去计较你太多</span><br><span class="line">从此你在我心里</span><br><span class="line">只剩绿色</span><br></pre></td></tr></table></figure>
+<p>解：<strong>重点在奇偶比较</strong>，比较最低位即可。最低位为0是偶数，为1是奇数。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/Cordial-Kid/BUAA-CO/blob/main/P3/%E5%8D%95%E5%91%A8%E6%9C%9FCPU_in_class.circ">github仓库</a>里为大家提供了这三道题目的代码：</p>
+<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">谁与我画明月天地间</span><br><span class="line">落笔话呢喃</span><br><span class="line">谁遇我南山望北川</span><br><span class="line">扶摇向九天</span><br><span class="line">谁予我谈笑伴云轩</span><br><span class="line">知己醉桌前</span><br><span class="line">任我清风眠</span><br><span class="line">梦回世外仙</span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -481,7 +476,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Cordial-Kid.github.io/2026/01/20/P1%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">https://Cordial-Kid.github.io/2026/01/20/P1%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</a>
+                    <a href="https://Cordial-Kid.github.io/2026/01/21/P3%E8%AF%BE%E4%B8%8A/">https://Cordial-Kid.github.io/2026/01/21/P3%E8%AF%BE%E4%B8%8A/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -523,8 +518,8 @@
                                     <span class="chip bg-color">BUAA</span>
                                 </a>
                             
-                                <a href="/tags/verilog/">
-                                    <span class="chip bg-color">verilog</span>
+                                <a href="/tags/logisim/">
+                                    <span class="chip bg-color">logisim</span>
                                 </a>
                             
                         </div>
@@ -574,13 +569,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2026/01/20/P2%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
+                <a href="/2026/01/21/P3%E8%AF%BE%E4%B8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="「BUAA-CO」 P2">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="「BUAA-CO」 P3课下">
                         
-                        <span class="card-title">「BUAA-CO」 P2</span>
+                        <span class="card-title">「BUAA-CO」 P3课下</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -591,7 +586,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2026-01-20
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-01-21
                         </span>
                         <span class="publish-author">
                             
@@ -612,8 +607,8 @@
                         <span class="chip bg-color">BUAA</span>
                     </a>
                     
-                    <a href="/tags/mips/">
-                        <span class="chip bg-color">mips</span>
+                    <a href="/tags/logisim/">
+                        <span class="chip bg-color">logisim</span>
                     </a>
                     
                 </div>
@@ -627,13 +622,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2026/01/20/P0%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
+                <a href="/2026/01/20/P2%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="「BUAA-CO」 P0">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="「BUAA-CO」 P2">
                         
-                        <span class="card-title">「BUAA-CO」 P0</span>
+                        <span class="card-title">「BUAA-CO」 P2</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -665,8 +660,8 @@
                         <span class="chip bg-color">BUAA</span>
                     </a>
                     
-                    <a href="/tags/logisim/">
-                        <span class="chip bg-color">logisim</span>
+                    <a href="/tags/mips/">
+                        <span class="chip bg-color">mips</span>
                     </a>
                     
                 </div>
