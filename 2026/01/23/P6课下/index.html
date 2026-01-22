@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="「BUAA-CO」 P2, Cordial-Kid">
-    <meta name="description" content="简介P2主要是对mips指令集架构的理解，重点考察的也就是一些常见的指令，语法上不会像verilog一样坑人，只要是Copre下了点功夫的问题都不大。P2课下可能直接上手汇编代码比较轻松，但是P2在上机的时候一般会给出C语言代码，这个时候不">
+    <meta name="keywords" content="「BUAA-CO」 P6课下, Cordial-Kid">
+    <meta name="description" content="简介p6和P5的整体思路一样，区别在于P6将IM和DM模块放在了外部（课程组写好了代码），从而使得CPU更加纯粹，贴合实际。同时P6新增了乘除槽指令，由于乘除槽指令执行周期较长，因此我们在阻塞等方面要加以注意。废话不多说，我们开始吧。
+IF">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>「BUAA-CO」 P2 | Cordial-Kid</title>
+    <title>「BUAA-CO」 P6课下 | Cordial-Kid</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -332,12 +333,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">「BUAA-CO」 P2</h1>
+                    <h1 class="description center-align post-title">「BUAA-CO」 P6课下</h1>
                 </div>
             </div>
         </div>
@@ -365,8 +366,8 @@
                                 <span class="chip bg-color">BUAA</span>
                             </a>
                         
-                            <a href="/tags/mips/">
-                                <span class="chip bg-color">mips</span>
+                            <a href="/tags/verilog/">
+                                <span class="chip bg-color">verilog</span>
                             </a>
                         
                     </div>
@@ -390,7 +391,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2026-01-20
+                    2026-01-23
                 </div>
                 
 
@@ -399,14 +400,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    430
+                    2.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    11 分
                 </div>
                 
 
@@ -431,10 +432,91 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>P2主要是对mips指令集架构的理解，重点考察的也就是一些常见的指令，语法上不会像verilog一样坑人，只要是Copre下了点功夫的问题都不大。P2课下可能直接上手汇编代码比较轻松，但是P2在上机的时候一般会给出C语言代码，这个时候不管你看不看得懂，<strong>照着人肉汇编就对了</strong>，千万别自己乱创造。</p>
-<h2 id="关于递归"><a href="#关于递归" class="headerlink" title="关于递归"></a>关于递归</h2><p>递归一般是考试的最后一题，我的建议是大家提前写好push和pop的宏，然后直接照着C代码翻译就行了。递归的关键点在于保存现场和恢复现场。但是教程中说的那个caller调用和callee调用我是真的不懂什么意思，反正我就是直接把所有用到的寄存器都push一遍，函数返回前全部pop回来就完事了，反正也没说要节省空间。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>细细想来，好像没什么好说的，大家可以去看笔者的<a target="_blank" rel="noopener" href="https://github.com/Cordial-Kid/BUAA-CO/tree/main/P2">github仓库</a>,里面有P2的上机测试题目和参考答案，大家可以参考学习。(尤其是Factory,涉及大数乘法)</p>
-<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">后来我学会浪漫</span><br><span class="line">学会打扮自己的脸</span><br><span class="line">可距离我想讨你欢心</span><br><span class="line">已过了很多年</span><br><span class="line">你好像站在那段岁月看了我一眼</span><br><span class="line">就把我永远困在遗憾里面</span><br><span class="line">后来我偶尔也会</span><br><span class="line">打听你在谁的身边</span><br><span class="line">只是我再也不能冲动</span><br><span class="line">跑去见你一面</span><br><span class="line">想赢的那场比赛结束在很久以前</span><br><span class="line">最好的你和最好的我之间</span><br><span class="line">只能挥挥手告别</span><br></pre></td></tr></table></figure>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>p6和P5的整体思路一样，区别在于P6将IM和DM模块放在了外部（课程组写好了代码），从而使得CPU更加纯粹，贴合实际。同时P6新增了乘除槽指令，由于乘除槽指令执行周期较长，因此我们在阻塞等方面要加以注意。废话不多说，我们开始吧。</p>
+<h2 id="IFU-PC"><a href="#IFU-PC" class="headerlink" title="IFU -&gt; PC"></a>IFU -&gt; PC</h2><p>在P6实验中，IM外置，因此在P5的基础上，我们要删掉这部分，保留PC的同时在顶层模块mips新增接口与外置DM信息交换：<br><code>input [31:0] i_inst_rdata,      //F级PC对应的32位指令</code><br><code>output [31:0] i_inst_addr,      //F级PC</code></p>
+<h2 id="D-CMP"><a href="#D-CMP" class="headerlink" title="D_CMP"></a>D_CMP</h2><p>P6新增指令<code>BNE</code>,需要在D_CMP模块完成比较。</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> Beq_jump = (CMPOp == `CMP_BEQ &amp;&amp; RS_Data == RT_Data) ? <span class="number">1&#x27;b1</span> :</span><br><span class="line">                  (CMPOp == `CMP_BNE &amp;&amp; RS_Data != RT_Data) ? <span class="number">1&#x27;b1</span> :</span><br><span class="line">                  <span class="number">1&#x27;b0</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="D-GRF"><a href="#D-GRF" class="headerlink" title="D_GRF"></a>D_GRF</h2><p>P6不需要<code>$display(&quot;%d@%h: $%d &lt;= %h&quot;,$time,PC,A3,WD);</code></p>
+<h2 id="def"><a href="#def" class="headerlink" title="def"></a>def</h2><p>这个模块其实本来没什么好说的，只要新增指令需要用到的变量我们在这里定义即可。在这里值得说明的是，虽然P6指令极多，但是笔者权衡之后依然采用每条指令独立考量的方式，没有像主流思路一样对指令进行分类。两种方式各有利弊，这里只能仁者见仁，智者见智了，举个例子。</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> GRFA3Sel = (cal_r | jalr | mf) ? `GRFA3rd :</span><br><span class="line">                (cal_i | load | mfc0) ? `GRFA3rt : </span><br><span class="line">                (jal) ? `GRFA331 : `GRFA30;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> GRFA3Sel = (Add|Sub|Sll|Jalr|_And|_Or|Slt|Sltu|Mfhi|Mflo) ? `GRFA3rd :</span><br><span class="line">                  (Ori | Lw | Lui | Addi | Andi | Lh | Lb) ? `GRFA3rt :</span><br><span class="line">                  (Jal) ? `GRFA331 :</span><br><span class="line">                  `GRFA30;</span><br></pre></td></tr></table></figure>
+
+<p>显然，第二段代码要比第一段代码冗杂的多，这是我采用的写法的缺点。但是你也很容易发现，第一种写法将分类和不分类杂糅了起来，导致在coding时极度混乱，容易出错；而第二段代码因为是每条指令独立考虑的，也就不存在这个问题了。个人不太喜欢这种易错感觉，当然大家如何架构还是看自己心意🫡。</p>
+<h2 id="E-ALU"><a href="#E-ALU" class="headerlink" title="E_ALU"></a>E_ALU</h2><p>P6对ALU的改动就是增加了新的指令的计算方式<code>and,slt,sltu</code>。</p>
+<h2 id="E-MDU"><a href="#E-MDU" class="headerlink" title="E_MDU"></a>E_MDU</h2><p>乘除槽的实现是P6的重点和难点。我们要实现8条乘除法相关指令：<code>mult</code> <code>multu</code> <code>div</code> <code>divu</code> <code>mthi</code> <code>mtlo</code> <code>mfhi</code> <code>mflo</code>，前4条指令是计算乘除法，并将结果存入HI，LO两个寄存器中，后4条指令是对HI和LO的读写。<br>我们把MDU模块当作特殊的ALU，对于<strong>前四条指令</strong>，MDU要执行很多个周期并且不需要输出计算结果，只要在时钟上升沿时将计算结果存入HI，LO寄存器即可。对于<code>mfhi,mflo</code>则需要正常输出。对于<code>mthi,mtlo</code>，在时钟上升沿时写入对应寄存器即可，只需要<strong>执行一个周期</strong>。<br>代码如下：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (reset) <span class="keyword">begin</span></span><br><span class="line">        HIreg &lt;= <span class="number">32&#x27;b0</span>;</span><br><span class="line">        LOreg &lt;= <span class="number">32&#x27;b0</span>;</span><br><span class="line">        cnt &lt;= <span class="number">4&#x27;b0</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> (MDUOp == `MDU_MULT) <span class="keyword">begin</span></span><br><span class="line">            &#123;HIreg,LOreg&#125; &lt;= <span class="built_in">$signed</span>(A) * <span class="built_in">$signed</span>(B);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (MDUOp == `MDU_MULTU) <span class="keyword">begin</span></span><br><span class="line">            &#123;HIreg,LOreg&#125; &lt;= A * B;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (MDUOp == `MDU_DIV) <span class="keyword">begin</span></span><br><span class="line">            HIreg &lt;= <span class="built_in">$signed</span>(A) % <span class="built_in">$signed</span>(B);</span><br><span class="line">            LOreg &lt;= <span class="built_in">$signed</span>(A) / <span class="built_in">$signed</span>(B); </span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (MDUOp == `MDU_DIVU) <span class="keyword">begin</span></span><br><span class="line">            HIreg &lt;= A % B;</span><br><span class="line">            LOreg &lt;= A / B;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (MDUOp == `MDU_MTHI) <span class="keyword">begin</span></span><br><span class="line">            HIreg &lt;= A;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (MDUOp == `MDU_MTLO) <span class="keyword">begin</span></span><br><span class="line">            LOreg &lt;= A;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">assign</span> MDUC = (MDUOp == `MDU_MFHI) ? HIreg :</span><br><span class="line">              (MDUOp == `MDU_MFLO) ? LOreg :</span><br><span class="line">              <span class="number">32&#x27;d0</span>;</span><br></pre></td></tr></table></figure>
+
+<p>注：以下提到的乘除法计算均为<code>mult,multu,div,divu</code>。<br>关于阻塞，之前我们提到了乘除法的计算周期较长，为了不因为乘除法计算的存在而拉低CPU的最短时钟周期，我们引入了MDU。因此当MDU模块正在计算时，所有不进入MDU的指令都可以正常流水，这也就导致了MDU的阻塞与自身息息相关。当MDU执行乘除法计算时，</p>
+<ol>
+<li>出现了<code>mfhi,mflo</code>,将指令阻塞在D级。</li>
+<li>出现了<code>mult,multu,div,divu</code>,直接终止运算因为接下来要覆盖</li>
+<li>出现了<code>mthi,mtlo</code>,将指令阻塞在D级。</li>
+</ol>
+<p>当然课程组为了方便我们设计给了我们一些提示：</p>
+<ol>
+<li>当E级指令是<code>mult multu div divu</code>时，CTRL模块需要输出1个周期的1位<strong>start</strong>信号，表示乘除法计算开始；</li>
+<li>当start信号结束后，如果之前的计算指令是<code>mult multu</code>指令，MDU模块需要连续输出<strong>5</strong>个周期的<strong>busy</strong>信号，表示正在计算HI寄存器和LO寄存器的值；如果之前的计算指令是<code>div divu</code>指令，则需要连续输出<strong>10</strong>个周期的<strong>busy</strong>信号；</li>
+<li>当start信号或busy信号为1时，不进入MDU模块的指令正常流水，要进入MDU模块的所有指令均阻塞在D级；</li>
+<li>为了降低实现难度，保证MDU模块在进行乘除法计算时只会出现<code>mfhi mflo</code>两种乘除法指令。</li>
+</ol>
+<p>也就是说，对于乘除法计算指令涉及的阻塞，我们只要无脑阻塞在D级即可。</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">//CTRL</span></span><br><span class="line"><span class="keyword">assign</span> Start = Mult | Multu | Div | Divu;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">//E_MDU</span></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (reset) <span class="keyword">begin</span></span><br><span class="line">        ...</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        ....</span><br><span class="line">        <span class="keyword">if</span> (Start) <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span> (MDUOp == `MDU_DIV || MDUOp == `MDU_DIVU) <span class="keyword">begin</span></span><br><span class="line">                cnt &lt;= <span class="number">4&#x27;d10</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(MDUOp == `MDU_MULT || MDUOp == `MDU_MULTU) <span class="keyword">begin</span></span><br><span class="line">                cnt &lt;= <span class="number">4&#x27;d5</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (cnt &gt; <span class="number">4&#x27;d0</span>) <span class="keyword">begin</span></span><br><span class="line">            cnt &lt;= cnt - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">assign</span> MDUC = (MDUOp == `MDU_MFHI) ? HIreg :</span><br><span class="line">                  (MDUOp == `MDU_MFLO) ? LOreg :</span><br><span class="line">                  <span class="number">32&#x27;d0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">assign</span> Busy = (cnt != <span class="number">4&#x27;d0</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Stall</span></span><br><span class="line"><span class="keyword">assign</span> E_stall_MDU = ((D_mult | D_multu | D_div | D_divu | D_mfhi | D_mflo | D_mthi | D_mtlo) &amp;&amp; (Start | Busy));</span><br></pre></td></tr></table></figure>
+
+<p>这就完了吗？当然不是！观察一下<code>mfhi mflo</code>,他们读取hi和lo的值是要写入<code>rd</code>寄存器的，这就不可避免地带来了数据冲突，因此<code>E_Tnew = (E_Mfhi || E_Mflo) ? 1 : 0;</code></p>
+<p>如此，我们就顺利滑过了E_MDU，庆祝一下吧。</p>
+<h2 id="M-BE"><a href="#M-BE" class="headerlink" title="M_BE"></a>M_BE</h2><p>我们知道，P6实现了DM外置，所以在CPU内部要实现和外置DM的数据交互。M_BE位于DM之前，处理<strong>store</strong>类指令，这也很好理解，毕竟store是向DM写入数据；相应地，M_DE位于DM之后处理load类指令，因为load是从DM取出数据存入GRF中的。</p>
+<p>先来看M_BE。重要变量</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> [ <span class="number">3</span>:<span class="number">0</span>] M_Data_Byteen,  <span class="comment">//字节使能</span></span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] M_Data_Wdata    <span class="comment">//M级DM待写入的数据</span></span><br></pre></td></tr></table></figure>
+
+<p>四位<code>M_Data_Byteen</code>中的某一位为1代表对应的8位要写入数据，这里只要看仔细<code>sw,sh,sb</code>的Rtl语言正常翻译就行。</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">case</span> (BEOp)</span><br><span class="line">  `BE_SW: <span class="keyword">begin</span></span><br><span class="line">    M_Data_Byteen = <span class="number">4&#x27;b1111</span>;</span><br><span class="line">    M_Data_Wdata  = WD;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  `BE_SH: <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (Addr[<span class="number">1</span>] == <span class="number">0</span>) <span class="keyword">begin</span></span><br><span class="line">      M_Data_Byteen = <span class="number">4&#x27;b0011</span>;</span><br><span class="line">      M_Data_Wdata  = &#123;<span class="number">16&#x27;b0</span>, WD[<span class="number">15</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">      M_Data_Byteen = <span class="number">4&#x27;b1100</span>;</span><br><span class="line">      M_Data_Wdata  = &#123;WD[<span class="number">15</span>:<span class="number">0</span>], <span class="number">16&#x27;b0</span>&#125;;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  `BE_SB: <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (Addr[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b00</span>) <span class="keyword">begin</span></span><br><span class="line">      M_Data_Byteen = <span class="number">4&#x27;b0001</span>;</span><br><span class="line">      M_Data_Wdata  = &#123;<span class="number">24&#x27;b0</span>, WD[<span class="number">7</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">if</span> (Addr[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b01</span>) <span class="keyword">begin</span></span><br><span class="line">      M_Data_Byteen = <span class="number">4&#x27;b0010</span>;</span><br><span class="line">      M_Data_Wdata  = &#123;<span class="number">16&#x27;b0</span>, WD[<span class="number">7</span>:<span class="number">0</span>], <span class="number">8&#x27;b0</span>&#125;;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">if</span> (Addr[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b10</span>) <span class="keyword">begin</span></span><br><span class="line">      M_Data_Byteen = <span class="number">4&#x27;b0100</span>;</span><br><span class="line">      M_Data_Wdata  = &#123;<span class="number">8&#x27;b0</span>, WD[<span class="number">7</span>:<span class="number">0</span>], <span class="number">16&#x27;b0</span>&#125;;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">      M_Data_Byteen = <span class="number">4&#x27;b1000</span>;</span><br><span class="line">      M_Data_Wdata  = &#123;WD[<span class="number">7</span>:<span class="number">0</span>], <span class="number">24&#x27;b0</span>&#125;;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">default</span>: <span class="keyword">begin</span></span><br><span class="line">    M_Data_Byteen = <span class="number">4&#x27;b0000</span>;</span><br><span class="line">    M_Data_Wdata  = <span class="number">32&#x27;b0</span>;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endcase</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="M-DE"><a href="#M-DE" class="headerlink" title="M_DE"></a>M_DE</h2><figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">case</span> (DEOp)</span><br><span class="line">        `DE_LW : <span class="keyword">begin</span> </span><br><span class="line">            RD = M_Data_Rdata;</span><br><span class="line">        <span class="keyword">end</span> </span><br><span class="line">        `DE_LH : <span class="keyword">begin</span></span><br><span class="line">            RD = &#123;&#123;<span class="number">16</span>&#123;M_Data_Rdata[<span class="number">16</span> * Addr[<span class="number">1</span>] + <span class="number">15</span>]&#125;&#125;,M_Data_Rdata[(<span class="number">16</span> * Addr[<span class="number">1</span>] + <span class="number">15</span>) -: <span class="number">16</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        `DE_LB : <span class="keyword">begin</span></span><br><span class="line">            RD = &#123;&#123;<span class="number">24</span>&#123;M_Data_Rdata[<span class="number">8</span> * Addr[<span class="number">1</span>:<span class="number">0</span>] + <span class="number">7</span>]&#125;&#125;,M_Data_Rdata[(<span class="number">8</span> * Addr[<span class="number">1</span>:<span class="number">0</span>] + <span class="number">7</span>) -: <span class="number">8</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">default</span>: <span class="keyword">begin</span></span><br><span class="line">            RD = <span class="number">32&#x27;b0</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">endcase</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Attention</strong>:<code>[(16 * Addr[1] + 15) -: 16]</code>这里是减，不要写成加法形式。千万别写成加法形式！！！</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>剩下的就是在CTRL里面进行小修小补，在Stall里面完善一下T_new,T_use，在mips里面添加新增的对外交互接口并找到他们对应的连线。此外，所有新添加的指令，除了乘除类，都在P5有过类似的指令，照着之前的添加即可。</p>
+<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><ol>
+<li>为什么需要有单独的乘除法部件而不是整合进 ALU？为何需要有独立的 HI、LO 寄存器？</li>
+</ol>
+<p>答：因为乘除法的效率比ALU其他运输运算的效率要低很多（5&#x2F;10），不单独设计的话会让CPU整体效率降低，使用单独的HI，LO寄存器是因为乘除法需要两个寄存器来保存结果，和其他指令需要一个不一样。</p>
+<ol start="2">
+<li>真实的流水线 CPU 是如何使用实现乘除法的？请查阅相关资料进行简单说明。</li>
+</ol>
+<p>答：在真实的流水线 CPU 中，乘法通常有若干个较小的乘法单元组成（组合逻辑），然后每个周期计算特定的几位，依次累加起来，于是会在几个周期后得到正确的最终结果；除法通常使用试商法，通常也是使用组合逻辑在一个周期内计算 4 位左右的商，经过 8 个周期正好可以计算结束。</p>
+<ol start="3">
+<li>请结合自己的实现分析，你是如何处理 Busy 信号带来的周期阻塞的？</li>
+</ol>
+<p>答：当Busy或Start信号为1并且D级为乘除法指令的时候阻塞。</p>
+<ol start="4">
+<li>请问采用字节使能信号的方式处理写指令有什么好处？（提示：从清晰性、统一性等角度考虑）</li>
+</ol>
+<p>答：可以在sh和sb的时候只传入写使能信号和数据，不需要为他们单独设计电路，实现高内聚低耦合。</p>
+<ol start="5">
+<li>请思考，我们在按字节读和按字节写时，实际从 DM 获得的数据和向 DM 写入的数据是否是一字节？在什么情况下我们按字节读和按字节写的效率会高于按字读和按字写呢？</li>
+</ol>
+<p>答：不是，是4字节。处理单字节 &#x2F; 非连续字节数据时。</p>
+<ol start="6">
+<li>为了对抗复杂性你采取了哪些抽象和规范手段？这些手段在译码和处理数据冲突的时候有什么样的特点与帮助？</li>
+</ol>
+<p>答：应当按照cal_r,cal_i,load,store,mult&#x2F;div,branch,jump来分类指令，这样可以将同类型的指令在生成控制信号的时候统一处理。但是我没这么干，感觉这种分类标准不统一，在实现的时候反而要思前想后，相比于单个指令的实现，我还是觉得两者的复杂度相差不大。</p>
+<ol start="7">
+<li>在本实验中你遇到了哪些不同指令类型组合产生的冲突？你又是如何解决的？相应的测试样例是什么样的？</li>
+</ol>
+<p>答：</p>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">mult $<span class="number">1</span>, $<span class="number">2</span></span><br><span class="line">mfhi $<span class="number">3</span></span><br><span class="line">mflo $<span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p>将mfhi和mflo阻塞在D级</p>
+<ol start="8">
+<li>如果你是手动构造的样例，请说明构造策略，说明你的测试程序如何保证覆盖了所有需要测试的情况；如果你是完全随机生成的测试样例，请思考完全随机的测试程序有何不足之处；如果你在生成测试样例时采用了特殊的策略，比如构造连续数据冒险序列，请你描述一下你使用的策略如何结合了随机性达到强测的效果。</li>
+</ol>
+<p>答：在手动构造数据的时候，在P5的基础上，加入连续操作乘除法的指令，并且在乘除法之间的5-10周期内加入其他指令，来检测新增的指令是否有错误。</p>
+<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">爱是愚人的国度</span><br><span class="line">不能自拔不懂退出</span><br><span class="line">我们都回不去最初</span><br><span class="line">曾美丽但还是不满足</span><br><span class="line">爱是自愚愚人演出</span><br><span class="line">答案清楚才能谢幕</span><br><span class="line">剧情 是笑 是哭</span><br><span class="line">爱是愚人的国度</span><br><span class="line">看我们演的好辛苦</span><br><span class="line">是你所谓的领悟</span><br><span class="line">我不懂我不哭</span><br><span class="line">看悲欢喜怒每一步</span><br><span class="line">是疲惫还是依赖的束缚</span><br><span class="line">来 你能不能再重复</span><br><span class="line">让我懂让我哭</span><br></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -460,7 +542,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Cordial-Kid.github.io/2026/01/20/P2%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">https://Cordial-Kid.github.io/2026/01/20/P2%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/</a>
+                    <a href="https://Cordial-Kid.github.io/2026/01/23/P6%E8%AF%BE%E4%B8%8B/">https://Cordial-Kid.github.io/2026/01/23/P6%E8%AF%BE%E4%B8%8B/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -502,8 +584,8 @@
                                     <span class="chip bg-color">BUAA</span>
                                 </a>
                             
-                                <a href="/tags/mips/">
-                                    <span class="chip bg-color">mips</span>
+                                <a href="/tags/verilog/">
+                                    <span class="chip bg-color">verilog</span>
                                 </a>
                             
                         </div>
@@ -553,13 +635,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2026/01/21/P3%E8%AF%BE%E4%B8%8A/">
+                <a href="/2026/01/23/P6%E8%AF%BE%E4%B8%8A/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="「BUAA-CO」 P3课上">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="「BUAA-CO」P6课上">
                         
-                        <span class="card-title">「BUAA-CO」 P3课上</span>
+                        <span class="card-title">「BUAA-CO」P6课上</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -570,7 +652,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2026-01-21
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-01-23
                         </span>
                         <span class="publish-author">
                             
@@ -591,8 +673,8 @@
                         <span class="chip bg-color">BUAA</span>
                     </a>
                     
-                    <a href="/tags/logisim/">
-                        <span class="chip bg-color">logisim</span>
+                    <a href="/tags/verilog/">
+                        <span class="chip bg-color">verilog</span>
                     </a>
                     
                 </div>
@@ -606,13 +688,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2026/01/20/P1%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">
+                <a href="/2026/01/21/P5%E8%AF%BE%E4%B8%8B/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="「BUAA-CO」 P1">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="「BUAA-CO」 P5课下">
                         
-                        <span class="card-title">「BUAA-CO」 P1</span>
+                        <span class="card-title">「BUAA-CO」 P5课下</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -623,7 +705,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-21
                             </span>
                         <span class="publish-author">
                             
