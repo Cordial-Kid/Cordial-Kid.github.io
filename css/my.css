@@ -9,3 +9,109 @@ code, pre {
   font-family: "Consolas", "Menlo", "Monaco", "Courier New", monospace !important;
   font-size: 14px !important;
 }
+
+/* 折叠后：保留代码块的外观（背景/圆角/边距），但内容区只显示一条“顶栏高度” */
+.code-area.code-closed pre {
+  max-height: 52px !important;      /* 关键：不要 0，给它一个顶栏高度 */
+  overflow: hidden !important;
+  padding-bottom: 0 !important;
+}
+
+/* 让代码块收缩有动画 */
+.code-area pre {
+  transition: max-height .25s ease;
+}
+
+.code-area.code-closed {
+  border-radius: 12px;           /* 让折叠后的外壳也圆角 */
+}
+
+/* ===============================
+   科技风代码块整体
+================================ */
+.code-area {
+  background: #0f111a !important; /* 深色科技风 */
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.45);
+  margin: 1.5rem 0;
+  overflow: hidden;
+}
+
+/* ===============================
+   顶部 macOS 红黄绿
+================================ */
+.code-area .code-header {
+  height: 38px;
+  background: #1a1c25;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  display: flex;
+  align-items: center;
+  padding-left: 14px;
+}
+
+/* 三个点 */
+.code-area .code-header span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.code-area .code-header span:nth-child(1) {
+  background: #ff5f56;
+}
+.code-area .code-header span:nth-child(2) {
+  background: #ffbd2e;
+}
+.code-area .code-header span:nth-child(3) {
+  background: #27c93f;
+}
+
+/* ===============================
+   代码内容区
+================================ */
+.code-area pre {
+  margin: 0 !important;
+  background: transparent !important;
+  padding: 16px 20px !important;
+  overflow-x: auto;
+}
+
+/* 字体 & 行高 */
+.code-area code {
+  font-family: "JetBrains Mono","Fira Code","Consolas",monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #c9d1d9;
+}
+
+figure.highlight pre,
+figure.highlight code {
+  color: #c9d1d9 !important;  /* GitHub Dark 前景色 */
+}
+
+/* 去掉代码块外层文章卡片的白底影响 */
+/* 整篇文章去白色卡片 */
+.post-container,
+.article-card {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+/* 顶部栏高度 */
+figure.highlight::before {
+  height: 38px;
+}
+
+/* 红黄绿位置 */
+figure.highlight::after {
+  top: 12px;
+  left: 18px;
+}
+
+/* 正文整体下移，避免挡字 */
+figure.highlight pre {
+  padding-top: 54px !important;
+}
+
+
