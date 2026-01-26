@@ -332,7 +332,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -467,18 +467,18 @@
 <h3 id="本地仓库"><a href="#本地仓库" class="headerlink" title="本地仓库"></a>本地仓库</h3><p>本地仓库是我们<strong>电脑上</strong>存储版本历史记录的地方。当我们执行<code>git commit</code>命令时，暂存区的文件会被提交到本地仓库，形成一个新的版本，这个版本会有唯一的标识符且不可更改。</p>
 <p>了解了这三个概念后，我们就可以在<code>.git</code>所在的目录下执行相关指令来提交文件了。</p>
 <h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><ol>
-<li>**git add &lt;文件名&gt;**：将指定文件添加到暂存区。如果要添加所有修改过的文件，可以使用<code>git add .</code>。</li>
+<li><strong>git add</strong> <code>&lt;文件名&gt;</code>：将指定文件添加到暂存区。如果要添加所有修改过的文件，可以使用<code>git add .</code>。</li>
 <li><strong>git status</strong>:查看哪些文件在暂存区中。不在暂存区代表未被git跟踪。</li>
 <li><strong>git diff</strong>：查看<strong>工作区</strong>和<strong>暂存区</strong>之间的差异。</li>
-<li>**git commit -m “提交信息”**：将暂存区的文件提交到本地仓库，并附上提交信息。</li>
+<li><strong>git commit -m</strong> <code>&quot;提交信息&quot;</code>：将暂存区的文件提交到本地仓库，并附上提交信息。</li>
 <li><strong>git log</strong>：查看提交历史记录。</li>
 <li><strong>git diff –cached</strong>:查看<strong>暂存区</strong>和<strong>本地仓库</strong>之间的差异。</li>
-<li>**git push origin &lt;分支名&gt;**：将本地仓库的更改推送到远程仓库的指定分支上。</li>
+<li><strong>git push origin</strong> <code>&lt;分支名&gt;</code>：将本地仓库的更改推送到远程仓库的指定分支上。</li>
 </ol>
 <h2 id="文件拉取"><a href="#文件拉取" class="headerlink" title="文件拉取"></a>文件拉取</h2><p>文件拉取有两种操作方式：</p>
 <ol>
-<li>**git pull origin &lt;分支名&gt;**：从远程仓库的指定分支拉取最新的更改并合并到当前分支。</li>
-<li>**git fetch origin &lt;分支名&gt;**：从远程仓库获取最新的更改，但不进行合并。需要手动执行<code>git merge</code>命令将更改合并到当前分支。</li>
+<li><strong>git pull origin</strong> <code>&lt;分支名&gt;</code>：从远程仓库的指定分支拉取最新的更改并合并到当前分支。</li>
+<li><strong>git fetch origin</strong> <code>&lt;分支名&gt;</code>：从远程仓库获取最新的更改，但不进行合并。需要手动执行<code>git merge</code>命令将更改合并到当前分支。</li>
 </ol>
 <p>第二种方式的安全版：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git checkout &lt;分支名&gt;        //切换到指定分支<br>git fetch origin &lt;分支名&gt;    //从远程仓库获取最新的更改<br>git diff origin/&lt;分支名&gt;   //查看远程分支和本地分支的差异<br>git merge origin/&lt;分支名&gt;  //将远程分支的更改合并到当前分支<br></code></pre></td></tr></table></figure>
@@ -515,14 +515,14 @@
 <p><strong>重中之重</strong>：恢复和回退一定要在操作之前知道后果是什么，否则你是真的欲哭无泪啊！</p>
 <h3 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git checkout &lt;commit&gt; -- &lt;文件名&gt;    //将工作区的文件恢复到&lt;commit&gt;提交的状态,同时自动add到暂存区<br></code></pre></td></tr></table></figure>
 
-<p>这个命令会将指定文件恢复到上一次提交的状态，丢弃工作区中的所有修改。注意，这个操作是不可逆的，一旦执行，工作区中的修改将无法找回。</p>
+<p>这个命令会将指定文件恢复到<commit>提交的状态，丢弃工作区中的所有修改。注意，这个操作是不可逆的，一旦执行，工作区中的修改将无法找回。</p>
 <p><strong>易踩的坑</strong>: 如果去掉文件名，执行<code>git checkout &lt;commit&gt;</code>会把你的所有工作区的文件恢复到指定提交时的状态，但是此时，你的<code>HEAD</code>指针会被移动到该提交上，处于<strong>分离头指针</strong>状态。如果你在这个状态下进行新的提交，这些提交将不会属于任何分支，容易导致丢失。此时你执行<code>git checkout &lt;分支名&gt;</code>可以回到正常状态，但是这也会导致工作区的文件回到该分支的最新状态,即<code>checkout</code>之前的状态。所以，这一操作一般用来<strong>看</strong>历史，而不是<strong>改</strong>历史.</p>
 <h3 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h3><h4 id="–soft"><a href="#–soft" class="headerlink" title="–soft"></a>–soft</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git reset --soft &lt;commit&gt;    //将当前分支的HEAD指针移动到&lt;commit&gt;提交,保留暂存区和工作区的修改<br></code></pre></td></tr></table></figure>
 
 <p>用大白话说就是<code>add</code>还在，<code>commit</code>没了。<br>常常用在你想修改提交说明的时候。</p>
 <h4 id="–mixed-默认"><a href="#–mixed-默认" class="headerlink" title="–mixed (默认)"></a>–mixed (默认)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git reset --mixed &lt;commit&gt;    //将当前分支的HEAD指针移动到&lt;commit&gt;提交,保留工作区的修改,清空暂存区<br></code></pre></td></tr></table></figure>
 
-<p>用大白话说就是<code>add</code>没了，<code>commit</code>没了。<br>常常用在你想重新选择要提交的文件的时候。</p>
+<p>用大白话说就是<code>add</code>没了，<code>commit</code>没了,工作区还在。<br>常常用在你想重新选择要提交的文件的时候。</p>
 <h4 id="–hard"><a href="#–hard" class="headerlink" title="–hard"></a>–hard</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git reset --hard &lt;commit&gt;    //将当前分支的HEAD指针移动到&lt;commit&gt;提交,清空暂存区和工作区的修改<br></code></pre></td></tr></table></figure>
 
 <p>用大白话说就是<code>add</code>没了，<code>commit</code>没了，工作区也没了。<br>常常用在你这次改动彻底废了，想回到某个提交重新开始的时候。</p>
@@ -542,7 +542,7 @@
 <li><a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2">Pro Git 电子书</a></li>
 <li><a target="_blank" rel="noopener" href="https://learngitbranching.js.org/?locale=zh_CN">可视化理解 Git</a></li>
 </ul>
-<h2 id="Lirics-Sharing"><a href="#Lirics-Sharing" class="headerlink" title="Lirics Sharing"></a>Lirics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">是不是我能给的没他多<br>是否再绚烂的星河<br>天亮都要失色<br>听说你为他做的<br>件件是我 曾经求而不得<br>我够不着的烟火<br>偏偏降落 在别人窗口<br>那晚的风<br>吹到今天都还未凉透<br>才松开手<br>你却已握紧别的温柔<br></code></pre></td></tr></table></figure>
+<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">是不是我能给的没他多<br>是否再绚烂的星河<br>天亮都要失色<br>听说你为他做的<br>件件是我 曾经求而不得<br>我够不着的烟火<br>偏偏降落 在别人窗口<br>那晚的风<br>吹到今天都还未凉透<br>才松开手<br>你却已握紧别的温柔<br></code></pre></td></tr></table></figure>
 
                 
             </div>
@@ -667,7 +667,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Git指令集">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Git指令集">
                         
                         <span class="card-title">Git指令集</span>
                     </div>
@@ -721,7 +721,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="「BUAA-CO」P6课上">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="「BUAA-CO」P6课上">
                         
                         <span class="card-title">「BUAA-CO」P6课上</span>
                     </div>
