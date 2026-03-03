@@ -4,9 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="「BUAA-CO」 P6课下, Cordial-Kid">
-    <meta name="description" content="简介p6和P5的整体思路一样，区别在于P6将IM和DM模块放在了外部（课程组写好了代码），从而使得CPU更加纯粹，贴合实际。同时P6新增了乘除槽指令，由于乘除槽指令执行周期较长，因此我们在阻塞等方面要加以注意。废话不多说，我们开始吧。
-IF">
+    <meta name="keywords" content="Linux指令集, Cordial-Kid">
+    <meta name="description" content="写在前面Linux是一种开源的操作系统，在linux系统中，一切皆文件，因此命令行是与系统交互的主要方式。本文档将介绍一些常用的Linux指令，帮助你更好地理解和使用Linux系统。
+目录操作cdcd &amp;lt;目录路径&amp;gt;
+
+常见指令如">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -18,7 +20,7 @@ IF">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>「BUAA-CO」 P6课下 | Cordial-Kid</title>
+    <title>Linux指令集 | Cordial-Kid</title>
     <link rel="icon" type="image/png" href="/faviconme.png">
     
 
@@ -333,12 +335,12 @@ IF">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">「BUAA-CO」 P6课下</h1>
+                    <h1 class="description center-align post-title">Linux指令集</h1>
                 </div>
             </div>
         </div>
@@ -362,12 +364,8 @@ IF">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/BUAA/">
-                                <span class="chip bg-color">BUAA</span>
-                            </a>
-                        
-                            <a href="/tags/verilog/">
-                                <span class="chip bg-color">verilog</span>
+                            <a href="/tags/Linux/">
+                                <span class="chip bg-color">Linux</span>
                             </a>
                         
                     </div>
@@ -378,8 +376,8 @@ IF">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" class="post-category">
-                                计算机组成
+                            <a href="/categories/Linux/" class="post-category">
+                                Linux
                             </a>
                         
                     </div>
@@ -391,28 +389,28 @@ IF">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2026-01-23
+                    2026-03-03
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-01-23
+                    2026-03-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    9 分
                 </div>
                 
 
@@ -437,91 +435,144 @@ IF">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>p6和P5的整体思路一样，区别在于P6将IM和DM模块放在了外部（课程组写好了代码），从而使得CPU更加纯粹，贴合实际。同时P6新增了乘除槽指令，由于乘除槽指令执行周期较长，因此我们在阻塞等方面要加以注意。废话不多说，我们开始吧。</p>
-<h2 id="IFU-PC"><a href="#IFU-PC" class="headerlink" title="IFU -&gt; PC"></a>IFU -&gt; PC</h2><p>在P6实验中，IM外置，因此在P5的基础上，我们要删掉这部分，保留PC的同时在顶层模块mips新增接口与外置DM信息交换：<br><code>input [31:0] i_inst_rdata,      //F级PC对应的32位指令</code><br><code>output [31:0] i_inst_addr,      //F级PC</code></p>
-<h2 id="D-CMP"><a href="#D-CMP" class="headerlink" title="D_CMP"></a>D_CMP</h2><p>P6新增指令<code>BNE</code>,需要在D_CMP模块完成比较。</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> Beq_jump = (CMPOp == `CMP_BEQ &amp;&amp; RS_Data == RT_Data) ? <span class="number">1&#x27;b1</span> :</span><br><span class="line">                  (CMPOp == `CMP_BNE &amp;&amp; RS_Data != RT_Data) ? <span class="number">1&#x27;b1</span> :</span><br><span class="line">                  <span class="number">1&#x27;b0</span>;</span><br></pre></td></tr></table></figure>
+                <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>Linux是一种开源的操作系统，在linux系统中，<code>一切皆文件</code>，因此命令行是与系统交互的主要方式。本文档将介绍一些常用的Linux指令，帮助你更好地理解和使用Linux系统。</p>
+<h2 id="目录操作"><a href="#目录操作" class="headerlink" title="目录操作"></a>目录操作</h2><h3 id="cd"><a href="#cd" class="headerlink" title="cd"></a>cd</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> &lt;目录路径&gt;<br></code></pre></td></tr></table></figure>
 
-<h2 id="D-GRF"><a href="#D-GRF" class="headerlink" title="D_GRF"></a>D_GRF</h2><p>P6不需要<code>$display(&quot;%d@%h: $%d &lt;= %h&quot;,$time,PC,A3,WD);</code></p>
-<h2 id="def"><a href="#def" class="headerlink" title="def"></a>def</h2><p>这个模块其实本来没什么好说的，只要新增指令需要用到的变量我们在这里定义即可。在这里值得说明的是，虽然P6指令极多，但是笔者权衡之后依然采用每条指令独立考量的方式，没有像主流思路一样对指令进行分类。两种方式各有利弊，这里只能仁者见仁，智者见智了，举个例子。</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> GRFA3Sel = (cal_r | jalr | mf) ? `GRFA3rd :</span><br><span class="line">                (cal_i | load | mfc0) ? `GRFA3rt : </span><br><span class="line">                (jal) ? `GRFA331 : `GRFA30;</span><br></pre></td></tr></table></figure>
+<p>常见指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /    // 切换到根目录<br><span class="hljs-built_in">cd</span> ..   // 切换到上一级目录<br><span class="hljs-built_in">cd</span> ~    // 切换到当前用户的主目录<br><span class="hljs-built_in">cd</span> -    // 切换到上一次所在的目录<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">assign</span> GRFA3Sel = (Add|Sub|Sll|Jalr|_And|_Or|Slt|Sltu|Mfhi|Mflo) ? `GRFA3rd :</span><br><span class="line">                  (Ori | Lw | Lui | Addi | Andi | Lh | Lb) ? `GRFA3rt :</span><br><span class="line">                  (Jal) ? `GRFA331 :</span><br><span class="line">                  `GRFA30;</span><br></pre></td></tr></table></figure>
+<p>同时，<code>cd</code>命令也支持相对路径和绝对路径。例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> /home/user/Documents   // 绝对路径<br><span class="hljs-built_in">cd</span> ../Downloads           // 相对路径<br></code></pre></td></tr></table></figure>
 
-<p>显然，第二段代码要比第一段代码冗杂的多，这是我采用的写法的缺点。但是你也很容易发现，第一种写法将分类和不分类杂糅了起来，导致在coding时极度混乱，容易出错；而第二段代码因为是每条指令独立考虑的，也就不存在这个问题了。个人不太喜欢这种易错感觉，当然大家如何架构还是看自己心意🫡。</p>
-<h2 id="E-ALU"><a href="#E-ALU" class="headerlink" title="E_ALU"></a>E_ALU</h2><p>P6对ALU的改动就是增加了新的指令的计算方式<code>and,slt,sltu</code>。</p>
-<h2 id="E-MDU"><a href="#E-MDU" class="headerlink" title="E_MDU"></a>E_MDU</h2><p>乘除槽的实现是P6的重点和难点。我们要实现8条乘除法相关指令：<code>mult</code> <code>multu</code> <code>div</code> <code>divu</code> <code>mthi</code> <code>mtlo</code> <code>mfhi</code> <code>mflo</code>，前4条指令是计算乘除法，并将结果存入HI，LO两个寄存器中，后4条指令是对HI和LO的读写。<br>我们把MDU模块当作特殊的ALU，对于<strong>前四条指令</strong>，MDU要执行很多个周期并且不需要输出计算结果，只要在时钟上升沿时将计算结果存入HI，LO寄存器即可。对于<code>mfhi,mflo</code>则需要正常输出。对于<code>mthi,mtlo</code>，在时钟上升沿时写入对应寄存器即可，只需要<strong>执行一个周期</strong>。<br>代码如下：</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (reset) <span class="keyword">begin</span></span><br><span class="line">        HIreg &lt;= <span class="number">32&#x27;b0</span>;</span><br><span class="line">        LOreg &lt;= <span class="number">32&#x27;b0</span>;</span><br><span class="line">        cnt &lt;= <span class="number">4&#x27;b0</span>;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        <span class="keyword">if</span> (MDUOp == `MDU_MULT) <span class="keyword">begin</span></span><br><span class="line">            &#123;HIreg,LOreg&#125; &lt;= <span class="built_in">$signed</span>(A) * <span class="built_in">$signed</span>(B);</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (MDUOp == `MDU_MULTU) <span class="keyword">begin</span></span><br><span class="line">            &#123;HIreg,LOreg&#125; &lt;= A * B;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (MDUOp == `MDU_DIV) <span class="keyword">begin</span></span><br><span class="line">            HIreg &lt;= <span class="built_in">$signed</span>(A) % <span class="built_in">$signed</span>(B);</span><br><span class="line">            LOreg &lt;= <span class="built_in">$signed</span>(A) / <span class="built_in">$signed</span>(B); </span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (MDUOp == `MDU_DIVU) <span class="keyword">begin</span></span><br><span class="line">            HIreg &lt;= A % B;</span><br><span class="line">            LOreg &lt;= A / B;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (MDUOp == `MDU_MTHI) <span class="keyword">begin</span></span><br><span class="line">            HIreg &lt;= A;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (MDUOp == `MDU_MTLO) <span class="keyword">begin</span></span><br><span class="line">            LOreg &lt;= A;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="keyword">assign</span> MDUC = (MDUOp == `MDU_MFHI) ? HIreg :</span><br><span class="line">              (MDUOp == `MDU_MFLO) ? LOreg :</span><br><span class="line">              <span class="number">32&#x27;d0</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><p><code>ls</code> 用来查看当前目录下的<strong>文件</strong>和<strong>文件夹</strong>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span> &lt;目录路径&gt;<br></code></pre></td></tr></table></figure>
 
-<p>注：以下提到的乘除法计算均为<code>mult,multu,div,divu</code>。<br>关于阻塞，之前我们提到了乘除法的计算周期较长，为了不因为乘除法计算的存在而拉低CPU的最短时钟周期，我们引入了MDU。因此当MDU模块正在计算时，所有不进入MDU的指令都可以正常流水，这也就导致了MDU的阻塞与自身息息相关。当MDU执行乘除法计算时，</p>
-<ol>
-<li>出现了<code>mfhi,mflo</code>,将指令阻塞在D级。</li>
-<li>出现了<code>mult,multu,div,divu</code>,直接终止运算因为接下来要覆盖</li>
-<li>出现了<code>mthi,mtlo</code>,将指令阻塞在D级。</li>
-</ol>
-<p>当然课程组为了方便我们设计给了我们一些提示：</p>
-<ol>
-<li>当E级指令是<code>mult multu div divu</code>时，CTRL模块需要输出1个周期的1位<strong>start</strong>信号，表示乘除法计算开始；</li>
-<li>当start信号结束后，如果之前的计算指令是<code>mult multu</code>指令，MDU模块需要连续输出<strong>5</strong>个周期的<strong>busy</strong>信号，表示正在计算HI寄存器和LO寄存器的值；如果之前的计算指令是<code>div divu</code>指令，则需要连续输出<strong>10</strong>个周期的<strong>busy</strong>信号；</li>
-<li>当start信号或busy信号为1时，不进入MDU模块的指令正常流水，要进入MDU模块的所有指令均阻塞在D级；</li>
-<li>为了降低实现难度，保证MDU模块在进行乘除法计算时只会出现<code>mfhi mflo</code>两种乘除法指令。</li>
-</ol>
-<p>也就是说，对于乘除法计算指令涉及的阻塞，我们只要无脑阻塞在D级即可。</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">//CTRL</span></span><br><span class="line"><span class="keyword">assign</span> Start = Mult | Multu | Div | Divu;</span><br></pre></td></tr></table></figure>
+<p>常见指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">ls</span>         // 列出当前目录下的文件和文件夹<br><span class="hljs-built_in">ls</span> -1      //每行一个列出当前目录下的文件和文件夹<br><span class="hljs-built_in">ls</span> -a      // 列出当前目录下的所有文件和文件夹，包括隐藏文件<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">//E_MDU</span></span><br><span class="line"><span class="keyword">always</span> @(<span class="keyword">posedge</span> clk) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (reset) <span class="keyword">begin</span></span><br><span class="line">        ...</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">        ....</span><br><span class="line">        <span class="keyword">if</span> (Start) <span class="keyword">begin</span></span><br><span class="line">            <span class="keyword">if</span> (MDUOp == `MDU_DIV || MDUOp == `MDU_DIVU) <span class="keyword">begin</span></span><br><span class="line">                cnt &lt;= <span class="number">4&#x27;d10</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(MDUOp == `MDU_MULT || MDUOp == `MDU_MULTU) <span class="keyword">begin</span></span><br><span class="line">                cnt &lt;= <span class="number">4&#x27;d5</span>;</span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (cnt &gt; <span class="number">4&#x27;d0</span>) <span class="keyword">begin</span></span><br><span class="line">            cnt &lt;= cnt - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">assign</span> MDUC = (MDUOp == `MDU_MFHI) ? HIreg :</span><br><span class="line">                  (MDUOp == `MDU_MFLO) ? LOreg :</span><br><span class="line">                  <span class="number">32&#x27;d0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">assign</span> Busy = (cnt != <span class="number">4&#x27;d0</span>) ? <span class="number">1</span> : <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h3><p><code>mkdir</code> 用来创建新的目录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> &lt;目录名称&gt;<br></code></pre></td></tr></table></figure>
 
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Stall</span></span><br><span class="line"><span class="keyword">assign</span> E_stall_MDU = ((D_mult | D_multu | D_div | D_divu | D_mfhi | D_mflo | D_mthi | D_mtlo) &amp;&amp; (Start | Busy));</span><br></pre></td></tr></table></figure>
+<h3 id="rmdir"><a href="#rmdir" class="headerlink" title="rmdir"></a>rmdir</h3><p><code>rmdir</code> 用来删除<strong>空</strong>目录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rmdir</span> &lt;目录名称&gt;<br></code></pre></td></tr></table></figure>
 
-<p>这就完了吗？当然不是！观察一下<code>mfhi mflo</code>,他们读取hi和lo的值是要写入<code>rd</code>寄存器的，这就不可避免地带来了数据冲突，因此<code>E_Tnew = (E_Mfhi || E_Mflo) ? 1 : 0;</code></p>
-<p>如此，我们就顺利滑过了E_MDU，庆祝一下吧。</p>
-<h2 id="M-BE"><a href="#M-BE" class="headerlink" title="M_BE"></a>M_BE</h2><p>我们知道，P6实现了DM外置，所以在CPU内部要实现和外置DM的数据交互。M_BE位于DM之前，处理<strong>store</strong>类指令，这也很好理解，毕竟store是向DM写入数据；相应地，M_DE位于DM之后处理load类指令，因为load是从DM取出数据存入GRF中的。</p>
-<p>先来看M_BE。重要变量</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> [ <span class="number">3</span>:<span class="number">0</span>] M_Data_Byteen,  <span class="comment">//字节使能</span></span><br><span class="line"><span class="keyword">output</span> <span class="keyword">reg</span> [<span class="number">31</span>:<span class="number">0</span>] M_Data_Wdata    <span class="comment">//M级DM待写入的数据</span></span><br></pre></td></tr></table></figure>
+<h3 id="pwd"><a href="#pwd" class="headerlink" title="pwd"></a>pwd</h3><p><code>pwd</code> 用来显示当前所在的目录<strong>绝对路径</strong>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">pwd</span><br></code></pre></td></tr></table></figure>
 
-<p>四位<code>M_Data_Byteen</code>中的某一位为1代表对应的8位要写入数据，这里只要看仔细<code>sw,sh,sb</code>的Rtl语言正常翻译就行。</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">case</span> (BEOp)</span><br><span class="line">  `BE_SW: <span class="keyword">begin</span></span><br><span class="line">    M_Data_Byteen = <span class="number">4&#x27;b1111</span>;</span><br><span class="line">    M_Data_Wdata  = WD;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  `BE_SH: <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (Addr[<span class="number">1</span>] == <span class="number">0</span>) <span class="keyword">begin</span></span><br><span class="line">      M_Data_Byteen = <span class="number">4&#x27;b0011</span>;</span><br><span class="line">      M_Data_Wdata  = &#123;<span class="number">16&#x27;b0</span>, WD[<span class="number">15</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">      M_Data_Byteen = <span class="number">4&#x27;b1100</span>;</span><br><span class="line">      M_Data_Wdata  = &#123;WD[<span class="number">15</span>:<span class="number">0</span>], <span class="number">16&#x27;b0</span>&#125;;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  `BE_SB: <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (Addr[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b00</span>) <span class="keyword">begin</span></span><br><span class="line">      M_Data_Byteen = <span class="number">4&#x27;b0001</span>;</span><br><span class="line">      M_Data_Wdata  = &#123;<span class="number">24&#x27;b0</span>, WD[<span class="number">7</span>:<span class="number">0</span>]&#125;;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">if</span> (Addr[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b01</span>) <span class="keyword">begin</span></span><br><span class="line">      M_Data_Byteen = <span class="number">4&#x27;b0010</span>;</span><br><span class="line">      M_Data_Wdata  = &#123;<span class="number">16&#x27;b0</span>, WD[<span class="number">7</span>:<span class="number">0</span>], <span class="number">8&#x27;b0</span>&#125;;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">if</span> (Addr[<span class="number">1</span>:<span class="number">0</span>] == <span class="number">2&#x27;b10</span>) <span class="keyword">begin</span></span><br><span class="line">      M_Data_Byteen = <span class="number">4&#x27;b0100</span>;</span><br><span class="line">      M_Data_Wdata  = &#123;<span class="number">8&#x27;b0</span>, WD[<span class="number">7</span>:<span class="number">0</span>], <span class="number">16&#x27;b0</span>&#125;;</span><br><span class="line">    <span class="keyword">end</span> <span class="keyword">else</span> <span class="keyword">begin</span></span><br><span class="line">      M_Data_Byteen = <span class="number">4&#x27;b1000</span>;</span><br><span class="line">      M_Data_Wdata  = &#123;WD[<span class="number">7</span>:<span class="number">0</span>], <span class="number">24&#x27;b0</span>&#125;;</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">default</span>: <span class="keyword">begin</span></span><br><span class="line">    M_Data_Byteen = <span class="number">4&#x27;b0000</span>;</span><br><span class="line">    M_Data_Wdata  = <span class="number">32&#x27;b0</span>;</span><br><span class="line">  <span class="keyword">end</span></span><br><span class="line"><span class="keyword">endcase</span></span><br></pre></td></tr></table></figure>
+<p><strong>PS</strong>:所有的目录指令都要注意当前所处的目录位置。</p>
+<h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><h3 id="touch"><a href="#touch" class="headerlink" title="touch"></a>touch</h3><p><code>touch</code> 用来创建新的文件。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">touch</span> &lt;文件名称&gt;<br></code></pre></td></tr></table></figure>
 
-<h2 id="M-DE"><a href="#M-DE" class="headerlink" title="M_DE"></a>M_DE</h2><figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">case</span> (DEOp)</span><br><span class="line">        `DE_LW : <span class="keyword">begin</span> </span><br><span class="line">            RD = M_Data_Rdata;</span><br><span class="line">        <span class="keyword">end</span> </span><br><span class="line">        `DE_LH : <span class="keyword">begin</span></span><br><span class="line">            RD = &#123;&#123;<span class="number">16</span>&#123;M_Data_Rdata[<span class="number">16</span> * Addr[<span class="number">1</span>] + <span class="number">15</span>]&#125;&#125;,M_Data_Rdata[(<span class="number">16</span> * Addr[<span class="number">1</span>] + <span class="number">15</span>) -: <span class="number">16</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        `DE_LB : <span class="keyword">begin</span></span><br><span class="line">            RD = &#123;&#123;<span class="number">24</span>&#123;M_Data_Rdata[<span class="number">8</span> * Addr[<span class="number">1</span>:<span class="number">0</span>] + <span class="number">7</span>]&#125;&#125;,M_Data_Rdata[(<span class="number">8</span> * Addr[<span class="number">1</span>:<span class="number">0</span>] + <span class="number">7</span>) -: <span class="number">8</span>]&#125;;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">default</span>: <span class="keyword">begin</span></span><br><span class="line">            RD = <span class="number">32&#x27;b0</span>;</span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">endcase</span></span><br></pre></td></tr></table></figure>
+<h3 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h3><p><code>rm</code> 用来删除文件。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> &lt;文件名称&gt;<br></code></pre></td></tr></table></figure>
 
-<p><strong>Attention</strong>:<code>[(16 * Addr[1] + 15) -: 16]</code>这里是减，不要写成加法形式。千万别写成加法形式！！！</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>剩下的就是在CTRL里面进行小修小补，在Stall里面完善一下T_new,T_use，在mips里面添加新增的对外交互接口并找到他们对应的连线。此外，所有新添加的指令，除了乘除类，都在P5有过类似的指令，照着之前的添加即可。</p>
-<h2 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h2><ol>
-<li>为什么需要有单独的乘除法部件而不是整合进 ALU？为何需要有独立的 HI、LO 寄存器？</li>
-</ol>
-<p>答：因为乘除法的效率比ALU其他运输运算的效率要低很多（5&#x2F;10），不单独设计的话会让CPU整体效率降低，使用单独的HI，LO寄存器是因为乘除法需要两个寄存器来保存结果，和其他指令需要一个不一样。</p>
-<ol start="2">
-<li>真实的流水线 CPU 是如何使用实现乘除法的？请查阅相关资料进行简单说明。</li>
-</ol>
-<p>答：在真实的流水线 CPU 中，乘法通常有若干个较小的乘法单元组成（组合逻辑），然后每个周期计算特定的几位，依次累加起来，于是会在几个周期后得到正确的最终结果；除法通常使用试商法，通常也是使用组合逻辑在一个周期内计算 4 位左右的商，经过 8 个周期正好可以计算结束。</p>
-<ol start="3">
-<li>请结合自己的实现分析，你是如何处理 Busy 信号带来的周期阻塞的？</li>
-</ol>
-<p>答：当Busy或Start信号为1并且D级为乘除法指令的时候阻塞。</p>
-<ol start="4">
-<li>请问采用字节使能信号的方式处理写指令有什么好处？（提示：从清晰性、统一性等角度考虑）</li>
-</ol>
-<p>答：可以在sh和sb的时候只传入写使能信号和数据，不需要为他们单独设计电路，实现高内聚低耦合。</p>
-<ol start="5">
-<li>请思考，我们在按字节读和按字节写时，实际从 DM 获得的数据和向 DM 写入的数据是否是一字节？在什么情况下我们按字节读和按字节写的效率会高于按字读和按字写呢？</li>
-</ol>
-<p>答：不是，是4字节。处理单字节 &#x2F; 非连续字节数据时。</p>
-<ol start="6">
-<li>为了对抗复杂性你采取了哪些抽象和规范手段？这些手段在译码和处理数据冲突的时候有什么样的特点与帮助？</li>
-</ol>
-<p>答：应当按照cal_r,cal_i,load,store,mult&#x2F;div,branch,jump来分类指令，这样可以将同类型的指令在生成控制信号的时候统一处理。但是我没这么干，感觉这种分类标准不统一，在实现的时候反而要思前想后，相比于单个指令的实现，我还是觉得两者的复杂度相差不大。</p>
-<ol start="7">
-<li>在本实验中你遇到了哪些不同指令类型组合产生的冲突？你又是如何解决的？相应的测试样例是什么样的？</li>
-</ol>
-<p>答：</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line">mult $<span class="number">1</span>, $<span class="number">2</span></span><br><span class="line">mfhi $<span class="number">3</span></span><br><span class="line">mflo $<span class="number">4</span></span><br></pre></td></tr></table></figure>
+<p>常见指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">rm</span> -i &lt;文件名称&gt;   // 删除文件前进行确认<br><span class="hljs-built_in">rm</span> -f &lt;文件名称&gt;   // 强制删除文件，不进行确认<br><span class="hljs-built_in">rm</span> -r &lt;目录名称&gt;   // 递归删除目录及其内容<br></code></pre></td></tr></table></figure>
 
-<p>将mfhi和mflo阻塞在D级</p>
-<ol start="8">
-<li>如果你是手动构造的样例，请说明构造策略，说明你的测试程序如何保证覆盖了所有需要测试的情况；如果你是完全随机生成的测试样例，请思考完全随机的测试程序有何不足之处；如果你在生成测试样例时采用了特殊的策略，比如构造连续数据冒险序列，请你描述一下你使用的策略如何结合了随机性达到强测的效果。</li>
-</ol>
-<p>答：在手动构造数据的时候，在P5的基础上，加入连续操作乘除法的指令，并且在乘除法之间的5-10周期内加入其他指令，来检测新增的指令是否有错误。</p>
-<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">爱是愚人的国度</span><br><span class="line">不能自拔不懂退出</span><br><span class="line">我们都回不去最初</span><br><span class="line">曾美丽但还是不满足</span><br><span class="line">爱是自愚愚人演出</span><br><span class="line">答案清楚才能谢幕</span><br><span class="line">剧情 是笑 是哭</span><br><span class="line">爱是愚人的国度</span><br><span class="line">看我们演的好辛苦</span><br><span class="line">是你所谓的领悟</span><br><span class="line">我不懂我不哭</span><br><span class="line">看悲欢喜怒每一步</span><br><span class="line">是疲惫还是依赖的束缚</span><br><span class="line">来 你能不能再重复</span><br><span class="line">让我懂让我哭</span><br></pre></td></tr></table></figure>
+<h3 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h3><p><code>cp</code> 用来复制文件或目录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> &lt;源文件或目录&gt; &lt;目标目录&gt;<br></code></pre></td></tr></table></figure>
+
+<p>常见指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cp</span> &lt;源文件&gt; &lt;目标目录&gt;   // 复制文件到目标目录<br><span class="hljs-built_in">cp</span> -r &lt;源目录&gt; &lt;目标目录&gt; // 递归复制目录及其内容到目标目录<br></code></pre></td></tr></table></figure>
+
+<h3 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h3><p><code>mv</code> 用来移动或重命名文件或目录。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">move &lt;源文件或目录&gt; &lt;目标目录或新名称&gt;<br></code></pre></td></tr></table></figure>
+
+<p>常见指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mv</span> &lt;源文件&gt; &lt;目标目录&gt;   // 移动文件到目标目录<br><span class="hljs-built_in">mv</span> &lt;源目录&gt; &lt;目标目录&gt;   // 移动目录到目标目录<br><span class="hljs-built_in">mv</span> &lt;源文件或目录&gt; &lt;新名称&gt; // 重命名文件或目录<br></code></pre></td></tr></table></figure>
+
+<h3 id="diff"><a href="#diff" class="headerlink" title="diff"></a>diff</h3><p><code>diff</code> 用来比较两个文件或目录的内容差异。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">diff &lt;文件或目录1&gt; &lt;文件或目录2&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h3><p><code>vim</code> 是一个强大的文本编辑器，用于编辑文件。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">vim &lt;文件名称&gt;  // 打开文件进行编辑<br>I              // 进入插入模式，可以编辑文件内容<br>edit           // 编辑文件内容<br>Esc            // 退出插入模式，回到命令模式<br>Shift + ;      // 进入命令模式，可以执行保存、退出等命令<br>wq             // 保存并退出<br>./&lt;文件名称&gt;    // 文件运行<br></code></pre></td></tr></table></figure>
+
+<h3 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h3><p><code>cat</code> 用来查看文件内容。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &lt;文件名称&gt;<br></code></pre></td></tr></table></figure>
+
+<h2 id="文件查找"><a href="#文件查找" class="headerlink" title="文件查找"></a>文件查找</h2><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p><code>find</code> 用于查找某个名字的文件。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">find &lt;路径&gt; -name <span class="hljs-string">&quot;&lt;文件名&gt;&quot;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="tree"><a href="#tree" class="headerlink" title="tree"></a>tree</h3><p><code>tree</code> 用来以树状结构显示目录结构。</p>
+<p>常见指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">tree       //显示当前目录的树状结构<br>tree &lt;目录&gt;  //显示指定目录的树状结构<br>tree -d      //只显示目录，不显示文件<br>tree -a    //显示所有文件和目录，包括隐藏文件<br>tree -L &lt;层级&gt;  //限制显示的目录层级<br></code></pre></td></tr></table></figure>
+
+<h2 id="gcc"><a href="#gcc" class="headerlink" title="gcc"></a>gcc</h2><p><code>gcc</code> 是GNU编译器套件，用于编译C语言程序。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">gcc &lt;源文件.c&gt; -o &lt;输出文件&gt;<br>./&lt;输出文件&gt;  // 运行编译后的程序<br></code></pre></td></tr></table></figure>
+
+<h2 id="快捷键操作"><a href="#快捷键操作" class="headerlink" title="快捷键操作"></a>快捷键操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">Ctrl + C   // 终止当前正在运行的命令<br>Ctrl + Z   // 暂停当前正在运行的命令<br>Ctrl + D   // 结束输入，通常用于退出终端或结束文件输入<br>Ctrl + A   // 将光标移动到行首<br>Ctrl + E   // 将光标移动到行尾<br>Ctrl + U   // 删除光标前的内容<br>Ctrl + K   // 删除光标后的内容<br>Ctrl + L   // 清屏<br>Up Arrow   // 显示之前输入的命令<br>Down Arrow // 显示之后输入的命令<br>Tab        // 自动补全命令或文件名<br></code></pre></td></tr></table></figure>
+
+<h2 id="make-makefile"><a href="#make-makefile" class="headerlink" title="make &amp; makefile"></a>make &amp; makefile</h2><p><code>make</code> 是一个自动化构建工具，用于管理和自动化编译过程。<code>makefile</code> 是一个文本文件，定义了构建规则和依赖关系。</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><code class="hljs Makefile"><span class="hljs-section">target: dependencies</span><br>    command<br></code></pre></td></tr></table></figure>
+
+<p>一个例子：</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><code class="hljs Makefile"><span class="hljs-section">my_app: main.o utils.o</span><br>    gcc main.o utils.o -o my_app<br><br><span class="hljs-section">main.o: main.c</span><br>    gcc -c main.c<br><br><span class="hljs-section">utils.o: utils.c</span><br>    gcc -c utils.c<br></code></pre></td></tr></table></figure>
+
+<h2 id="Bash-脚本"><a href="#Bash-脚本" class="headerlink" title="Bash 脚本"></a>Bash 脚本</h2><p>bash 脚本是一种用来自动化执行一系列命令的脚本文件。它以<code>.sh</code>为扩展名，包含了Linux命令和控制结构。</p>
+<p>一个简单的 bash 脚本包括三部分：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash  // 指定脚本的解释器</span><br><span class="hljs-comment"># 这是一个注释</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello, World!&quot;</span>  // 输出文本<br></code></pre></td></tr></table></figure>
+
+<p>如果在执行 bash 脚本时遇到权限问题，可以使用以下命令赋予执行权限：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> +x &lt;脚本文件.sh&gt;<br></code></pre></td></tr></table></figure>
+
+<p>然后可以通过以下命令运行脚本：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">./&lt;脚本文件.sh&gt;<br></code></pre></td></tr></table></figure>
+
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><p>在 bash 脚本中，可以使用变量来存储和操作数据。变量不需要声明，直接赋值即可。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>name=<span class="hljs-string">&quot;Alice&quot;</span>  // 定义变量,注意等号两边不能有空格<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello, <span class="hljs-variable">$name</span>!&quot;</span>  // 使用变量<br></code></pre></td></tr></table></figure>
+
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><p>bash 脚本可以接受命令行参数，这些参数在脚本中通过特殊变量访问。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;第一个参数: <span class="hljs-variable">$1</span>&quot;</span>  // 第一个参数<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;第二个参数: <span class="hljs-variable">$2</span>&quot;</span>  // 第二个参数<br></code></pre></td></tr></table></figure>
+
+<p>执行<code>./&lt;脚本文件.sh&gt; arg1 arg2</code>会输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">第一个参数: arg1<br>第二个参数: arg2<br></code></pre></td></tr></table></figure>
+
+<p>两个特殊的参数：</p>
+<p>**$#**：表示传递给脚本的参数个数。<br>**$***：表示传递给脚本的所有参数，作为一个字符串。</p>
+<h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> condition<br><span class="hljs-keyword">then</span><br>    <span class="hljs-comment"># 条件为真时执行的命令</span><br><span class="hljs-keyword">elif</span> another_condition<br><span class="hljs-keyword">then</span><br>    <span class="hljs-comment"># 另一个条件为真时执行的命令</span><br><span class="hljs-keyword">else</span><br>    <span class="hljs-comment"># 条件都不满足时执行的命令</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">while</span> condition<br><span class="hljs-keyword">do</span> <br>    <span class="hljs-comment"># 条件为真时执行的命令</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">function_name</span></span>() &#123;<br>    <span class="hljs-comment"># 函数体</span><br>    <span class="hljs-built_in">return</span> int_value  // 可选，返回一个整数值<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>Attention</strong>:函数调用时需要用<code>$?</code>来获取函数的返回值。</p>
+<h3 id="Bash-脚本语法"><a href="#Bash-脚本语法" class="headerlink" title="Bash 脚本语法"></a>Bash 脚本语法</h3><p>未完待写</p>
+<h2 id="文件编辑"><a href="#文件编辑" class="headerlink" title="文件编辑"></a>文件编辑</h2><p>之前了解到<code>vim</code>可以用来编辑文件，接下来介绍文本编辑常用的三驾马车：<code>grep</code>、<code>sed</code>和<code>awk</code>。</p>
+<h3 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h3><p><code>grep</code> 用于在文本中搜索匹配的字符串。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">grep <span class="hljs-string">&quot;要查找的字符串&quot;</span> &lt;文件名&gt;<br></code></pre></td></tr></table></figure>
+
+<p>常用指令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">grep -i <span class="hljs-string">&quot;要查找的字符串&quot;</span> &lt;文件名&gt;   // 忽略大小写进行搜索<br>grep -r <span class="hljs-string">&quot;要查找的字符串&quot;</span> &lt;目录&gt;     // 在目录及其子目录中递归搜索<br>grep -n <span class="hljs-string">&quot;要查找的字符串&quot;</span> &lt;文件名&gt;   // 显示匹配行的行号<br></code></pre></td></tr></table></figure>
+
+<h3 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h3><p>sed 是一个流编辑器，用于对文本进行替换、删除、插入等操作。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sed [选项] <span class="hljs-string">&#x27;命令&#x27;</span> &lt;文件名&gt;<br></code></pre></td></tr></table></figure>
+
+<p>选项主要有：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">-i    // 直接修改文件内容，否则不改变文件，只在终端输出<br>-n    // 只输出被修改的行，否则输出整个文件<br></code></pre></td></tr></table></figure>
+
+<p>常用命令如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sed <span class="hljs-string">&#x27;2a 要插入的文本&#x27;</span> &lt;文件名&gt;   // 在第2行后插入文本(Append)<br>sed <span class="hljs-string">&#x27;2i 要插入的文本&#x27;</span> &lt;文件名&gt;   // 在第2行前插入文本(Insert)<br>sed <span class="hljs-string">&#x27;2c 要替换的文本&#x27;</span> &lt;文件名&gt;   // 替换第2行的文本(Change)<br>sed <span class="hljs-string">&#x27;2d&#x27;</span> &lt;文件名&gt;              // 删除第2行(Delete)<br>sed -n <span class="hljs-string">&#x27;2p&#x27;</span> &lt;文件名&gt;           // 只输出第2行(Print)<br>sed <span class="hljs-string">&#x27;s/要替换的字符串/替换后的字符串/g&#x27;</span> &lt;文件名&gt;  // 替换文件中所有匹配的字符串(Substitute)<br></code></pre></td></tr></table></figure>
+
+<h3 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h3><p>未完待写</p>
+<h2 id="重定向"><a href="#重定向" class="headerlink" title="重定向"></a>重定向</h2><p>重定向是指将命令的输入或输出重定向到文件或其他命令。Linux中有三种标准流：标准输入（stdin）、标准输出（stdout）和标准错误（stderr）。重定向可以用来将这些流重定向到文件或其他命令。</p>
+<h3 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">command</span> &gt; file.txt   // 将命令的输出重定向到文件，覆盖原有内容<br><span class="hljs-built_in">command</span> &gt;&gt; file.txt  // 将命令的输出重定向到文件，追加到原有内容<br><span class="hljs-built_in">command</span> 2&gt; error.txt  // 将命令的错误输出重定向到文件，覆盖原有内容<br><span class="hljs-built_in">command</span> 2&gt;&gt; error.txt // 将命令的错误输出重定向到文件，追加到原有内容<br></code></pre></td></tr></table></figure>
+
+<h3 id="输入重定向"><a href="#输入重定向" class="headerlink" title="输入重定向"></a>输入重定向</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">command</span> &lt; input.txt   // 将文件的内容作为命令的输入<br></code></pre></td></tr></table></figure>
+
+<p>举个例子：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &lt; input.txt   // 将input.txt的内容输出到终端<br>grep <span class="hljs-string">&quot;要查找的字符串&quot;</span> &lt; input.txt  // 在input.txt中搜索匹配的字符串<br></code></pre></td></tr></table></figure>
+
+<h2 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h2><p>管道（|）用于将一个命令的输出作为另一个命令的输入。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">command1 | command2   // 将command1的输出作为command2的输入<br></code></pre></td></tr></table></figure>
+
+<p>几个明显的例子：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> file.txt | grep <span class="hljs-string">&quot;要查找的字符串&quot;</span>   // 在file.txt中搜索匹配的字符串<br><span class="hljs-built_in">cat</span> a.txt | <span class="hljs-built_in">cat</span> &gt;&gt; b.txt   // 将a.txt的内容追加到b.txt中<br></code></pre></td></tr></table></figure>
+
+<h2 id="Lyrics-Shring"><a href="#Lyrics-Shring" class="headerlink" title="Lyrics Shring"></a>Lyrics Shring</h2><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">一叶轻船<br>一双月对半<br>一帘清梦悠悠醉意阑珊<br>移舟靠岸<br>案前唯剩空盏<br>莫怨良辰短<br>曲终了韵意未完<br></code></pre></td></tr></table></figure>
+
+<h2 id="致歉"><a href="#致歉" class="headerlink" title="致歉"></a>致歉</h2><p>本篇博客写于笔者操作系统课程学习期间，内容可能存在不完善之处，如果浪费了您宝贵的时间，笔者深表歉意。后续会继续更新完善，欢迎大家提出宝贵意见和建议。</p>
+<p>Thanks for reading!</p>
+
                 
             </div>
             <hr/>
@@ -547,7 +598,7 @@ IF">
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://Cordial-Kid.github.io/2026/01/23/P6%E8%AF%BE%E4%B8%8B/">https://Cordial-Kid.github.io/2026/01/23/P6%E8%AF%BE%E4%B8%8B/</a>
+                    <a href="https://Cordial-Kid.github.io/2026/03/03/Linux%E6%8C%87%E4%BB%A4/">https://Cordial-Kid.github.io/2026/03/03/Linux%E6%8C%87%E4%BB%A4/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -585,12 +636,8 @@ IF">
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/BUAA/">
-                                    <span class="chip bg-color">BUAA</span>
-                                </a>
-                            
-                                <a href="/tags/verilog/">
-                                    <span class="chip bg-color">verilog</span>
+                                <a href="/tags/Linux/">
+                                    <span class="chip bg-color">Linux</span>
                                 </a>
                             
                         </div>
@@ -636,17 +683,18 @@ IF">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2026/01/23/P6%E8%AF%BE%E4%B8%8A/">
+                <a href="/2026/03/03/Linux%E6%8C%87%E4%BB%A4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="「BUAA-CO」P6课上">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Linux指令集">
                         
-                        <span class="card-title">「BUAA-CO」P6课上</span>
+                        <span class="card-title">Linux指令集</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -656,30 +704,27 @@ IF">
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2026-01-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" class="post-category">
-                                    计算机组成
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/BUAA/">
-                        <span class="chip bg-color">BUAA</span>
-                    </a>
-                    
-                    <a href="/tags/verilog/">
-                        <span class="chip bg-color">verilog</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
                 </div>
@@ -693,13 +738,13 @@ IF">
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2026/01/21/P5%E8%AF%BE%E4%B8%8B/">
+                <a href="/2026/01/26/Git/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="「BUAA-CO」 P5课下">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Git指令集">
                         
-                        <span class="card-title">「BUAA-CO」 P5课下</span>
+                        <span class="card-title">Git指令集</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -710,14 +755,14 @@ IF">
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90/" class="post-category">
-                                    计算机组成
+                            <a href="/categories/Git/" class="post-category">
+                                    Git
                                 </a>
                             
                             
@@ -727,12 +772,12 @@ IF">
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/BUAA/">
-                        <span class="chip bg-color">BUAA</span>
+                    <a href="/tags/Linux/">
+                        <span class="chip bg-color">Linux</span>
                     </a>
                     
-                    <a href="/tags/verilog/">
-                        <span class="chip bg-color">verilog</span>
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
                     </a>
                     
                 </div>

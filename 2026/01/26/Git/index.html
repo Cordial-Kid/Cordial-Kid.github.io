@@ -332,7 +332,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -397,21 +397,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-01-26
+                    2026-03-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.1k
+                    3.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    12 分
                 </div>
                 
 
@@ -516,10 +516,10 @@
 <h3 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git checkout &lt;commit&gt; -- &lt;文件名&gt;    //将工作区的文件恢复到&lt;commit&gt;提交的状态,同时自动add到暂存区<br></code></pre></td></tr></table></figure>
 
 <p>这个命令会将指定文件恢复到<commit>提交的状态，丢弃工作区中的所有修改。注意，这个操作是不可逆的，一旦执行，工作区中的修改将无法找回。</p>
-<p><strong>易踩的坑</strong>: 如果去掉文件名，执行<code>git checkout &lt;commit&gt;</code>会把你的所有工作区的文件恢复到指定提交时的状态，但是此时，你的<code>HEAD</code>指针会被移动到该提交上，处于<strong>分离头指针</strong>状态。如果你在这个状态下进行新的提交，这些提交将不会属于任何分支，容易导致丢失。此时你执行<code>git checkout &lt;分支名&gt;</code>可以回到正常状态，但是这也会导致工作区的文件回到该分支的最新状态,即<code>checkout</code>之前的状态。所以，这一操作一般用来<strong>看</strong>历史，而不是<strong>改</strong>历史.</p>
+<p><strong>易踩的坑</strong>: 如果去掉文件名，执行<code>git checkout &lt;commit&gt;</code>会把你的所有工作区的文件恢复到指定提交时的状态，但是此时，你的<code>HEAD</code>指针会被移动到该提交上，处于<strong>分离头指针</strong>状态。如果你在这个状态下进行新的提交，这些提交将不会属于任何分支，容易导致丢失。此时你执行<code>git checkout &lt;分支名&gt;</code>可以回到正常状态，但是这也会导致工作区的文件回到该分支的最新状态,即<code>git checkout &lt;commit&gt;</code>之前的状态。所以，这一操作一般用来<strong>看</strong>历史，而不是<strong>改</strong>历史.</p>
 <h3 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h3><h4 id="–soft"><a href="#–soft" class="headerlink" title="–soft"></a>–soft</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git reset --soft &lt;commit&gt;    //将当前分支的HEAD指针移动到&lt;commit&gt;提交,保留暂存区和工作区的修改<br></code></pre></td></tr></table></figure>
 
-<p>用大白话说就是<code>add</code>还在，<code>commit</code>没了。<br>常常用在你想修改提交说明的时候。</p>
+<p>用大白话说就是工作区还在，<code>add</code>还在，<code>commit</code>没了。<br>常常用在你想修改提交说明的时候。</p>
 <h4 id="–mixed-默认"><a href="#–mixed-默认" class="headerlink" title="–mixed (默认)"></a>–mixed (默认)</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git reset --mixed &lt;commit&gt;    //将当前分支的HEAD指针移动到&lt;commit&gt;提交,保留工作区的修改,清空暂存区<br></code></pre></td></tr></table></figure>
 
 <p>用大白话说就是<code>add</code>没了，<code>commit</code>没了,工作区还在。<br>常常用在你想重新选择要提交的文件的时候。</p>
@@ -530,7 +530,13 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git revert &lt;commit&gt;    //撤销&lt;commit&gt;提交的更改，在本地仓库生成一个新的提交<br></code></pre></td></tr></table></figure>
 
 <p>常常用在你已经将更改推送到<strong>远程仓库</strong>，但又想撤销某个提交的情况下。因为它不会修改提交历史，所以不会影响其他协作者的工作。</p>
-<p>你可以理解为在团队协作过程中不能轻易修改远程仓库的历史提交记录。</p>
+<p>你可以理解为在团队协作过程中不能轻易修改远程仓库的历史提交记录，所以只能新增一条提交来表示撤销之前的修改。</p>
+<h3 id="restore"><a href="#restore" class="headerlink" title="restore"></a>restore</h3><p>在修改了一个文件并且还没有将其<code>add</code>到暂存区之前，如果你想放弃对该文件的修改，可以使用<code>git restore</code>命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git restore &lt;文件名&gt;    //放弃对&lt;文件名&gt;的修改，恢复到上一次提交的状态<br></code></pre></td></tr></table></figure>
+
+<p>如果你已经将修改<code>add</code>到暂存区，但还没有提交，可以使用以下命令来撤销暂存区的修改：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git restore --staged &lt;文件名&gt;    //撤销&lt;文件名&gt;在暂存区的修改，保留工作区的修改<br></code></pre></td></tr></table></figure>
+
 <h3 id="reflog"><a href="#reflog" class="headerlink" title="reflog"></a>reflog</h3><p>reflog是Git的一个强大功能，用于记录HEAD指针的移动历史。可以说是我们在误操作后找回丢失提交的最后一道防线。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git reflog    //查看HEAD指针的移动历史<br>git reset --hard &lt;reflog条目&gt;    //将当前分支的HEAD指针移动到指定的reflog条目<br></code></pre></td></tr></table></figure>
 
@@ -658,18 +664,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2026/01/26/Git/">
+                <a href="/2026/03/03/Linux%E6%8C%87%E4%BB%A4/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="Git指令集">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Linux指令集">
                         
-                        <span class="card-title">Git指令集</span>
+                        <span class="card-title">Linux指令集</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -679,31 +684,26 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-01-26
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-03-03
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Git/" class="post-category">
-                                    Git
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
                     <a href="/tags/Linux/">
                         <span class="chip bg-color">Linux</span>
-                    </a>
-                    
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
                     </a>
                     
                 </div>
@@ -721,7 +721,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="「BUAA-CO」P6课上">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="「BUAA-CO」P6课上">
                         
                         <span class="card-title">「BUAA-CO」P6课上</span>
                     </div>
@@ -897,7 +897,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">23.7k</span>
+                        class="white-color">26.3k</span>
             
             
             
