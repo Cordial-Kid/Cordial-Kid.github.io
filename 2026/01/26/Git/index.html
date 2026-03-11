@@ -332,7 +332,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -397,14 +397,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-03-03
+                    2026-03-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.3k
+                    3.4k
                 </div>
                 
 
@@ -515,7 +515,7 @@
 <p><strong>重中之重</strong>：恢复和回退一定要在操作之前知道后果是什么，否则你是真的欲哭无泪啊！</p>
 <h3 id="checkout"><a href="#checkout" class="headerlink" title="checkout"></a>checkout</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git checkout &lt;commit&gt; -- &lt;文件名&gt;    //将工作区的文件恢复到&lt;commit&gt;提交的状态,同时自动add到暂存区<br></code></pre></td></tr></table></figure>
 
-<p>这个命令会将指定文件恢复到<commit>提交的状态，丢弃工作区中的所有修改。注意，这个操作是不可逆的，一旦执行，工作区中的修改将无法找回。</p>
+<p>这个命令会将指定文件恢复到<commit>提交的状态，丢弃工作区中的所有修改。注意，这个操作是不可逆的，一旦执行，工作区中的修改将无法找回。<strong>注意</strong>, <code>git checkout &lt;文件名&gt;</code> 会优先将<code>工作区</code>恢复到<code>暂存区</code>的状态,如果<code>暂存区</code>没有该文件的修改，会将工作区恢复到上一次 <code>commit</code> 的状态。</p>
 <p><strong>易踩的坑</strong>: 如果去掉文件名，执行<code>git checkout &lt;commit&gt;</code>会把你的所有工作区的文件恢复到指定提交时的状态，但是此时，你的<code>HEAD</code>指针会被移动到该提交上，处于<strong>分离头指针</strong>状态。如果你在这个状态下进行新的提交，这些提交将不会属于任何分支，容易导致丢失。此时你执行<code>git checkout &lt;分支名&gt;</code>可以回到正常状态，但是这也会导致工作区的文件回到该分支的最新状态,即<code>git checkout &lt;commit&gt;</code>之前的状态。所以，这一操作一般用来<strong>看</strong>历史，而不是<strong>改</strong>历史.</p>
 <h3 id="reset"><a href="#reset" class="headerlink" title="reset"></a>reset</h3><h4 id="–soft"><a href="#–soft" class="headerlink" title="–soft"></a>–soft</h4><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git reset --soft &lt;commit&gt;    //将当前分支的HEAD指针移动到&lt;commit&gt;提交,保留暂存区和工作区的修改<br></code></pre></td></tr></table></figure>
 
@@ -541,6 +541,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git reflog    //查看HEAD指针的移动历史<br>git reset --hard &lt;reflog条目&gt;    //将当前分支的HEAD指针移动到指定的reflog条目<br></code></pre></td></tr></table></figure>
 
 <p>reflog条目通常以<code>HEAD@&#123;n&#125;</code>的形式表示，其中<code>n</code>是一个整数，表示从当前HEAD位置向后数的第n次移动。</p>
+<p><strong>总而言之</strong>，git的回退操作由于版本差异很多操作的实现方式虽然不同，但是功能是大差不差的，大家在实践过程中关键是要找到自己顺手的操作方式。</p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文档介绍了Git的基本概念和常用指令，包括配置、远程仓库关联、文件提交、文件拉取、分支管理、查看提交历史以及恢复和回退等内容。掌握这些指令将帮助你更有效地使用Git进行版本控制和协作开发。<br>纸上得来终觉浅，绝知此事要躬行。希望大家在实际应用中学习Git，而不是看着Blog纸上谈兵。<br>Git功能强大，本文档只是冰山一角，建议在实际使用中不断学习和探索更多高级功能。祝你在使用Git的旅程中一切顺利！</p>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://git-scm.com/doc">Git官方文档</a></li>
@@ -721,7 +722,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="「BUAA-CO」P6课上">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="「BUAA-CO」P6课上">
                         
                         <span class="card-title">「BUAA-CO」P6课上</span>
                     </div>
@@ -897,7 +898,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">31k</span>
+                        class="white-color">33k</span>
             
             
             

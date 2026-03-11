@@ -332,7 +332,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -397,7 +397,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-03-04
+                    2026-03-05
                 </div>
                 
 
@@ -478,7 +478,7 @@
 <p>看代码:</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">interface</span> <span class="hljs-title class_">Flyable</span> &#123;<br>    <span class="hljs-keyword">void</span> <span class="hljs-title function_">fly</span><span class="hljs-params">()</span>;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Bird</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Flyable</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fly</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;Bird is flying&quot;</span>);<br>    &#125;<br>&#125;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Main</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Flyable</span> <span class="hljs-variable">f</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Bird</span>(); <span class="hljs-comment">//接口引用指向实现类对象</span><br>        f.fly(); <span class="hljs-comment">//输出: Bird is flying</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>注意，这里解释一下<code>Flyable f = new Bird()</code>,很多同学可能会有疑问，为什么不定义成<code>Bird f = new Bird()</code>呢？答案式为了实现代码解耦。下面我们看一下两种实现方式的区别：</p>
+<p>注意，这里解释一下<code>Flyable f = new Bird()</code>,很多同学可能会有疑问，为什么不定义成<code>Bird f = new Bird()</code>呢？答案式为了实现代码解耦，提高扩展性。下面我们看一下两种实现方式的区别：</p>
 <p>&#x2F;&#x2F;方式一:接口引用指向实现类对象<br>如果我们未来想把 <code>f</code>换成一个<code>Plane</code>类的对象，只要<code>Plane</code>实现了<code>Flyable</code>接口，我们只需要直接将<code>new Bird()</code>改成<code>new Plane()</code>即可，而不需要修改其他代码。</p>
 <p>&#x2F;&#x2F;方式二:具体类引用<br>我们需要修改所有用到<code>f</code>的地方，把<code>Bird</code>全改成<code>Plane</code>,改着改着就错了😥。<del>不信可以试试</del></p>
 <h3 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h3><h4 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h4><p>单例模式确保一个类只能有一个实例，并提供一个全局访问点。简单来说就是<strong>利用唯一性来优化资源利用，保证数据一致</strong>。这也就决定了单例模式的几个特性：</p>
@@ -711,18 +711,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2026/03/04/OOPre%E9%97%AF%E5%85%B3%E6%9C%89%E6%84%9F/">
+                <a href="/2026/03/05/GDB/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="「BUAA-OO」&#34;浅谈&#34;OOPre">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="GDB的艺术">
                         
-                        <span class="card-title">「BUAA-OO」&#34;浅谈&#34;OOPre</span>
+                        <span class="card-title">GDB的艺术</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -732,31 +731,30 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-03-04
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2026-03-05
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-category">
-                                    面向对象
+                            <a href="/categories/linux/" class="post-category">
+                                    linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/BUAA/">
-                        <span class="chip bg-color">BUAA</span>
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
+                    <a href="/tags/gdb/">
+                        <span class="chip bg-color">gdb</span>
                     </a>
                     
                 </div>
@@ -946,7 +944,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">31k</span>
+                        class="white-color">33k</span>
             
             
             
