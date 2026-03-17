@@ -396,21 +396,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-03-11
+                    2026-03-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.9k
+                    4.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    17 分
                 </div>
                 
 
@@ -511,10 +511,10 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">-i    // 直接修改文件内容，否则不改变文件，只在终端输出<br>-n    // 只输出被修改的行，否则输出整个文件<br></code></pre></td></tr></table></figure>
 
 <p>常用命令如下，注意一般情况下使用单引号 <code>&#39;</code> 来包裹命令。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sed <span class="hljs-string">&#x27;2a 要插入的文本&#x27;</span> &lt;文件名&gt;   // 在第2行后插入文本(Append)<br>sed <span class="hljs-string">&#x27;2i 要插入的文本&#x27;</span> &lt;文件名&gt;   // 在第2行前插入文本(Insert)<br>sed <span class="hljs-string">&#x27;2c 要替换的文本&#x27;</span> &lt;文件名&gt;   // 替换第2行的文本(Change)<br>sed <span class="hljs-string">&#x27;2d&#x27;</span> &lt;文件名&gt;              // 删除第2行(Delete)<br>sed -n <span class="hljs-string">&#x27;2p&#x27;</span> &lt;文件名&gt;           // 只输出第2行(Print)<br>sed <span class="hljs-string">&#x27;s/要替换的字符串/替换后的字符串/g&#x27;</span> &lt;文件名&gt;  // 替换文件中所有匹配的字符串(Substitute)<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">sed <span class="hljs-string">&#x27;2a 要插入的文本&#x27;</span> &lt;文件名&gt;   // 在第2行后插入文本(Append)<br>sed <span class="hljs-string">&#x27;2i 要插入的文本&#x27;</span> &lt;文件名&gt;   // 在第2行前插入文本(Insert)<br>sed <span class="hljs-string">&#x27;2c 要替换的文本&#x27;</span> &lt;文件名&gt;   // 替换第2行的文本(Change)<br>sed <span class="hljs-string">&#x27;2d&#x27;</span> &lt;文件名&gt;              // 删除第2行(Delete)<br>sed -n <span class="hljs-string">&#x27;2p&#x27;</span> &lt;文件名&gt;           // 只输出第2行(Print)<br>sed -n <span class="hljs-string">&#x27;2,4p&#x27;</span> &lt;文件名&gt;         // 输出第2行到第4行的内容<br>sed <span class="hljs-string">&#x27;s/要替换的字符串/替换后的字符串/g&#x27;</span> &lt;文件名&gt;  // 替换文件中所有匹配的字符串(Substitute)<br></code></pre></td></tr></table></figure>
 
 <h3 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h3><p><code>awk</code> 用于对文本进行模式匹配和处理，常用于文本分析和数据处理。常见的使用模板如下：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;匹配模式&#123;执行动作&#125; &#x27;</span> &lt;文件名&gt;<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">awk <span class="hljs-string">&#x27;匹配模式&#123;执行动作&#125;&#x27;</span> &lt;文件名&gt;<br></code></pre></td></tr></table></figure>
 
 <p><strong>匹配模式</strong>决定处理哪些行。可以是正则表达式、行号限制等。如果不写，默认处理每一行;<strong>执行动作</strong>决定找到指定的行之后干什么，如果不写，默认打印出找到的行。</p>
 <p><code>awk</code> 最强大的地方在于，每读入一行文本，它就会自动按照<code>空格</code>或<code>Tab</code>键把这行文本<strong>切</strong>成若干块。同时还为我们提供了极其方便的内置变量，见下表：</p>
@@ -548,6 +548,9 @@
 </tbody></table>
 <p>光看这些可能有点抽象，我们来看一个例子：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">grep -n <span class="hljs-string">&quot;hello&quot;</span> &lt;文件名&gt; | awk -F <span class="hljs-string">&quot;:&quot;</span> <span class="hljs-string">&#x27;&#123;print &quot;第&quot;$1&quot;行的内容是: &quot;$2&#125;&#x27;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h3><p><code>tail</code> 用于查看文件的最后几行内容。通常用于输出文件最后几行内容到终端。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">tail</span> -n &lt;行数&gt; &lt;文件名&gt;     // 输出文件最后n行内容<br><span class="hljs-built_in">tail</span> -n +&lt;行数&gt; &lt;文件名&gt;     // 从第n行开始输出文件内容<br></code></pre></td></tr></table></figure>
 
 <h2 id="文件阅读"><a href="#文件阅读" class="headerlink" title="文件阅读"></a>文件阅读</h2><h3 id="ctags"><a href="#ctags" class="headerlink" title="ctags"></a>ctags</h3><p><code>ctags</code> 用于生成代码标签，帮助开发者快速定位代码中的函数、变量等定义。</p>
 <p>为了跨目录使用，首先打开<code>~/.vimrc</code>文件，添加以下内容：</p>
@@ -609,6 +612,8 @@
 <p>**$#**：表示传递给脚本的参数个数。<br>**$@**：表示传递给脚本的所有参数，作为一个字符串。</p>
 <h3 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">if</span> condition<br><span class="hljs-keyword">then</span><br>    <span class="hljs-comment"># 条件为真时执行的命令</span><br><span class="hljs-keyword">elif</span> another_condition<br><span class="hljs-keyword">then</span><br>    <span class="hljs-comment"># 另一个条件为真时执行的命令</span><br><span class="hljs-keyword">else</span><br>    <span class="hljs-comment"># 条件都不满足时执行的命令</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></table></figure>
 
+<p>这里的 <code>condition</code> 的形式为 <code>[ expression ]</code>，其中 <code>expression</code> 可以是关系表达式、字符串比较等。并且 <code>[</code> 和 <code>e</code> 以及 <code>]</code> 和 <code>n</code> 之间必须有空格。</p>
+<p>如果把<strong>单</strong>中括号换成<strong>双</strong>中括号 <code>[[ expression ]]</code>，则可以使用更多的条件表达式，例如：<code>[[ $a -gt 10 &amp;&amp; $b -lt 20 ]]</code>。</p>
 <h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-keyword">while</span> condition<br><span class="hljs-keyword">do</span> <br>    <span class="hljs-comment"># 条件为真时执行的命令</span><br><span class="hljs-keyword">done</span><br></code></pre></td></tr></table></figure>
 
 <p>这里特别注意一下 <code>condition</code> 的形式为 <code>[ expression ]</code>，其中 <code>expression</code> 可以是关系表达式、字符串比较等。并且 <code>[</code> 和 <code>e</code> 以及 <code>]</code> 和 <code>n</code> 之间必须有空格。</p>
@@ -624,6 +629,9 @@
 </ol>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">let</span> a=a+1<br>(( a++ ))<br>(( a = a + <span class="hljs-number">1</span> ))<br>b=$(( a + <span class="hljs-number">1</span> ))<br></code></pre></td></tr></table></figure>
 
+<p>我们不难看出双小括号常常用于算数表达式中，且在双小括号中变量不需要加 <code>$</code> 符号。</p>
+<h4 id="关于字符串"><a href="#关于字符串" class="headerlink" title="关于字符串"></a>关于字符串</h4><p>这里主要介绍一下关于字符串的 <code>测试操作符</code> :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">-z <span class="hljs-string">&quot;<span class="hljs-variable">$str</span>&quot;</span>  // 判断字符串是否为空，返回<span class="hljs-literal">true</span>如果字符串长度为0<br>-n <span class="hljs-string">&quot;<span class="hljs-variable">$str</span>&quot;</span>  // 判断字符串是否非空，返回<span class="hljs-literal">true</span>如果字符串长度不为0<br><span class="hljs-string">&quot;<span class="hljs-variable">$str1</span>&quot;</span> == <span class="hljs-string">&quot;<span class="hljs-variable">$str2</span>&quot;</span>  // 判断两个字符串是否相等，返回<span class="hljs-literal">true</span>如果相等<br><span class="hljs-string">&quot;<span class="hljs-variable">$str1</span>&quot;</span> != <span class="hljs-string">&quot;<span class="hljs-variable">$str2</span>&quot;</span>  // 判断两个字符串是否不相等，返回<span class="hljs-literal">true</span>如果不相等<br><span class="hljs-string">&quot;<span class="hljs-variable">$str1</span>&quot;</span> &gt; <span class="hljs-string">&quot;<span class="hljs-variable">$str2</span>&quot;</span>  // 判断字符串1是否大于字符串2，返回<span class="hljs-literal">true</span>如果字符串1大于字符串2,按照字典顺序比较<br><span class="hljs-string">&quot;<span class="hljs-variable">$str1</span>&quot;</span> &lt; <span class="hljs-string">&quot;<span class="hljs-variable">$str2</span>&quot;</span>  // 判断字符串1是否小于字符串2，返回<span class="hljs-literal">true</span>如果字符串1小于字符串2,按照字典顺序比较<br></code></pre></td></tr></table></figure>
 <h4 id="免交互文档"><a href="#免交互文档" class="headerlink" title="免交互文档"></a>免交互文档</h4><p><code>免交互文档</code> 是指在执行命令时不需要用户进行交互输入的文档，多用于将一大段文本原封不动地传递给一段命令。常用的语法如下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> &lt;&lt; <span class="hljs-string">EOF &gt; &lt;文件名&gt;   // 将EOF</span>之间的内容写入文件<br>// 这里是要写入文件的内容<br>EOF<br></code></pre></td></tr></table></figure>
 
@@ -646,7 +654,12 @@
 <p>几个明显的例子：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> file.txt | grep <span class="hljs-string">&quot;要查找的字符串&quot;</span>   // 在file.txt中搜索匹配的字符串<br><span class="hljs-built_in">cat</span> a.txt | <span class="hljs-built_in">cat</span> &gt;&gt; b.txt   // 将a.txt的内容追加到b.txt中<br></code></pre></td></tr></table></figure>
 
+<h2 id="权限操作"><a href="#权限操作" class="headerlink" title="权限操作"></a>权限操作</h2><p><code>chmod</code> 是 <code>Linux</code> 系统中用来改变文件或目录访问权限的指令。权限分为三类：<strong>User</strong>、<strong>Group</strong>和<strong>Other</strong>，每类权限又分为<strong>读（r）</strong>、<strong>写（w）</strong>和<strong>执行（x）</strong>三种。</p>
+<p>添加权限时使用 <code>+</code>，删除权限时使用 <code>-</code>，设置权限时使用 <code>=</code>。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> u+x &lt;文件名&gt;   // 给用户添加执行权限<br><span class="hljs-built_in">chmod</span> g-w &lt;文件名&gt;   // 给用户组删除写权限<br><span class="hljs-built_in">chmod</span> o=r &lt;文件名&gt;   // 给其他用户设置只读权限<br></code></pre></td></tr></table></figure>
 
+<p>同时，<code>chmod</code> 还支持数字表示法，其中每个权限对应一个数字：读（r）&#x3D;4，写（w）&#x3D;2，执行（x）&#x3D;1。通过将这些数字相加，可以表示不同的权限组合。例如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> 755 &lt;文件名&gt;   // 设置权限为 rwxr-xr-x<br><span class="hljs-built_in">chmod</span> 644 &lt;文件名&gt;   // 设置权限为 rw-r--r--<br><span class="hljs-built_in">chmod</span> 700 &lt;文件名&gt;   // 设置权限为 rwx------<br></code></pre></td></tr></table></figure>
 
 <h2 id="Lyrics-Shring"><a href="#Lyrics-Shring" class="headerlink" title="Lyrics Shring"></a>Lyrics Shring</h2><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">一叶轻船<br>一双月对半<br>一帘清梦悠悠醉意阑珊<br>移舟靠岸<br>案前唯剩空盏<br>莫怨良辰短<br>曲终了韵意未完<br></code></pre></td></tr></table></figure>
 
@@ -801,12 +814,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/BUAA/">
-                        <span class="chip bg-color">BUAA</span>
-                    </a>
-                    
                     <a href="/tags/java/">
                         <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/BUAA/">
+                        <span class="chip bg-color">BUAA</span>
                     </a>
                     
                 </div>
@@ -1000,7 +1013,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33k</span>
+                        class="white-color">33.6k</span>
             
             
             

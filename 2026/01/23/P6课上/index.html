@@ -437,13 +437,13 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p><strong>写在前面</strong>：P6其实是P5<strong>plus</strong>,依然是三类：<code>计算类</code>，<code>跳转类</code>，<code>访存类</code>。只是计算类一般会涉及对MDU的操作，访存类不能在DM进行计算(因为DM没有了…)。很抱歉这次只做了两道题，第三题看题时间被助教问答占掉了(不嘻嘻)。如果哪些方法写的不太详尽可以参考P5的<a href="https://cordial-kid.github.io/2026/01/21/P5%E8%AF%BE%E4%B8%8A/">这篇博客</a>，大同小异</p>
-<h2 id="MYGO"><a href="#MYGO" class="headerlink" title="MYGO"></a>MYGO</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">pattern_value(x) = 4位x的前导0个数 * 2 + 4位x中1的个数</span><br><span class="line">chain(x) = 32位二进制数分成8组，每组的pattern_value(x) * (组数 + 1) 组数从低位开始(0,1,2,3,4,5,6,7).</span><br><span class="line">A = chain(GPR(rs))</span><br><span class="line">B = chain(GPR(rt))</span><br><span class="line">if (A &gt; B) &#123;</span><br><span class="line">    hi = GPR[rs]</span><br><span class="line">    lo = GPR[rt]</span><br><span class="line">&#125;</span><br><span class="line">else if(A &lt; B) &#123;</span><br><span class="line">    hi = GPR[rt];</span><br><span class="line">    lo = GPR[rs];</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">    hi = GPR[rs] ^ GPR[rt];</span><br><span class="line">    lo = GPR[rs] ^ GPR[rt];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">MYGO当作乘除指令来计算，延迟5个周期。</span><br></pre></td></tr></table></figure>
+<h2 id="MYGO"><a href="#MYGO" class="headerlink" title="MYGO"></a>MYGO</h2><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">pattern_value(x) = 4位x的前导0个数 * 2 + 4位x中1的个数<br>chain(x) = 32位二进制数分成8组，每组的pattern_value(x) * (组数 + 1) 组数从低位开始(0,1,2,3,4,5,6,7).<br>A = chain(GPR(rs))<br>B = chain(GPR(rt))<br>if (A &gt; B) &#123;<br>    hi = GPR[rs]<br>    lo = GPR[rt]<br>&#125;<br>else if(A &lt; B) &#123;<br>    hi = GPR[rt];<br>    lo = GPR[rs];<br>&#125;<br>else &#123;<br>    hi = GPR[rs] ^ GPR[rt];<br>    lo = GPR[rs] ^ GPR[rt];<br>&#125;<br><br>MYGO当作乘除指令来计算，延迟5个周期。<br></code></pre></td></tr></table></figure>
 
 <p>这个乘除槽类计算指令肯定主体要在MDU模块内实现，我的建议是A，B的计算使用组合逻辑，hi，lo的赋值使用时序逻辑。组合逻辑计算别发怵，我敢打赌要是程序设计出这个逻辑看到这里的各位没有一个怕的，所以大胆上手就行。时序逻辑只要按照之前的判断方式添加就好，别忘了Start信号下cnt的修改就行。</p>
-<figure class="highlight verilog"><table><tr><td class="code"><pre><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (MDUOp == `MDU_MYGO) <span class="keyword">begin</span></span><br><span class="line">    <span class="keyword">if</span> (A &gt; B) <span class="keyword">begin</span></span><br><span class="line">        HIreg &lt;= GPT[rs];</span><br><span class="line">        LOreg &lt;= GPR[rt];</span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">    ...</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (MDUOp == `MDU_MYGO) <span class="hljs-keyword">begin</span><br>    <span class="hljs-keyword">if</span> (A &gt; B) <span class="hljs-keyword">begin</span><br>        HIreg &lt;= GPT[rs];<br>        LOreg &lt;= GPR[rt];<br>    <span class="hljs-keyword">end</span><br>    ...<br><span class="hljs-keyword">end</span><br></code></pre></td></tr></table></figure>
 
 <p>Stall模块跟mult一致即可。</p>
-<h2 id="MBL"><a href="#MBL" class="headerlink" title="MBL"></a>MBL</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">tmpA = IMM_BEQ(IMM指令跳转的数值)</span><br><span class="line">tmpB = GPR[rs] + GPR[rt]</span><br><span class="line">GPR[31] = PC + 8;</span><br><span class="line">if rs == rt &#123;</span><br><span class="line">    PC = tmpA;</span><br><span class="line">&#125;</span><br><span class="line">else if (rs[0] == rt[0]) &#123;</span><br><span class="line">    PC = &#123;tmpB[31:0],2&#x27;b0&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="MBL"><a href="#MBL" class="headerlink" title="MBL"></a>MBL</h2><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">tmpA = IMM_BEQ(IMM指令跳转的数值)<br>tmpB = GPR[rs] + GPR[rt]<br>GPR[31] = PC + 8;<br>if rs == rt &#123;<br>    PC = tmpA;<br>&#125;<br>else if (rs[0] == rt[0]) &#123;<br>    PC = &#123;tmpB[31:0],2&#x27;b0&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p><strong>这道题真的是坑点满满！！！</strong></p>
 <ul>
@@ -454,7 +454,7 @@
 <p>对于Stall，我们判断的条件是<code>(D_beq | D_jr | D_jalr | D_bne | (D_mbl &amp;&amp; Beq_jump == 1 &amp;&amp; Judge == 0)) ? 3&#39;d0 :</code>,即只在rs[0] &#x3D;&#x3D; rt[0]的条件下才需要GPR[rs]和GPR[rt]。这就解决了TLE问题。</p>
 <h2 id="LBO"><a href="#LBO" class="headerlink" title="LBO"></a>LBO</h2><p>这里希望路过好心人可以告诉笔者一下题目，共同给学弟学妹一个完整的magicbook(bushi)，谢谢谢谢。</p>
 <h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>P6其实和P5差不多，放宽心，前两到题肯定难不倒你，加油哦。再向好心人求一下<code>LBO</code>指令。</p>
-<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">我也很想他 我们都一样</span><br><span class="line">在他的身上 曾找到翅膀</span><br><span class="line">只是那时的他 是因为你</span><br><span class="line">他开始飞翔</span><br><span class="line">我也很想他，在某个地方</span><br><span class="line">我少了尴尬 你少了肩膀</span><br><span class="line">而夏天还是那么短</span><br><span class="line">思念却很长</span><br></pre></td></tr></table></figure>
+<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">我也很想他 我们都一样<br>在他的身上 曾找到翅膀<br>只是那时的他 是因为你<br>他开始飞翔<br>我也很想他，在某个地方<br>我少了尴尬 你少了肩膀<br>而夏天还是那么短<br>思念却很长<br></code></pre></td></tr></table></figure>
 
                 
             </div>
@@ -807,7 +807,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33k</span>
+                        class="white-color">33.6k</span>
             
             
             

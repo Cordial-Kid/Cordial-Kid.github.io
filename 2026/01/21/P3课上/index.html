@@ -451,11 +451,11 @@ Bit Adder:输入一个n位">
 <h2 id="blz"><a href="#blz" class="headerlink" title="blz"></a>blz</h2><p>题目：大概是数出GPR[rs] GPR[rt]的前导零的数量，然后比大小决定NPC的操作，以及向GRF写入tmp1或tmp2</p>
 <p>解：<strong>重点在数前导0</strong>，用<code>bit Finder</code>时记得考虑没有1的情况。</p>
 <h2 id="lwf"><a href="#lwf" class="headerlink" title="lwf"></a>lwf</h2><p>题目：</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">lwf base rt offset</span><br><span class="line">从offset(base)的内存中读出一个数据 </span><br><span class="line">判断这个数和rt的and的各个数位之和的奇偶性 </span><br><span class="line">奇数则存入(rt+1)mod32寄存器 </span><br><span class="line">偶数则存入rt寄存器</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">lwf base rt offset<br>从offset(base)的内存中读出一个数据 <br>判断这个数和rt的and的各个数位之和的奇偶性 <br>奇数则存入(rt+1)mod32寄存器 <br>偶数则存入rt寄存器<br></code></pre></td></tr></table></figure>
 
 <p>解：<strong>重点在奇偶比较</strong>，比较最低位即可。最低位为0是偶数，为1是奇数。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/Cordial-Kid/BUAA-CO/blob/main/P3/%E5%8D%95%E5%91%A8%E6%9C%9FCPU_in_class.circ">github仓库</a>里为大家提供了这三道题目的代码：</p>
-<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">谁与我画明月天地间</span><br><span class="line">落笔话呢喃</span><br><span class="line">谁遇我南山望北川</span><br><span class="line">扶摇向九天</span><br><span class="line">谁予我谈笑伴云轩</span><br><span class="line">知己醉桌前</span><br><span class="line">任我清风眠</span><br><span class="line">梦回世外仙</span><br></pre></td></tr></table></figure>
+<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">谁与我画明月天地间<br>落笔话呢喃<br>谁遇我南山望北川<br>扶摇向九天<br>谁予我谈笑伴云轩<br>知己醉桌前<br>任我清风眠<br>梦回世外仙<br></code></pre></td></tr></table></figure>
                 
             </div>
             <hr/>
@@ -807,7 +807,7 @@ Bit Adder:输入一个n位">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33k</span>
+                        class="white-color">33.6k</span>
             
             
             

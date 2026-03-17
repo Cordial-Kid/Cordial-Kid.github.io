@@ -447,15 +447,15 @@
 <li>为什么二战如此神速？我也不知道，可能是题简单吧。</li>
 </ul>
 <h2 id="SSZE"><a href="#SSZE" class="headerlink" title="SSZE"></a>SSZE</h2><p>opcode &#x3D; 6’b000000<br>func &#x3D; 6’b001111</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">当GPR[rs]和GPR[rt]后缀 0 的个数相同时，将GPR[rd]置 1 ，否则置 0 ;</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">当GPR[rs]和GPR[rt]后缀 0 的个数相同时，将GPR[rd]置 1 ，否则置 0 ;<br></code></pre></td></tr></table></figure>
 
 <p><strong>Answer</strong>:重点在数0的个数，还有就是改指令的时候记得把通路改完整(这个以大家对自己verilog代码的理解都不成问题)。</p>
 <h2 id="CABC"><a href="#CABC" class="headerlink" title="CABC"></a>CABC</h2><p>opcode &#x3D; 6’b111100</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">cross1 = GPR[rs][23:16] || GPR[rs][7:0] || GPR[rt][31:24] || GPR[rt][15:8]</span><br><span class="line">cross2 = GPR[rt][7:0] || GPR[rt][23:16] || GPR[rs][15:8] || GPR[rs][31:24]</span><br><span class="line">xor_result = cross1 ^ cross2</span><br><span class="line">if (count_zeros(xor_result[31:16]) == count_zeros(xor_result[15:0])) &#123;</span><br><span class="line">    PC &lt;-- IMM_beq</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    GPR[rt] &lt;-- xor_result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">cross1 = GPR[rs][23:16] || GPR[rs][7:0] || GPR[rt][31:24] || GPR[rt][15:8]<br>cross2 = GPR[rt][7:0] || GPR[rt][23:16] || GPR[rs][15:8] || GPR[rs][31:24]<br>xor_result = cross1 ^ cross2<br>if (count_zeros(xor_result[31:16]) == count_zeros(xor_result[15:0])) &#123;<br>    PC &lt;-- IMM_beq<br>&#125;<br>else&#123;<br>    GPR[rt] &lt;-- xor_result<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p><strong>Answer</strong>:这和第一题几乎一样，唯一需要注意的是<code>if</code>判断条件成立与否，寄存器堆设计的是<code>是否操作</code>,因此在CTRL模块中的WE(寄存器写使能信号)是(caba &amp;&amp; isequal &#x3D;&#x3D; 0)。isequal是ALU输出的<code>count_zeros(xor_result[31:16]) == count_zeros(xor_result[15:0])</code>判断结果。</p>
 <h2 id="LHBOC"><a href="#LHBOC" class="headerlink" title="LHBOC"></a>LHBOC</h2><p>opcode &#x3D; 101101</p>
-<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">vaddr &lt;-- GPR[base] + sign_extend(offset)</span><br><span class="line">paddr &lt;-- vaddr[31:2] || 2&#x27;b0</span><br><span class="line">memword &lt;-- Memory[paddr]</span><br><span class="line">tmp1 &lt;-- memword[15] + memword[14] + ...... + memword[0]</span><br><span class="line">tmp2 &lt;-- memword[31] + memword[30] + ...... + memword[16]</span><br><span class="line">if (tmp1 &gt; tmp2) &#123;</span><br><span class="line">    GPR[rt] &lt;-- sign_extend(memword[15:0])</span><br><span class="line">&#125;</span><br><span class="line">else&#123;</span><br><span class="line">    GPR[rt] &lt;-- sign_extend(memword[31:16])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">vaddr &lt;-- GPR[base] + sign_extend(offset)<br>paddr &lt;-- vaddr[31:2] || 2&#x27;b0<br>memword &lt;-- Memory[paddr]<br>tmp1 &lt;-- memword[15] + memword[14] + ...... + memword[0]<br>tmp2 &lt;-- memword[31] + memword[30] + ...... + memword[16]<br>if (tmp1 &gt; tmp2) &#123;<br>    GPR[rt] &lt;-- sign_extend(memword[15:0])<br>&#125;<br>else&#123;<br>    GPR[rt] &lt;-- sign_extend(memword[31:16])<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p><strong>Answer</strong>:这个题也挺简单的，注意一下不要被RTL语言<strong>骗了</strong>,我们看到这行<code>memword &lt;-- Memory[paddr]</code>,paddr是32位，而DM的范围是<code>0-3072</code>，只需要12位即可，我们在verilog实现的过程中要像这样</p>
 <blockquote>
@@ -469,7 +469,7 @@
 <li>写函数的时候记得在<code>function</code>后面有<code>begin，end</code>把函数体包起来。</li>
 <li>祝大家P4一战顺利😉😊</li>
 </ol>
-<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><span class="line">倘若那天</span><br><span class="line">把该说的话好好说</span><br><span class="line">该体谅的不执著</span><br><span class="line">如果那天我</span><br><span class="line">不受情绪挑拨</span><br><span class="line">你会怎么做</span><br><span class="line">那么多如果，可能如果我</span><br><span class="line">可惜没如果，只剩下结果</span><br></pre></td></tr></table></figure>
+<h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">倘若那天<br>把该说的话好好说<br>该体谅的不执著<br>如果那天我<br>不受情绪挑拨<br>你会怎么做<br>那么多如果，可能如果我<br>可惜没如果，只剩下结果<br></code></pre></td></tr></table></figure>
 
 <h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>谨以此篇，纪念我的第一篇<code>github</code>博客。</p>
 
@@ -824,7 +824,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33k</span>
+                        class="white-color">33.6k</span>
             
             
             
