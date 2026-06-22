@@ -589,7 +589,7 @@
 <h4 id="env-alloc-分配并初始化进程块"><a href="#env-alloc-分配并初始化进程块" class="headerlink" title="env_alloc():分配并初始化进程块"></a>env_alloc():分配并初始化进程块</h4><ol>
 <li>分配PCB空槽：从env_free_list中分配一个空槽，若无空槽则返回错误。</li>
 <li>初始化地址空间(env_setup_vm):为新进程分配页目录，并将内核空间映射到新进程的地址空间中。</li>
-<li>分配标识符(mkenvid, asid_alloc(),):为新进程分配一个唯一的标识符,同时申请一个唯一的ASID，用于TLB管理。</li>
+<li>分配标识符(mkenvid, asid_alloc()):为新进程分配一个唯一的标识符,同时申请一个唯一的ASID，用于TLB管理。</li>
 <li>配置初始上下文：设置cp0_status, 初始化栈指针寄存器</li>
 </ol>
 <h4 id="load-icode-加载ELF可执行程序"><a href="#load-icode-加载ELF可执行程序" class="headerlink" title="load_icode():加载ELF可执行程序"></a>load_icode():加载ELF可执行程序</h4><p>有了进程的躯壳和独立地址空间之后，需要把存放在内存中的ELF格式的应用程序可执行代码加载进去。</p>
@@ -598,7 +598,7 @@
 <li>遍历段并分配物理内存(elf_load_seg)：扫描ELF的程序头表，针对每个可加载的段，利用系统提供的内存分配函数为其分配物理内存，并将ELF文件中的代码和数据通过page_insert()映射到新进程的地址空间中。</li>
 <li>设置入口点：将ELF头中的入口地址设置到新进程的程序计数器寄存器中，以便进程启动时能够正确执行。</li>
 </ol>
-<p>**env_create()**：统筹调用env_alloc()和load_icode()，完成一个新进程的创建，并将其加入就绪队列中，等待调度器调度执行。</p>
+<p><code>env_create()</code>：统筹调用env_alloc()和load_icode()，完成一个新进程的创建，并将其加入就绪队列中，等待调度器调度执行。</p>
 <h3 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h3><p>进程调度也发生在内核态，关键在于选择下一个要运行的进程，并切换到该进程的上下文，我们主要关注<code>kern/sched.c</code>和<code>kern/env.c</code>中的相关函数。</p>
 <p>首先要明确调度不会凭空发生，必须通过异常或中断陷入内核态才能触发，最常见的有两种：时钟中断（被动），主动让出（主动）。在当前实验中，我们主要通过时钟中断来触发调度。</p>
 <h4 id="时钟中断发生，内核保存现场并调用sched-yield"><a href="#时钟中断发生，内核保存现场并调用sched-yield" class="headerlink" title="时钟中断发生，内核保存现场并调用sched_yield()"></a>时钟中断发生，内核保存现场并调用sched_yield()</h4><p>当时钟中断发生时，内核会自动保存当前进程的上下文（寄存器状态等），然后调用<code>sched_yield()</code>函数来选择下一个要运行的进程。</p>
@@ -614,10 +614,10 @@
 
 <p>exam几乎都是这么个模式，先根据提示实现新的调度算法的核心逻辑，然后在最后调用之前实现的RR算法。<br>需要注意: </p>
 <ol>
-<li><em><em>struct Env <em>e &#x3D; last_env;</em></em> :这里不用<code>curenv</code>的原因是RR调度器要维护自己的历史状态。EDF进程运行时不能污染RR的</em>*last_env**。只有真正进入RR分支并调度了RR进程，才更新last_env。（这一点在题目中有说明）。</li>
-<li>**selected_env-&gt;env_runtime_left–;<strong>和</strong>count–;**都要在env_run()之前执行，只不过是两个调度器各自维护自己的时间片计数器，互不干扰。</li>
-<li>**static struct Env *last_env &#x3D; NULL;**需要初始化为NULL，并且加上static修饰。</li>
-<li>**static int count &#x3D; 0;**需要初始化为0，并且加上<code>static</code>修饰。</li>
+<li><code>struct Env *e = last_env</code> :这里不用<code>curenv</code>的原因是RR调度器要维护自己的历史状态。EDF进程运行时不能污染RR的<code>last_env</code>。只有真正进入RR分支并调度了RR进程，才更新last_env。（这一点在题目中有说明）。</li>
+<li><code>selected_env-&gt;env_runtime_left--</code>和<code>count--;</code>都要在env_run()之前执行，只不过是两个调度器各自维护自己的时间片计数器，互不干扰。</li>
+<li><code>static struct Env *last_env = NULL;</code>需要初始化为NULL，并且加上static修饰。</li>
+<li><code>static int count = 0;</code>需要初始化为0，并且加上<code>static</code>修饰。</li>
 </ol>
 <p><code>static</code>修饰的变量只在函数第一次被调用时初始化一次，<code>count</code>要保存<strong>当前正在运行的进程还剩几个时间片</strong>，而<code>last_env</code>要保存<strong>当前进程的上一个被调度的进程</strong>。如果不加static修饰，这两个变量在每次进程被调度时都会被重新初始化，从而无法正确维护状态。</p>
 <h2 id="lab4"><a href="#lab4" class="headerlink" title="lab4"></a>lab4</h2><p>lab4主要涉及三个模块：系统调用，IPC通信，fork。</p>
@@ -755,7 +755,7 @@
 
 <h3 id="中层，磁盘数据组织"><a href="#中层，磁盘数据组织" class="headerlink" title="中层，磁盘数据组织"></a>中层，磁盘数据组织</h3><h4 id="用fsformat构造文件系统镜像"><a href="#用fsformat构造文件系统镜像" class="headerlink" title="用fsformat构造文件系统镜像"></a>用fsformat构造文件系统镜像</h4><p>这一部分主要解决磁盘里一开始应该放什么，我们引入<code>tools/fsformat.c</code>。这是一个运行在宿主机上的工具，不是MOS内部运行的程序，它负责把<code>tests/lab5_x/rootfs</code>目录下的文件按照MOS文件系统的格式写入到磁盘镜像<code>fs.img</code>中。</p>
 <p>在理清楚<code>fsformat</code>的流程之前，我们介绍一下文件系统的磁盘布局：</p>
-<p><a href="./%E7%A3%81%E7%9B%98%E5%B8%83%E5%B1%80.png">!磁盘布局</a></p>
+<p><img src="/images%5C%E7%A3%81%E7%9B%98%E5%B8%83%E5%B1%80.png" alt="磁盘布局"></p>
 <p>代码文件中会涉及几个重要的结构体：Block(磁盘块), Super(文件系统超级块), File(文件控制块)</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Block</span> &#123;</span><br>    <span class="hljs-type">uint8_t</span> data[BLOCK_SIZE];<br>    <span class="hljs-type">uint32_t</span> type;<br>&#125; disk[NBLOCK];<br></code></pre></td></tr></table></figure>
 
