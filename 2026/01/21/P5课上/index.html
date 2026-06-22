@@ -5,9 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="「BUAA-CO」P5课上, Cordial-Kid">
-    <meta name="description" content="P5课上三题有明显得规律，第一题一般只涉及ALU的修改，第二题是b类型的跳转指令，第三题稍微难一点，涉及访存以及对转发阻塞逻辑的修改。下面我们结合题目详细说明一下解题思路和步骤。
+    <meta name="description" content="P5 课上三题有明显的规律，第一题一般只涉及 ALU 的修改，第二题是 b 类型的跳转指令，第三题稍微难一点，涉及访存以及对转发阻塞逻辑的修改。下面我们结合题目详细说明一下解题思路和步骤。
 CCCopcode &amp;#x3D; 忘了
-tmp1 = GPR">
+tmp1 ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -334,7 +334,7 @@ tmp1 = GPR">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -399,7 +399,7 @@ tmp1 = GPR">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-01-21
+                    2026-04-30
                 </div>
                 
 
@@ -438,34 +438,34 @@ tmp1 = GPR">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>P5课上三题有明显得规律，第一题一般只涉及ALU的修改，第二题是b类型的跳转指令，第三题稍微难一点，涉及访存以及对转发阻塞逻辑的修改。下面我们结合题目详细说明一下解题思路和步骤。</p>
+                <p>P5 课上三题有明显的规律，第一题一般只涉及 ALU 的修改，第二题是 b 类型的跳转指令，第三题稍微难一点，涉及访存以及对转发阻塞逻辑的修改。下面我们结合题目详细说明一下解题思路和步骤。</p>
 <h2 id="CCC"><a href="#CCC" class="headerlink" title="CCC"></a>CCC</h2><p>opcode &#x3D; 忘了</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">tmp1 = GPR[rs]的前导零<br>tmp2 = GPR[rt]的前导一<br>if (tmp1 &gt; tmp2) GPR[rd] &lt;- GPR[rs][31:16] || GPR[rt][15:0]<br>else GRP[rd] &lt;- GPR[rt][31:16] || GPR[rs][15:0]<br></code></pre></td></tr></table></figure>
 
-<p><strong>Answer</strong>:在<code>ALU</code>把<code>tmp1</code>和<code>tmp2</code>的值计算出来，并通过<code>ALUOp</code>控制<code>ALU</code>输出不同的结果。在<code>CTRL</code>模块新增指令，使得该指令写入<code>GPR[rd]</code>,并且写入数据为<code>ALU</code>输出结果。在<code>Stall</code>模块中<code>Tnew</code>和<code>Tuse</code>无脑跟<code>add</code>保持一致即可。</p>
+<p><strong>Answer</strong>：在 <code>ALU</code> 把 <code>tmp1</code> 和 <code>tmp2</code> 的值计算出来，并通过 <code>ALUOp</code> 控制 <code>ALU</code> 输出不同的结果。在 <code>CTRL</code> 模块新增指令，使得该指令写入 <code>GPR[rd]</code>，并且写入数据为 <code>ALU</code> 输出结果。在 <code>Stall</code> 模块中 <code>Tnew</code> 和 <code>Tuse</code> 无脑跟 <code>add</code> 保持一致即可。</p>
 <h2 id="BLONEZ-应该吧"><a href="#BLONEZ-应该吧" class="headerlink" title="BLONEZ?(应该吧)"></a>BLONEZ?(应该吧)</h2><p>opcode &#x3D; 111111</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">tmp = GPR[rs]前导1<br>GPR[31] &lt;- PC + 8;<br>if (tmp1 &gt; GPT[rt][5:0]) <br>PC &lt;- IMMbeq的跳转方式<br></code></pre></td></tr></table></figure>
 
-<p>这个是考场题目，但是比较简单，大家感兴趣可以看一看，我们用一道推荐题来说明这类型题目的解决方法。</p>
+<p>这个是考场题目，但是比较简单，大家感兴趣可以看一看，我们用一道推荐题来说明这类题目的解决方法。</p>
 <h2 id="BLZTAL"><a href="#BLZTAL" class="headerlink" title="BLZTAL"></a>BLZTAL</h2><p>opcode &#x3D; 100111</p>
 <p>看题：<br><img src="/images/BLZTAL.png" alt="BLZTAL"></p>
-<p><strong>Answer</strong>:对于<code>b</code>型指令，我们要在<code>D_CMP</code>模块中判断<code>b_jump</code>，如果是条件链接(像这道题)，我们就要将<code>D_CMP</code>模块中的<code>b_jump</code>指令随着流水线一直流水下去，从而满足每一级的<code>CTRL</code>判断<code>GRFA3sel</code>和<code>GRFWDsel</code>信号的需求;如果是无条件链接(像<strong>BLONEZ</strong>)，那CTRL直接生成控制信号写入<code>31</code>号寄存器，写入值是<code>PC + 8</code>即可。在<code>STALL</code>模块<code>Tuse</code>和<code>Tnew</code>与<code>Beq</code>保持一致。</p>
-<p>对于链接类指令Tuse,Tnew参照<code>jal</code>就行</p>
-<p>特别注意一下PC的变化基数是D_PC还是F_PC。</p>
+<p><strong>Answer</strong>：对于 <code>b</code> 型指令，我们要在 <code>D_CMP</code> 模块中判断 <code>b_jump</code>，如果是条件链接（像这道题），我们就要将 <code>D_CMP</code> 模块中的 <code>b_jump</code> 指令随着流水线一直流水下去，从而满足每一级的 <code>CTRL</code> 判断 <code>GRFA3sel</code> 和 <code>GRFWDsel</code> 信号的需求；如果是无条件链接（像 <strong>BLONEZ</strong>），那 CTRL 直接生成控制信号写入 <code>31</code> 号寄存器，写入值是 <code>PC + 8</code> 即可。在 <code>STALL</code> 模块 <code>Tuse</code> 和 <code>Tnew</code> 与 <code>Beq</code> 保持一致。</p>
+<p>对于链接类指令 Tuse、Tnew 参照 <code>jal</code> 就行</p>
+<p>特别注意一下 PC 的变化基数是 D_PC 还是 F_PC。</p>
 <p>还有一种情况可能会涉及清空延迟槽的指令，像这样：</p>
 <p><img src="/images/BONALL.png" alt="BONALL"></p>
-<p>为什么要清空延迟槽呢，我理解就是不想执行跳转类指令的下一条指令了，把他用Flush清除掉。具体实现需要在D_CMP增加一个接口Flush_check<code>assign Flush_check = (CMPOp == `CMP_BONALL &amp;&amp; !B_jump);</code>,在<code>mips</code>中将这一接口与<strong>D_reg_flush**相连，<code>assign D_reg_flush = (!stall &amp;&amp; D_flush_check);</code>值得注意的是，我们要保证此时流水线不是阻塞状态.如果是阻塞状态我们就等到它阻塞结束再清空，想想为什么呢？因为如果流水线阻塞在D级的话，D级放的其实是跳转类指令，相当于是</strong>把自己送走了**，后面的流水级就丢失了这条指令。</p>
+<p>为什么要清空延迟槽呢，我理解就是不想执行跳转类指令的下一条指令了，把它用 Flush 清除掉。具体实现需要在 D_CMP 增加一个接口 Flush_check <code>assign Flush_check = (CMPOp == `CMP_BONALL &amp;&amp; !B_jump);</code>，在 <code>mips</code> 中将这一接口与<strong>D_reg_flush**相连，<code>assign D_reg_flush = (!stall &amp;&amp; D_flush_check);</code> 值得注意的是，我们要保证此时流水线不是阻塞状态。如果是阻塞状态我们就等到它阻塞结束再清空，想想为什么呢？因为如果流水线阻塞在 D 级的话，D 级放的其实是跳转类指令，相当于是</strong>把自己送走了**，后面的流水级就丢失了这条指令。</p>
 <h2 id="LBGET"><a href="#LBGET" class="headerlink" title="LBGET"></a>LBGET</h2><p>opcode &#x3D; 110101</p>
 <p><img src="/images/LBGET.png" alt="LBGET"></p>
-<p><strong>Answer</strong>:这是写入地址可选择类<code>condition: GPR[rt] &lt;- RD; else: GPR[rs] &lt;- RD</code>,我们只有在DM完成计算才能知道要写入哪个寄存器，那么<code>D，E，(M)</code>就都<strong>没GRFA3的视野</strong>，因此难以判断冲突条件是否成立。此时我们有两个选择：<strong>暴力阻塞</strong>;<strong>条件阻塞</strong>。</p>
-<p><strong>暴力阻塞</strong>:只要D级指令要访问GPR，并且访问地址非0，并且Tuse &lt; Tnew，我们就阻塞。对应代码实现</p>
+<p><strong>Answer</strong>：这是写入地址可选择类 <code>condition: GPR[rt] &lt;- RD; else: GPR[rs] &lt;- RD</code>，我们只有在 DM 完成计算才能知道要写入哪个寄存器，那么 <code>D</code>、<code>E</code>、<code>(M)</code> 就都<strong>没 GRFA3 的视野</strong>，因此难以判断冲突条件是否成立。此时我们有两个选择：<strong>暴力阻塞</strong>；<strong>条件阻塞</strong>。</p>
+<p><strong>暴力阻塞</strong>：只要 D 级指令要访问 GPR，并且访问地址非 0，并且 Tuse &lt; Tnew，我们就阻塞。对应代码实现</p>
 <figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">assign</span> E_stall_rs = ((E_lbget ? <span class="hljs-number">1</span> : (E_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="hljs-number">0</span>) &amp;&amp; (rs_Tuse &lt; E_Tnew);<br><span class="hljs-keyword">assign</span> E_stall_rt = ((E_lbget ? <span class="hljs-number">1</span> : (E_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="hljs-number">0</span>) &amp;&amp; (rt_Tuse &lt; E_Tnew);<br><span class="hljs-keyword">assign</span> M_stall_rs = ((M_lbget ? <span class="hljs-number">1</span> : (M_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="hljs-number">0</span>) &amp;&amp; (rs_Tuse &lt; M_Tnew);<br><span class="hljs-keyword">assign</span> M_stall_rt = ((M_lbget ? <span class="hljs-number">1</span> : (M_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="hljs-number">0</span>) &amp;&amp; (rt_Tuse &lt; M_Tnew);<br></code></pre></td></tr></table></figure>
 
-<p><strong>条件阻塞</strong>：D级指令要访问GPR,并且访问地址非0，并且访问地址和当前级流水线的 <code>rs</code> 或 <code>rt</code> 冲突，并且 <code>Tuse &lt; Tnew</code>,我们阻塞。对应代码实现。</p>
+<p><strong>条件阻塞</strong>：D 级指令要访问 GPR，并且访问地址非 0，并且访问地址和当前级流水线的 <code>rs</code> 或 <code>rt</code> 冲突，并且 <code>Tuse &lt; Tnew</code>，我们阻塞。对应代码实现。</p>
 <figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">assign</span> E_stall_rs = ((E_lbget ? (D_rs == E_rt || D_rs == E_rs) : (E_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="hljs-number">0</span>) &amp;&amp; (rs_Tuse &lt; E_Tnew);<br><span class="hljs-keyword">assign</span> E_stall_rt = ((E_lbget ? (D_rt == E_rs || D_rt == E_rt) : (E_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="hljs-number">0</span>) &amp;&amp; (rt_Tuse &lt; E_Tnew);<br><span class="hljs-keyword">assign</span> M_stall_rs = ((M_lbget ? (D_rs == M_rs || D_rs == M_rt) : (M_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="hljs-number">0</span>) &amp;&amp; (rs_Tuse &lt; M_Tnew);<br><span class="hljs-keyword">assign</span> M_stall_rt = ((M_lbget ? (D_rt == M_rs || D_rt == M_rt) : (M_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="hljs-number">0</span>) &amp;&amp; (rt_Tuse &lt; M_Tnew);<br></code></pre></td></tr></table></figure>
 
 <p>以上是两种阻塞方式，暴力阻塞可能会超时，条件阻塞也可能比测评机要求的周期少(可能是跑的太快了😥)。接着还有两种译码位置，<strong>M级译码</strong>和<strong>W级译码</strong></p>
-<p><strong>W级译码</strong>：对于判断条件Condition，我们不在DM进行计算，而是在顶层模块mips中进行判断，DM只需要更改DMOp从而输出判断需要的数据即可。这里你可能会发现，如果我要写入的数据来自DM并且和我判断需要的数据冲突了怎么办呢，那就只好再给DM开一个端口往后传判断需要的数据了。在W级判断出condition后传到<code>w_ctrl</code>,对<code>W_GRFA3</code>判断。显然，在这种情况下，<code>D</code>，<code>E</code>，<code>M</code>级都没有GRFA3的视野所以<code>E_Tnew = 3</code>,<code>M_Tnew = 2</code>,并且条件阻塞写法如下：</p>
+<p><strong>W 级译码</strong>：对于判断条件 Condition，我们不在 DM 进行计算，而是在顶层模块 mips 中进行判断，DM 只需要更改 DMOp 从而输出判断需要的数据即可。这里你可能会发现，如果我要写入的数据来自 DM 并且和我判断需要的数据冲突了怎么办呢，那就只好再给 DM 开一个端口往后传判断需要的数据了。在 W 级判断出 condition 后传到 <code>w_ctrl</code>，对 <code>W_GRFA3</code> 判断。显然，在这种情况下，<code>D</code>、<code>E</code>、<code>M</code> 级都没有 GRFA3 的视野，所以 <code>E_Tnew = 3</code>、<code>M_Tnew = 2</code>，并且条件阻塞写法如下：</p>
 <figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog"><span class="hljs-comment">//Stall</span><br><span class="hljs-keyword">assign</span> E_stall_rs = ((E_lbget ? (D_rs == E_rt || D_rs == E_rs) : (E_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="hljs-number">0</span>) &amp;&amp; (rs_Tuse &lt; E_Tnew);<br><span class="hljs-keyword">assign</span> E_stall_rt = ((E_lbget ? (D_rt == E_rs || D_rt == E_rt) : (E_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="hljs-number">0</span>) &amp;&amp; (rt_Tuse &lt; E_Tnew);<br><span class="hljs-keyword">assign</span> M_stall_rs = ((M_lbget ? (D_rs == M_rs || D_rs == M_rt) : (M_GRFA3 == D_rs)) &amp;&amp; D_rs != <span class="hljs-number">0</span>) &amp;&amp; (rs_Tuse &lt; M_Tnew);<br><span class="hljs-keyword">assign</span> M_stall_rt = ((M_lbget ? (D_rt == M_rs || D_rt == M_rt) : (M_GRFA3 == D_rt)) &amp;&amp; D_rt != <span class="hljs-number">0</span>) &amp;&amp; (rt_Tuse &lt; M_Tnew);<br></code></pre></td></tr></table></figure>
 
 <p>这样就可以得到正确的运算结果，但是不难看出，这并不是最优解，我们在M级其实就可以拿到GRFA3，这样就可以删除M级冲突判断的不确定性，从而减少阻塞的发生，提高CPU性能。</p>
@@ -614,7 +614,7 @@ tmp1 = GPR">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="「BUAA-CO」 P5课下">
+                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="「BUAA-CO」 P5课下">
                         
                         <span class="card-title">「BUAA-CO」 P5课下</span>
                     </div>
@@ -667,7 +667,7 @@ tmp1 = GPR">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="「BUAA-CO」 P4课上">
+                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="「BUAA-CO」 P4课上">
                         
                         <span class="card-title">「BUAA-CO」 P4课上</span>
                     </div>
@@ -843,7 +843,7 @@ tmp1 = GPR">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.6k</span>
+                        class="white-color">57k</span>
             
             
             

@@ -393,7 +393,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-01-21
+                    2026-04-30
                 </div>
                 
 
@@ -432,18 +432,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>计算机组成原理，简称<code>CO</code>，是计算机学院在大二上学期开设的一门<code>5.5</code>学分的核心专业课，也是同学们来到计算机学院遇到的第一个拦路虎。课程分为理论和实验两部分，理论部分考察重点大致为以下几个知识点：<code>组合逻辑</code>，<code>时序逻辑</code>，<code>主存储器</code>，<code>cache</code>，<code>TLB</code>，<code>流水线CPU</code>，<code>mips代码补全</code>。实验部分也是CO最困难的部分，但他其实没有传说中的那么恐怖，唯一在干的事情就是设计CPU，从<code>logisim</code>到<code>verilog</code>，从单周期到流水线，只要诸位好好理解，相信征服CO并不是什么难事。<strong>实验最后的给分和实验截止时你所处在的Project有关</strong>，不出意外的话有三次gap机会，大家要好好珍惜哟。笔者接下来的系列Blog将围绕P0-P7展开，希望能对各位有所帮助。</p>
-<h2 id="为什么写"><a href="#为什么写" class="headerlink" title="为什么写"></a>为什么写</h2><p>作为一个初入计算机学院懵懂的学生，笔者在初步上手的时候也遇到了很多困难：看不懂大佬学长的博客，听不懂老师上课讲的流水线设计思路，语法学习无从下手……这个时候的那种绝望可能大家只有经历了才知道。好在我遇到了热心友爱的同学，室友，如果没有他们的帮助，我不可能顺利通过CO。本着<strong>因为淋过雨，所以也想给学弟学妹撑把伞的热忱</strong>，我创作了系列Blog，该CO系列将尽可能使用通俗的语言来讲解晦涩的知识点，细节也会尽可能覆盖到，如果大佬阅读到该博客觉得写的太繁琐的话可以去看其他佬的作品，如果能阅读之后发现相关错误之处请及时联系我，笔者感激不尽🫡。</p>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>计算机组成原理，简称<code>CO</code>，是计算机学院在大二上学期开设的一门<code>5.5</code>学分的核心专业课，也是同学们来到计算机学院遇到的第一个拦路虎。课程分为理论和实验两部分，理论部分考察重点大致为以下几个知识点：<code>组合逻辑</code>，<code>时序逻辑</code>，<code>主存储器</code>，<code>cache</code>，<code>TLB</code>，<code>流水线 CPU</code>，<code>MIPS 代码补全</code>。实验部分也是 CO 最困难的部分，但它其实没有传说中的那么恐怖，唯一在干的事情就是设计 CPU，从<code>Logisim</code>到<code>Verilog</code>，从单周期到流水线，只要诸位好好理解，相信征服 CO 并不是什么难事。<strong>实验最后的给分和实验截止时你所处在的 Project 有关</strong>，不出意外的话有三次 gap 机会，大家要好好珍惜哟。笔者接下来的系列 Blog 将围绕 P0-P7 展开，希望能对各位有所帮助。</p>
+<h2 id="为什么写"><a href="#为什么写" class="headerlink" title="为什么写"></a>为什么写</h2><p>作为一个初入计算机学院懵懂的学生，笔者在初步上手的时候也遇到了很多困难：看不懂大佬学长的博客，听不懂老师上课讲的流水线设计思路，语法学习无从下手……这个时候的那种绝望可能大家只有经历了才知道。好在我遇到了热心友爱的同学、室友，如果没有他们的帮助，我不可能顺利通过 CO。本着<strong>因为淋过雨，所以也想给学弟学妹撑把伞的热忱</strong>，我创作了系列 Blog，该 CO 系列将尽可能使用通俗的语言来讲解晦涩的知识点，细节也会尽可能覆盖到，如果大佬阅读到该博客觉得写得太繁琐的话可以去看其他佬的作品，如果能阅读之后发现相关错误之处请及时联系我，笔者感激不尽🫡。</p>
 <h2 id="CO学习方法的一些个人建议"><a href="#CO学习方法的一些个人建议" class="headerlink" title="CO学习方法的一些个人建议"></a>CO学习方法的一些个人建议</h2><ul>
-<li>CO学习基本盘当然是在COpre阶段掌握好<code>verilog语法</code>（重中之重）</li>
-<li>在设计过程中，如果你足够牛逼，那么自己设计是最好的；如果你喜欢看书，可以跟着书上的指示设计（没干过，但是舍友是这样的，大家可以尝试）;更推荐到方法是从<code>P3</code>开始跟着一个学长的<code>博客</code>和<code>github仓库</code>,沿着他的思路设计下去，在设计的过程中做出某些属于自己的优化和改动（千万别纯抄一遍下来），形成自己对流水线的理解。</li>
-<li>在看博客时最好结合github的代码一起看，避免不必要的bug。</li>
+<li>CO 学习基本盘当然是在 COpre 阶段掌握好<code>Verilog 语法</code>（重中之重）</li>
+<li>在设计过程中，如果你足够牛，那么自己设计是最好的；如果你喜欢看书，可以跟着书上的指示设计（没干过，但是舍友是这样的，大家可以尝试）；更推荐的方法是从<code>P3</code>开始跟着一个学长的<code>Blog</code>和<code>GitHub 仓库</code>，沿着他的思路设计下去，在设计的过程中做出某些属于自己的优化和改动（千万别纯抄一遍下来），形成自己对流水线的理解。</li>
+<li>在看博客时最好结合 GitHub 的代码一起看，避免不必要的 bug。</li>
 <li>尽量在周中也完成一点工作，不要全压在周末，压力有点大的样子。</li>
 <li>用好测评机，这是一个23级学长写的：<a target="_blank" rel="noopener" href="https://github.com/Kie-Chi/COT%E3%80%82">https://github.com/Kie-Chi/COT。</a></li>
 </ul>
 <h2 id="不得不提的事情"><a href="#不得不提的事情" class="headerlink" title="不得不提的事情"></a>不得不提的事情</h2><p>大二上学期有两个比较重要的竞赛，当竞赛撞上闯关制的CO就会擦出不一样的火花，在这里给大家提个醒。</p>
 <ul>
-<li>12.5，<strong>全国部分地区大学生物理竞赛</strong>，这个只要你考前准备，做一点往年题，混个三等奖，你的物理就满分了，真的超值！！！但是可惜的他正好在周末撞上了CO的P5&#x2F;P6，所以这就体现了在周中推进计组实验的重要性，或者你可早点开始复习😁。</li>
+<li>12.5，<strong>全国部分地区大学生物理竞赛</strong>，这个只要你考前准备，做一点往年题，混个三等奖，你的物理就满分了，真的超值！！！但是可惜的是它正好在周末撞上了 CO 的 P5&#x2F;P6，所以这就体现了在周中推进计组实验的重要性，或者你可以早点开始复习😁。</li>
 <li>12.13，<strong>英语六级</strong>，有很大概率会撞上你的P7，大家有必要提前复习一下。</li>
 </ul>
 <p>如果你在暑假预习了计组并且碰到不会设计的问题并且无人可问，我的建议是跳过（别全跳过了哈），它不会对你开学正式的Project产生什么致命的影响。如果你在暑假<strong>没有</strong>预习计组，No Problem，开学还有时间，足够你翻盘。</p>
@@ -572,7 +572,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="「BUAA-CO」 P0">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="「BUAA-CO」 P0">
                         
                         <span class="card-title">「BUAA-CO」 P0</span>
                     </div>
@@ -625,7 +625,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Hello World">
                         
                         <span class="card-title">Hello World</span>
                     </div>
@@ -785,7 +785,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.6k</span>
+                        class="white-color">57k</span>
             
             
             

@@ -5,8 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="「BUAA-CO」 P6课下, Cordial-Kid">
-    <meta name="description" content="简介p6和P5的整体思路一样，区别在于P6将IM和DM模块放在了外部（课程组写好了代码），从而使得CPU更加纯粹，贴合实际。同时P6新增了乘除槽指令，由于乘除槽指令执行周期较长，因此我们在阻塞等方面要加以注意。废话不多说，我们开始吧。
-IF">
+    <meta name="description" content="简介P6 和 P5 的整体思路一样，区别在于 P6 将 IM 和 DM 模块放在了外部（课程组写好了代码），从而使得 CPU 更加纯粹，贴合实际。同时 P6 新增了乘除槽指令，由于乘除槽指令执行周期较长，因此我们在阻塞等方面要加以注意。废话">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -333,7 +332,7 @@ IF">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -398,7 +397,7 @@ IF">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-01-23
+                    2026-04-30
                 </div>
                 
 
@@ -437,13 +436,13 @@ IF">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>p6和P5的整体思路一样，区别在于P6将IM和DM模块放在了外部（课程组写好了代码），从而使得CPU更加纯粹，贴合实际。同时P6新增了乘除槽指令，由于乘除槽指令执行周期较长，因此我们在阻塞等方面要加以注意。废话不多说，我们开始吧。</p>
-<h2 id="IFU-PC"><a href="#IFU-PC" class="headerlink" title="IFU -&gt; PC"></a>IFU -&gt; PC</h2><p>在P6实验中，IM外置，因此在P5的基础上，我们要删掉这部分，保留PC的同时在顶层模块mips新增接口与外置DM信息交换：<br><code>input [31:0] i_inst_rdata,      //F级PC对应的32位指令</code><br><code>output [31:0] i_inst_addr,      //F级PC</code></p>
-<h2 id="D-CMP"><a href="#D-CMP" class="headerlink" title="D_CMP"></a>D_CMP</h2><p>P6新增指令<code>BNE</code>,需要在D_CMP模块完成比较。</p>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>P6 和 P5 的整体思路一样，区别在于 P6 将 IM 和 DM 模块放在了外部（课程组写好了代码），从而使得 CPU 更加纯粹，贴合实际。同时 P6 新增了乘除槽指令，由于乘除槽指令执行周期较长，因此我们在阻塞等方面要加以注意。废话不多说，我们开始吧。</p>
+<h2 id="IFU-PC"><a href="#IFU-PC" class="headerlink" title="IFU -&gt; PC"></a>IFU -&gt; PC</h2><p>在 P6 实验中，IM 外置，因此在 P5 的基础上，我们要删掉这部分，保留 PC 的同时在顶层模块 mips 新增接口与外置 DM 信息交换：<br><code>input [31:0] i_inst_rdata,      //F级PC对应的32位指令</code><br><code>output [31:0] i_inst_addr,      //F级PC</code></p>
+<h2 id="D-CMP"><a href="#D-CMP" class="headerlink" title="D_CMP"></a>D_CMP</h2><p>P6 新增指令<code>BNE</code>，需要在 D_CMP 模块完成比较。</p>
 <figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">assign</span> Beq_jump = (CMPOp == `CMP_BEQ &amp;&amp; RS_Data == RT_Data) ? <span class="hljs-number">1&#x27;b1</span> :<br>                  (CMPOp == `CMP_BNE &amp;&amp; RS_Data != RT_Data) ? <span class="hljs-number">1&#x27;b1</span> :<br>                  <span class="hljs-number">1&#x27;b0</span>;<br></code></pre></td></tr></table></figure>
 
 <h2 id="D-GRF"><a href="#D-GRF" class="headerlink" title="D_GRF"></a>D_GRF</h2><p>P6不需要<code>$display(&quot;%d@%h: $%d &lt;= %h&quot;,$time,PC,A3,WD);</code></p>
-<h2 id="def"><a href="#def" class="headerlink" title="def"></a>def</h2><p>这个模块其实本来没什么好说的，只要新增指令需要用到的变量我们在这里定义即可。在这里值得说明的是，虽然P6指令极多，但是笔者权衡之后依然采用每条指令独立考量的方式，没有像主流思路一样对指令进行分类。两种方式各有利弊，这里只能仁者见仁，智者见智了，举个例子。</p>
+<h2 id="def"><a href="#def" class="headerlink" title="def"></a>def</h2><p>这个模块其实本来没什么好说的，只要新增指令需要用到的变量我们在这里定义即可。在这里值得说明的是，虽然 P6 指令极多，但是笔者权衡之后依然采用每条指令独立考量的方式，没有像主流思路一样对指令进行分类。两种方式各有利弊，这里只能仁者见仁，智者见智了，举个例子。</p>
 <figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">assign</span> GRFA3Sel = (cal_r | jalr | mf) ? `GRFA3rd :<br>                (cal_i | load | mfc0) ? `GRFA3rt : <br>                (jal) ? `GRFA331 : `GRFA30;<br></code></pre></td></tr></table></figure>
 
 <figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">assign</span> GRFA3Sel = (Add|Sub|Sll|Jalr|_And|_Or|Slt|Sltu|Mfhi|Mflo) ? `GRFA3rd :<br>                  (Ori | Lw | Lui | Addi | Andi | Lh | Lb) ? `GRFA3rt :<br>                  (Jal) ? `GRFA331 :<br>                  `GRFA30;<br></code></pre></td></tr></table></figure>
@@ -453,10 +452,10 @@ IF">
 <h2 id="E-MDU"><a href="#E-MDU" class="headerlink" title="E_MDU"></a>E_MDU</h2><p>乘除槽的实现是P6的重点和难点。我们要实现8条乘除法相关指令：<code>mult</code> <code>multu</code> <code>div</code> <code>divu</code> <code>mthi</code> <code>mtlo</code> <code>mfhi</code> <code>mflo</code>，前4条指令是计算乘除法，并将结果存入HI，LO两个寄存器中，后4条指令是对HI和LO的读写。<br>我们把MDU模块当作特殊的ALU，对于<strong>前四条指令</strong>，MDU要执行很多个周期并且不需要输出计算结果，只要在时钟上升沿时将计算结果存入HI，LO寄存器即可。对于<code>mfhi,mflo</code>则需要正常输出。对于<code>mthi,mtlo</code>，在时钟上升沿时写入对应寄存器即可，只需要<strong>执行一个周期</strong>。<br>代码如下：</p>
 <figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">always</span> @(<span class="hljs-keyword">posedge</span> clk) <span class="hljs-keyword">begin</span><br>    <span class="hljs-keyword">if</span> (reset) <span class="hljs-keyword">begin</span><br>        HIreg &lt;= <span class="hljs-number">32&#x27;b0</span>;<br>        LOreg &lt;= <span class="hljs-number">32&#x27;b0</span>;<br>        cnt &lt;= <span class="hljs-number">4&#x27;b0</span>;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">begin</span><br>        <span class="hljs-keyword">if</span> (MDUOp == `MDU_MULT) <span class="hljs-keyword">begin</span><br>            &#123;HIreg,LOreg&#125; &lt;= <span class="hljs-built_in">$signed</span>(A) * <span class="hljs-built_in">$signed</span>(B);<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (MDUOp == `MDU_MULTU) <span class="hljs-keyword">begin</span><br>            &#123;HIreg,LOreg&#125; &lt;= A * B;<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (MDUOp == `MDU_DIV) <span class="hljs-keyword">begin</span><br>            HIreg &lt;= <span class="hljs-built_in">$signed</span>(A) % <span class="hljs-built_in">$signed</span>(B);<br>            LOreg &lt;= <span class="hljs-built_in">$signed</span>(A) / <span class="hljs-built_in">$signed</span>(B); <br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (MDUOp == `MDU_DIVU) <span class="hljs-keyword">begin</span><br>            HIreg &lt;= A % B;<br>            LOreg &lt;= A / B;<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (MDUOp == `MDU_MTHI) <span class="hljs-keyword">begin</span><br>            HIreg &lt;= A;<br>        <span class="hljs-keyword">end</span><br>        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (MDUOp == `MDU_MTLO) <span class="hljs-keyword">begin</span><br>            LOreg &lt;= A;<br>        <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br><span class="hljs-keyword">assign</span> MDUC = (MDUOp == `MDU_MFHI) ? HIreg :<br>              (MDUOp == `MDU_MFLO) ? LOreg :<br>              <span class="hljs-number">32&#x27;d0</span>;<br></code></pre></td></tr></table></figure>
 
-<p>注：以下提到的乘除法计算均为<code>mult,multu,div,divu</code>。<br>关于阻塞，之前我们提到了乘除法的计算周期较长，为了不因为乘除法计算的存在而拉低CPU的最短时钟周期，我们引入了MDU。因此当MDU模块正在计算时，所有不进入MDU的指令都可以正常流水，这也就导致了MDU的阻塞与自身息息相关。当MDU执行乘除法计算时，</p>
+<p>注：以下提到的乘除法计算均为<code>mult,multu,div,divu</code>。<br>关于阻塞，之前我们提到了乘除法的计算周期较长，为了不因为乘除法计算的存在而拉低 CPU 的最短时钟周期，我们引入了 MDU。因此当 MDU 模块正在计算时，所有不进入 MDU 的指令都可以正常流水，这也就导致了 MDU 的阻塞与自身息息相关。当 MDU 执行乘除法计算时，</p>
 <ol>
 <li>出现了<code>mfhi,mflo</code>,将指令阻塞在D级。</li>
-<li>出现了<code>mult,multu,div,divu</code>,直接终止运算因为接下来要覆盖</li>
+<li>出现了<code>mult,multu,div,divu</code>，直接终止运算，因为接下来要覆盖</li>
 <li>出现了<code>mthi,mtlo</code>,将指令阻塞在D级。</li>
 </ol>
 <p>当然课程组为了方便我们设计给了我们一些提示：</p>
@@ -644,7 +643,7 @@ IF">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="「BUAA-CO」P6课上">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="「BUAA-CO」P6课上">
                         
                         <span class="card-title">「BUAA-CO」P6课上</span>
                     </div>
@@ -697,7 +696,7 @@ IF">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="「BUAA-CO」 P5课下">
+                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="「BUAA-CO」 P5课下">
                         
                         <span class="card-title">「BUAA-CO」 P5课下</span>
                     </div>
@@ -873,7 +872,7 @@ IF">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.6k</span>
+                        class="white-color">57k</span>
             
             
             

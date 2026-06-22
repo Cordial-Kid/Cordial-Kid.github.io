@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="「BUAA-CO」 P3课下, Cordial-Kid">
-    <meta name="description" content="简介从P3开始，我们正式开始设计CPU，首先从单周期开始入手，P3使用logisim，并且不会涉及特别复杂的状态机，指令也相对容易。
-设计方案综述要求实现的指令集包括 add(不考虑溢出), subu(不考虑溢出), ori, lw, sw">
+    <meta name="description" content="简介从 P3 开始，我们正式开始设计 CPU，首先从单周期开始入手，P3 使用 Logisim，并且不会涉及特别复杂的状态机，指令也相对容易。
+设计方案综述要求实现的指令集包括 add（不考虑溢出）、subu（不考虑溢出）、ori、lw、s">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -333,7 +333,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -398,7 +398,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-01-21
+                    2026-04-30
                 </div>
                 
 
@@ -437,11 +437,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>从P3开始，我们正式开始设计CPU，首先从单周期开始入手，P3使用logisim，并且不会涉及特别复杂的<strong>状态机</strong>，指令也相对容易。</p>
-<h2 id="设计方案综述"><a href="#设计方案综述" class="headerlink" title="设计方案综述"></a>设计方案综述</h2><p>要求实现的指令集包括 add(不考虑溢出), subu(不考虑溢出), ori, lw, sw, beq, lui, nop,j,jal,jr,jalr</p>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>从 P3 开始，我们正式开始设计 CPU，首先从单周期开始入手，P3 使用 Logisim，并且不会涉及特别复杂的<strong>状态机</strong>，指令也相对容易。</p>
+<h2 id="设计方案综述"><a href="#设计方案综述" class="headerlink" title="设计方案综述"></a>设计方案综述</h2><p>要求实现的指令集包括 add（不考虑溢出）、subu（不考虑溢出）、ori、lw、sw、beq、lui、nop、j、jal、jr、jalr</p>
 <p>整体架构图如下：<br><img src="/images/%E6%95%B4%E4%BD%93%E7%BB%93%E6%9E%84.png" alt="整体结构"></p>
 <p>参考了课件中的缩略简图：<br><img src="/images/%E7%BC%A9%E7%95%A5%E5%9B%BE.png" alt="缩略图"></p>
-<h2 id="关键模块的定义"><a href="#关键模块的定义" class="headerlink" title="关键模块的定义"></a>关键模块的定义</h2><h3 id="IFU：由PC-程序计数器-和IM组成"><a href="#IFU：由PC-程序计数器-和IM组成" class="headerlink" title="IFU：由PC(程序计数器)和IM组成"></a>IFU：由PC(程序计数器)和IM组成</h3><h4 id="端口说明："><a href="#端口说明：" class="headerlink" title="端口说明："></a>端口说明：</h4><table>
+<h2 id="关键模块的定义"><a href="#关键模块的定义" class="headerlink" title="关键模块的定义"></a>关键模块的定义</h2><h3 id="IFU：由-PC（程序计数器）和-IM-组成"><a href="#IFU：由-PC（程序计数器）和-IM-组成" class="headerlink" title="IFU：由 PC（程序计数器）和 IM 组成"></a>IFU：由 PC（程序计数器）和 IM 组成</h3><h4 id="端口说明："><a href="#端口说明：" class="headerlink" title="端口说明："></a>端口说明：</h4><table>
 <thead>
 <tr>
 <th>信号名称</th>
@@ -476,7 +476,7 @@
 </tr>
 </tbody></table>
 <h4 id="元件示意图"><a href="#元件示意图" class="headerlink" title="元件示意图"></a>元件示意图</h4><p><img src="/images/IFU%E5%85%83%E4%BB%B6%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="IFU元件示意图"></p>
-<p><strong>tips</strong>:尽量将PC和IM分开写，方便调试时观测RAM指令执行的变化</p>
+<p><strong>Tips</strong>：尽量将 PC 和 IM 分开写，方便调试时观测 RAM 指令执行的变化</p>
 <h3 id="NPC-次地址计算单元"><a href="#NPC-次地址计算单元" class="headerlink" title="NPC(次地址计算单元)"></a>NPC(次地址计算单元)</h3><h4 id="端口说明"><a href="#端口说明" class="headerlink" title="端口说明"></a>端口说明</h4><table>
 <thead>
 <tr>
@@ -1289,7 +1289,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="「BUAA-CO」 P4课下">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="「BUAA-CO」 P4课下">
                         
                         <span class="card-title">「BUAA-CO」 P4课下</span>
                     </div>
@@ -1342,7 +1342,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="「BUAA-CO」 P3课上">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="「BUAA-CO」 P3课上">
                         
                         <span class="card-title">「BUAA-CO」 P3课上</span>
                     </div>
@@ -1518,7 +1518,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.6k</span>
+                        class="white-color">57k</span>
             
             
             

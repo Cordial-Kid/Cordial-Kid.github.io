@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Git指令集, Cordial-Kid">
-    <meta name="description" content="写在前面Git是一个分布式版本控制系统，广泛用于软件开发和其他需要版本控制的项目中。Github和GitLab两个计算机领域绕不开的平台，都基于Git进行版本控制和协作开发。本文档将介绍一些常用的Git指令，帮助你更好地理解和使用Git。我">
+    <meta name="description" content="写在前面Git 是一个分布式版本控制系统，广泛用于软件开发和其他需要版本控制的项目中。GitHub 和 GitLab 两个计算机领域绕不开的平台，都基于 Git 进行版本控制和协作开发。本文档将介绍一些常用的 Git 指令，帮助你更好地理解">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -332,7 +332,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -397,7 +397,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-03-09
+                    2026-04-30
                 </div>
                 
 
@@ -436,7 +436,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>Git是一个分布式版本控制系统，广泛用于软件开发和其他需要版本控制的项目中。Github和GitLab两个计算机领域绕不开的平台，都基于Git进行版本控制和协作开发。本文档将介绍一些常用的Git指令，帮助你更好地理解和使用Git。我们以Github为例进行说明。</p>
+                <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>Git 是一个分布式版本控制系统，广泛用于软件开发和其他需要版本控制的项目中。GitHub 和 GitLab 两个计算机领域绕不开的平台，都基于 Git 进行版本控制和协作开发。本文档将介绍一些常用的 Git 指令，帮助你更好地理解和使用 Git。我们以 GitHub 为例进行说明。</p>
 <h2 id="Git配置"><a href="#Git配置" class="headerlink" title="Git配置"></a>Git配置</h2><p>在使用Git之前，我们需要进行一些基本的配置，主要包括设置用户名和邮箱地址。这些信息会被记录在每次提交中，用于标识提交的作者。</p>
 <p>打开Git Bash，执行以下命令进行配置：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --global user.name <span class="hljs-string">&quot;你的用户名&quot;</span><br>git config --global user.email <span class="hljs-string">&quot;你的邮箱地址&quot;</span><br></code></pre></td></tr></table></figure>
@@ -445,7 +445,7 @@
 <p>如果想查看当前的配置信息，可以执行以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git config --list<br></code></pre></td></tr></table></figure>
 
-<h2 id="远程仓库关联"><a href="#远程仓库关联" class="headerlink" title="远程仓库关联"></a>远程仓库关联</h2><p>Github其实就是一个代码托管平台，用户可以在上面创建远程仓库来存储和管理代码。要将本地仓库与远程仓库关联，有以下两种方式：</p>
+<h2 id="远程仓库关联"><a href="#远程仓库关联" class="headerlink" title="远程仓库关联"></a>远程仓库关联</h2><p>GitHub 其实就是一个代码托管平台，用户可以在上面创建远程仓库来存储和管理代码。要将本地仓库与远程仓库关联，有以下两种方式：</p>
 <ol>
 <li><p><strong>git clone</strong>：用于从远程仓库克隆代码到本地。<br>例如我们在E:\Projects目录下打开Git Bash，执行以下命令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git <span class="hljs-built_in">clone</span> &lt;远程仓库地址&gt;<br></code></pre></td></tr></table></figure></li>
@@ -460,7 +460,7 @@
 <p>Git会在E:\Projects目录下创建一个.git文件夹，表示这是一个Git仓库。结构图如下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">├─ 当前目录<br>│  ├─ .git/<br>│  ├─ README.md<br>│  └─ ...<br></code></pre></td></tr></table></figure>
 
-<p><strong>注意以上两种方法均需要在远程仓库平台（如Github）上提前创建好远程仓库。</strong></p>
+<p><strong>注意以上两种方法均需要在远程仓库平台（如 GitHub）上提前创建好远程仓库。</strong></p>
 <h2 id="文件提交"><a href="#文件提交" class="headerlink" title="文件提交"></a>文件提交</h2><p>在掌握怎么提交文件之前，我们需要先了解Git的工作区、暂存区和本地仓库（版本库）三个概念：</p>
 <h3 id="工作区"><a href="#工作区" class="headerlink" title="工作区"></a>工作区</h3><p>工作区是我们在电脑上看到的文件和文件夹的实际位置。我们在工作区进行文件的编辑、添加和删除等操作。</p>
 <h3 id="暂存区"><a href="#暂存区" class="headerlink" title="暂存区"></a>暂存区</h3><p>暂存区是一个临时存储区域，用于保存我们准备提交到本地仓库的文件快照。当我们执行<code>git add</code>命令时，文件会被添加到暂存区。</p>
@@ -468,7 +468,7 @@
 <p>了解了这三个概念后，我们就可以在<code>.git</code>所在的目录下执行相关指令来提交文件了。</p>
 <h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><ol>
 <li><strong>git add</strong> <code>&lt;文件名&gt;</code>：将指定文件添加到暂存区。如果要添加所有修改过的文件，可以使用<code>git add .</code>。</li>
-<li><strong>git status</strong>:查看哪些文件在暂存区中。不在暂存区代表未被git跟踪。</li>
+<li><strong>git status</strong>：查看哪些文件在暂存区中。不在暂存区则表示未被 Git 跟踪。</li>
 <li><strong>git diff</strong>：查看<strong>工作区</strong>和<strong>暂存区</strong>之间的差异。</li>
 <li><strong>git commit -m</strong> <code>&quot;提交信息&quot;</code>：将暂存区的文件提交到本地仓库，并附上提交信息。</li>
 <li><strong>git log</strong>：查看提交历史记录。</li>
@@ -673,7 +673,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Linux指令集">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Linux指令集">
                         
                         <span class="card-title">Linux指令集</span>
                     </div>
@@ -722,7 +722,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="「BUAA-CO」P6课上">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="「BUAA-CO」P6课上">
                         
                         <span class="card-title">「BUAA-CO」P6课上</span>
                     </div>
@@ -898,7 +898,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.6k</span>
+                        class="white-color">57k</span>
             
             
             

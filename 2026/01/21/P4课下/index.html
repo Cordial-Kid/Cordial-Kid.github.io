@@ -5,8 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="「BUAA-CO」 P4课下, Cordial-Kid">
-    <meta name="description" content="简介从P4开始，我们将开始搭建单周期CPU，使用的编程语言仅仅是verilog,并且对于verilog的要求仅限于语法，没有烦人的状态机。所以被P1搞红温的同学可以长舒一口气了😋。
-设计方案综述本次实验实现的指令包括add,sub,ori">
+    <meta name="description" content="简介从 P4 开始，我们将开始搭建单周期 CPU，使用的编程语言仅仅是 Verilog，并且对于 Verilog 的要求仅限于语法，没有烦人的状态机。所以被 P1 搞红温的同学可以长舒一口气了😋。
+设计方案综述本次实验实现的指令包括 ad">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -333,7 +333,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -398,7 +398,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-01-21
+                    2026-04-30
                 </div>
                 
 
@@ -437,26 +437,26 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>从P4开始，我们将开始搭建单周期CPU，使用的编程语言仅仅是verilog,并且对于verilog的要求仅限于语法，没有烦人的状态机。所以被P1搞红温的同学可以长舒一口气了😋。</p>
-<h2 id="设计方案综述"><a href="#设计方案综述" class="headerlink" title="设计方案综述"></a>设计方案综述</h2><p>本次实验实现的指令包括add,sub,ori,lw,sw,beq,lui,sll,j,jal,jr,jalr，通过将各个元件模块化封装，再用<code>wire</code>连接，进而封装成完整的CPU。</p>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>从 P4 开始，我们将开始搭建单周期 CPU，使用的编程语言仅仅是 Verilog，并且对于 Verilog 的要求仅限于语法，没有烦人的状态机。所以被 P1 搞红温的同学可以长舒一口气了😋。</p>
+<h2 id="设计方案综述"><a href="#设计方案综述" class="headerlink" title="设计方案综述"></a>设计方案综述</h2><p>本次实验实现的指令包括 add、sub、ori、lw、sw、beq、lui、sll、j、jal、jr、jalr，通过将各个元件模块化封装，再用<code>wire</code>连接，进而封装成完整的 CPU。</p>
 <p>整体架构图如下：<br><img src="/images/v%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png" alt="整体架构图"></p>
 <p>下面将分模块详细介绍一下设计思路和实现方法。</p>
-<h2 id="关键模块实现"><a href="#关键模块实现" class="headerlink" title="关键模块实现"></a>关键模块实现</h2><h3 id="datapath"><a href="#datapath" class="headerlink" title="datapath"></a>datapath</h3><p>这一部分是除了CTRL之外的元件的集合，相当于顶层模块MIPS的两个子分支之一。其实理论上可以将DM，ALU，CTRL等元件直接揉到一起写成mips.v,但是笔者认为像这样分开来写思路更加清晰条理。</p>
+<h2 id="关键模块实现"><a href="#关键模块实现" class="headerlink" title="关键模块实现"></a>关键模块实现</h2><h3 id="datapath"><a href="#datapath" class="headerlink" title="datapath"></a>datapath</h3><p>这一部分是除了 CTRL 之外的元件集合，相当于顶层模块 MIPS 的两个子分支之一。其实理论上可以将 DM、ALU、CTRL 等元件直接揉到一起写成 mips.v，但是笔者认为像这样分开来写思路更加清晰条理。</p>
 <p>datapath模块的顶层是将ifu，am，alu等组件封装起来，形成一个对CTRL的接口。代码如下：</p>
 <figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> DATAPATH (<br>    <span class="hljs-keyword">input</span> clk,<br>    <span class="hljs-keyword">input</span> reset,<br>    <span class="hljs-keyword">input</span> [<span class="hljs-number">2</span>:<span class="hljs-number">0</span>] NPCOp,<br>    <span class="hljs-keyword">input</span> [<span class="hljs-number">2</span>:<span class="hljs-number">0</span>] WDSel,<br>    <span class="hljs-keyword">input</span> WESel,<br>    <span class="hljs-keyword">input</span> [<span class="hljs-number">2</span>:<span class="hljs-number">0</span>] WRA3Sel,<br>    <span class="hljs-keyword">input</span> [<span class="hljs-number">2</span>:<span class="hljs-number">0</span>] ALUOp,<br>    <span class="hljs-keyword">input</span> BSel,<br>    <span class="hljs-keyword">input</span> EXTOp,<br>    <span class="hljs-keyword">input</span> DMWr,<br>    <span class="hljs-keyword">output</span> [<span class="hljs-number">5</span>:<span class="hljs-number">0</span>] opcode,<br>    <span class="hljs-keyword">output</span> [<span class="hljs-number">5</span>:<span class="hljs-number">0</span>] func<br>);<br><br>  <span class="hljs-comment">// 首先对模块实例化，其次要定义连线，</span><br>  <span class="hljs-comment">// 这里定义的wire是真的wire</span><br>  <span class="hljs-keyword">wire</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] ifu_pc;<br>  <span class="hljs-keyword">wire</span> ALU_zero;<br>  <span class="hljs-keyword">wire</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] instr;<br>  <span class="hljs-keyword">wire</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] IFU_npc;<br>  <span class="hljs-keyword">wire</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] NPC_pc_4;<br>  <span class="hljs-keyword">wire</span> [<span class="hljs-number">4</span>:<span class="hljs-number">0</span>] grf_A3;<br>  <span class="hljs-keyword">wire</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] grf_WD;<br>  <span class="hljs-keyword">wire</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] grf_RD1;<br>  <span class="hljs-keyword">wire</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] grf_RD2;<br>  <span class="hljs-keyword">wire</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] ALU_C;<br>  <span class="hljs-keyword">wire</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] ext_imm;<br>  <span class="hljs-keyword">wire</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] ALU_B;<br>  <span class="hljs-keyword">wire</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] dm_rd;<br></code></pre></td></tr></table></figure>
 
 <p>这里以IFU模块为例说明模块实例化如何实现，请看代码：</p>
 <figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog">IFU ifu (<br>    <span class="hljs-variable">.NPC</span>(IFU_npc),<br>    <span class="hljs-variable">.PC</span>(ifu_pc),<br>    <span class="hljs-variable">.instruct</span>(instr),<br>    <span class="hljs-variable">.clk</span>(clk),  <span class="hljs-comment">//out</span><br>    <span class="hljs-variable">.reset</span>(reset)  <span class="hljs-comment">//out</span><br>);<br></code></pre></td></tr></table></figure>
 
-<p>其中IFU_npc代表NPC模块的输出NPC，也是IFU的输入。理论上讲这种格式应该是<strong>括号外</strong>是子模块的端口而<strong>括号内</strong>是父模块的信号。为了方便理解可以把他直观看成一根线，一根连接两个端口的线。</p>
+<p>其中 IFU_npc 代表 NPC 模块的输出 NPC，也是 IFU 的输入。理论上讲这种格式应该是<strong>括号外</strong>是子模块的端口而<strong>括号内</strong>是父模块的信号。为了方便理解可以把它直观看成一根线，一根连接两个端口的线。</p>
 <h4 id="其他子模块"><a href="#其他子模块" class="headerlink" title="其他子模块"></a>其他子模块</h4><p>剩余子模块相对独立，正常翻译logisim代码即可。</p>
 <p>特别说明，为了方便表示电路中的所有连线，新增MUX模块，端口定义如下：</p>
 <figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">module</span> MUX (<br>    <span class="hljs-keyword">input</span>  [<span class="hljs-number">4</span>:<span class="hljs-number">0</span>] WRA3MUX1,<br>    <span class="hljs-keyword">input</span>  [<span class="hljs-number">4</span>:<span class="hljs-number">0</span>] WRA3MUX2,<br>    <span class="hljs-keyword">input</span>  [<span class="hljs-number">4</span>:<span class="hljs-number">0</span>] WRA3MUX3,<br>    <span class="hljs-keyword">input</span>  [<span class="hljs-number">2</span>:<span class="hljs-number">0</span>] WRA3Sel,<br>    <span class="hljs-keyword">output</span> [<span class="hljs-number">4</span>:<span class="hljs-number">0</span>] A3,<br><br>    <span class="hljs-keyword">input</span>  [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] WDMUX1,<br>    <span class="hljs-keyword">input</span>  [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] WDMUX2,<br>    <span class="hljs-keyword">input</span>  [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] WDMUX3,<br>    <span class="hljs-keyword">input</span>  [ <span class="hljs-number">2</span>:<span class="hljs-number">0</span>] WDSel,<br>    <span class="hljs-keyword">output</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] WD,<br><br>    <span class="hljs-keyword">input</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] BMUX1,<br>    <span class="hljs-keyword">input</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] BMUX2,<br>    <span class="hljs-keyword">input</span> BSel,<br>    <span class="hljs-keyword">output</span> [<span class="hljs-number">31</span>:<span class="hljs-number">0</span>] ALU_B<br>);<br></code></pre></td></tr></table></figure>
 
 <h3 id="CTRL"><a href="#CTRL" class="headerlink" title="CTRL"></a>CTRL</h3><p>ctrl 要实现和datapath对接的接口，内部按照logisim设计时的与或关系来实现即可。</p>
-<h3 id="mips"><a href="#mips" class="headerlink" title="mips"></a>mips</h3><p>mips作为顶层电路，实现的是<code>CTRL</code>模块和<code>DATAPATH</code>模块的的拼接</p>
+<h3 id="mips"><a href="#mips" class="headerlink" title="mips"></a>mips</h3><p>MIPS 作为顶层电路，实现的是<code>CTRL</code>模块和<code>DATAPATH</code>模块的拼接</p>
 <h3 id="Some-Tips"><a href="#Some-Tips" class="headerlink" title="Some Tips"></a>Some Tips</h3><ul>
-<li>关于连线：在datapath模块的线路拼接中，由于一根线的两端连接的元件一般不同，所以建议在给wire命名时加上相连的某个元件，在写代码时便于识别信号通路。例如<code>wire ALU_zero;</code></li>
+<li>关于连线：在 datapath 模块的线路拼接中，由于一根线的两端连接的元件一般不同，所以建议在给 wire 命名时加上相连的某个元件，在写代码时便于识别信号通路。例如<code>wire ALU_zero;</code></li>
 </ul>
 <p>但是在mips中的线路拼接时，由于只有两个元件，因此所有接口都是一一对应关系。子模块端口和父模块信号可以一样，不会混淆。例如</p>
 <figure class="highlight verilog"><table><tr><td class="code"><pre><code class="hljs verilog"><span class="hljs-keyword">wire</span> [<span class="hljs-number">5</span>:<span class="hljs-number">0</span>] func; <br><br>DATAPATH datapath(<br>   <span class="hljs-comment">//.....</span><br>   <span class="hljs-variable">.func</span>(func)     <span class="hljs-comment">//out</span><br>);<br><br>CTRL ctrl(<br>   <span class="hljs-comment">//.....</span><br>   <span class="hljs-variable">.func</span>(func)     <span class="hljs-comment">//in </span><br>);<br><br></code></pre></td></tr></table></figure>
@@ -624,7 +624,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="「BUAA-CO」 P4课上">
+                        <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="「BUAA-CO」 P4课上">
                         
                         <span class="card-title">「BUAA-CO」 P4课上</span>
                     </div>
@@ -677,7 +677,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="「BUAA-CO」 P3课下">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="「BUAA-CO」 P3课下">
                         
                         <span class="card-title">「BUAA-CO」 P3课下</span>
                     </div>
@@ -853,7 +853,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.6k</span>
+                        class="white-color">57k</span>
             
             
             

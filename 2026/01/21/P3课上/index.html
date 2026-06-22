@@ -5,10 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="「BUAA-CO」 P3课上, Cordial-Kid">
-    <meta name="description" content="简介P3课上考试加的指令都比较常规，个人认为P3考试最大的难点就是机房的鼠标。我只能劝你手别抖了😨。
-一些前置知识开始P3之后，你所了解的用于P0的元件已经不够用了，下面列举几个新的P3课上常用的元件。
+    <meta name="description" content="简介P3 课上考试加的指令都比较常规，个人认为 P3 考试最大的难点就是机房的鼠标。我只能劝你手别抖了😨。
+一些前置知识开始 P3 之后，你所了解的用于 P0 的元件已经不够用了，下面列举几个新的 P3 课上常用的元件。
 
-Bit Adder:输入一个n位">
+Bit Add">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -335,7 +335,7 @@ Bit Adder:输入一个n位">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -400,14 +400,14 @@ Bit Adder:输入一个n位">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-01-21
+                    2026-04-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    510
+                    514
                 </div>
                 
 
@@ -439,17 +439,17 @@ Bit Adder:输入一个n位">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>P3课上考试加的指令都比较常规，个人认为P3考试最大的难点就是机房的鼠标。我只能劝你手别抖了😨。</p>
-<h2 id="一些前置知识"><a href="#一些前置知识" class="headerlink" title="一些前置知识"></a>一些前置知识</h2><p>开始P3之后，你所了解的用于P0的元件已经不够用了，下面列举几个新的P3课上常用的元件。</p>
+                <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>P3 课上考试加的指令都比较常规，个人认为 P3 考试最大的难点就是机房的鼠标。我只能劝你手别抖了😨。</p>
+<h2 id="一些前置知识"><a href="#一些前置知识" class="headerlink" title="一些前置知识"></a>一些前置知识</h2><p>开始 P3 之后，你所了解的用于 P0 的元件已经不够用了，下面列举几个新的 P3 课上常用的元件。</p>
 <ol>
-<li>Bit Adder:输入一个n位二进制数，输出总共有几位1。</li>
-<li>Bit Finder:输入一个n位二进制数，输出最低位的1&#x2F;最高位的1&#x2F;最低位的0&#x2F;最高位的0的index，还有一个输出端口代表n位二进制数是否含有1。</li>
-<li>Shifter：输入一个数以及移动的位数，输出得到的结果</li>
+<li>Bit Adder：输入一个 n 位二进制数，输出总共有几位 1。</li>
+<li>Bit Finder：输入一个 n 位二进制数，输出最低位的 1 &#x2F; 最高位的 1 &#x2F; 最低位的 0 &#x2F; 最高位的 0 的 index，还有一个输出端口代表 n 位二进制数是否含有 1。</li>
+<li>Shifter：输入一个数以及移动的位数，输出得到的结果。</li>
 </ol>
-<h2 id="rev"><a href="#rev" class="headerlink" title="rev"></a>rev</h2><p>题目：将GPR[rt] 的高index位翻转后放到低位，剩下的位数顺序排列到高位。然后将结果写到GPR[rt]</p>
-<p>解：先将GPR[rt]用<code>splitter</code>整体翻转，再左移+右移得到<code>0000...0+高index位反转结果</code>，和GPR[rt]左移得到的<code>剩余位数+000...000</code><br>相加就可以得到结果。总的来说就是位数转换都可以通过移位操作来实现。</p>
-<h2 id="blz"><a href="#blz" class="headerlink" title="blz"></a>blz</h2><p>题目：大概是数出GPR[rs] GPR[rt]的前导零的数量，然后比大小决定NPC的操作，以及向GRF写入tmp1或tmp2</p>
-<p>解：<strong>重点在数前导0</strong>，用<code>bit Finder</code>时记得考虑没有1的情况。</p>
+<h2 id="rev"><a href="#rev" class="headerlink" title="rev"></a>rev</h2><p>题目：将 GPR[rt] 的高 index 位翻转后放到低位，剩下的位数顺序排列到高位。然后将结果写到 GPR[rt]</p>
+<p>解：先将 GPR[rt] 用 <code>splitter</code> 整体翻转，再左移 + 右移得到 <code>0000...0 + 高 index 位反转结果</code>，和 GPR[rt] 左移得到的<code>剩余位数 + 000...000</code><br>相加就可以得到结果。总的来说就是位数转换都可以通过移位操作来实现。</p>
+<h2 id="blz"><a href="#blz" class="headerlink" title="blz"></a>blz</h2><p>题目：大概是数出 GPR[rs]、GPR[rt] 的前导零数量，然后比大小决定 NPC 的操作，以及向 GRF 写入 tmp1 或 tmp2。</p>
+<p>解：<strong>重点在数前导 0</strong>，用 <code>bit Finder</code> 时记得考虑没有 1 的情况。</p>
 <h2 id="lwf"><a href="#lwf" class="headerlink" title="lwf"></a>lwf</h2><p>题目：</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">lwf base rt offset<br>从offset(base)的内存中读出一个数据 <br>判断这个数和rt的and的各个数位之和的奇偶性 <br>奇数则存入(rt+1)mod32寄存器 <br>偶数则存入rt寄存器<br></code></pre></td></tr></table></figure>
 
@@ -578,7 +578,7 @@ Bit Adder:输入一个n位">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="「BUAA-CO」 P3课下">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="「BUAA-CO」 P3课下">
                         
                         <span class="card-title">「BUAA-CO」 P3课下</span>
                     </div>
@@ -631,7 +631,7 @@ Bit Adder:输入一个n位">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="「BUAA-CO」 P2">
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="「BUAA-CO」 P2">
                         
                         <span class="card-title">「BUAA-CO」 P2</span>
                     </div>
@@ -807,7 +807,7 @@ Bit Adder:输入一个n位">
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.6k</span>
+                        class="white-color">57k</span>
             
             
             

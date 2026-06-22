@@ -5,11 +5,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="「BUAA-CO」 P4课上, Cordial-Kid">
-    <meta name="description" content="写在前面：笔者不是大佬，P4二战方过，这里记载了二战题目的comprehensive版本。
+    <meta name="description" content="写在前面：笔者不是大佬，P4 二战方过，这里记载了二战题目的 comprehensive 版本。
 
-为什么是comprehensive版本？因为做完挺早，等助教问答的时候顺手把题抄了。
-为什么没有一战题目？因为一战没心情回忆痛苦的过去。
-为什么二">
+为什么是 comprehensive 版本？因为做完挺早，等助教问答的时候顺手把题抄了。
+为什么没有一战题目？因为一战没心情回忆痛苦的过去。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -336,7 +335,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/25.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -401,14 +400,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-01-21
+                    2026-04-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    618
+                    621
                 </div>
                 
 
@@ -440,38 +439,38 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>写在前面</strong>：笔者不是大佬，P4二战方过，这里记载了二战题目的comprehensive版本。</p>
+                <p><strong>写在前面</strong>：笔者不是大佬，P4 二战方过，这里记载了二战题目的 comprehensive 版本。</p>
 <ul>
-<li>为什么是comprehensive版本？因为做完挺早，等助教问答的时候顺手把题抄了。</li>
+<li>为什么是 comprehensive 版本？因为做完挺早，等助教问答的时候顺手把题抄了。</li>
 <li>为什么没有一战题目？因为一战没心情回忆痛苦的过去。</li>
 <li>为什么二战如此神速？我也不知道，可能是题简单吧。</li>
 </ul>
 <h2 id="SSZE"><a href="#SSZE" class="headerlink" title="SSZE"></a>SSZE</h2><p>opcode &#x3D; 6’b000000<br>func &#x3D; 6’b001111</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">当GPR[rs]和GPR[rt]后缀 0 的个数相同时，将GPR[rd]置 1 ，否则置 0 ;<br></code></pre></td></tr></table></figure>
 
-<p><strong>Answer</strong>:重点在数0的个数，还有就是改指令的时候记得把通路改完整(这个以大家对自己verilog代码的理解都不成问题)。</p>
+<p><strong>Answer</strong>：重点在数 0 的个数，还有就是改指令的时候记得把通路改完整（这个以大家对自己 verilog 代码的理解都不成问题）。</p>
 <h2 id="CABC"><a href="#CABC" class="headerlink" title="CABC"></a>CABC</h2><p>opcode &#x3D; 6’b111100</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">cross1 = GPR[rs][23:16] || GPR[rs][7:0] || GPR[rt][31:24] || GPR[rt][15:8]<br>cross2 = GPR[rt][7:0] || GPR[rt][23:16] || GPR[rs][15:8] || GPR[rs][31:24]<br>xor_result = cross1 ^ cross2<br>if (count_zeros(xor_result[31:16]) == count_zeros(xor_result[15:0])) &#123;<br>    PC &lt;-- IMM_beq<br>&#125;<br>else&#123;<br>    GPR[rt] &lt;-- xor_result<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><strong>Answer</strong>:这和第一题几乎一样，唯一需要注意的是<code>if</code>判断条件成立与否，寄存器堆设计的是<code>是否操作</code>,因此在CTRL模块中的WE(寄存器写使能信号)是(caba &amp;&amp; isequal &#x3D;&#x3D; 0)。isequal是ALU输出的<code>count_zeros(xor_result[31:16]) == count_zeros(xor_result[15:0])</code>判断结果。</p>
+<p><strong>Answer</strong>：这和第一题几乎一样，唯一需要注意的是 <code>if</code> 判断条件成立与否，寄存器堆设计的是<code>是否操作</code>，因此在 CTRL 模块中的 WE（寄存器写使能信号）是 <code>(caba &amp;&amp; isequal == 0)</code>。isequal 是 ALU 输出的 <code>count_zeros(xor_result[31:16]) == count_zeros(xor_result[15:0])</code> 判断结果。</p>
 <h2 id="LHBOC"><a href="#LHBOC" class="headerlink" title="LHBOC"></a>LHBOC</h2><p>opcode &#x3D; 101101</p>
 <figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">vaddr &lt;-- GPR[base] + sign_extend(offset)<br>paddr &lt;-- vaddr[31:2] || 2&#x27;b0<br>memword &lt;-- Memory[paddr]<br>tmp1 &lt;-- memword[15] + memword[14] + ...... + memword[0]<br>tmp2 &lt;-- memword[31] + memword[30] + ...... + memword[16]<br>if (tmp1 &gt; tmp2) &#123;<br>    GPR[rt] &lt;-- sign_extend(memword[15:0])<br>&#125;<br>else&#123;<br>    GPR[rt] &lt;-- sign_extend(memword[31:16])<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p><strong>Answer</strong>:这个题也挺简单的，注意一下不要被RTL语言<strong>骗了</strong>,我们看到这行<code>memword &lt;-- Memory[paddr]</code>,paddr是32位，而DM的范围是<code>0-3072</code>，只需要12位即可，我们在verilog实现的过程中要像这样</p>
+<p><strong>Answer</strong>：这个题也挺简单的，注意一下不要被 RTL 语言<strong>骗了</strong>，我们看到这行<code>memword &lt;-- Memory[paddr]</code>，paddr 是 32 位，而 DM 的范围是 <code>0-3072</code>，只需要 12 位即可，我们在 verilog 实现的过程中要像这样</p>
 <blockquote>
 <p>memword &#x3D; DM[addr[13:2]];</p>
 </blockquote>
 <p>addr是ALU的输出结果。</p>
 <h2 id="一些Tips"><a href="#一些Tips" class="headerlink" title="一些Tips"></a>一些Tips</h2><ol>
-<li>课下最好实现这个函数——-<strong>sign_extend</strong></li>
-<li>一定要记得有符号数怎么比大小，要不然就上去<code>if</code>手搓吧：<code>$signed(A) &gt; $singned(B)</code></li>
+<li>课下最好实现这个函数 ——- <strong>sign_extend</strong></li>
+<li>一定要记得有符号数怎么比大小，要不然就上去<code>if</code>手搓吧：<code>$signed(A) &gt; $signed(B)</code></li>
 <li>循环移位别写<code>for</code>循环,会<code>TLE</code>,用这个<code>(A &gt;&gt; n) + (A &lt;&lt; (32 - n))</code></li>
 <li>写函数的时候记得在<code>function</code>后面有<code>begin，end</code>把函数体包起来。</li>
 <li>祝大家P4一战顺利😉😊</li>
 </ol>
 <h2 id="Lyrics-Sharing"><a href="#Lyrics-Sharing" class="headerlink" title="Lyrics Sharing"></a>Lyrics Sharing</h2><figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">倘若那天<br>把该说的话好好说<br>该体谅的不执著<br>如果那天我<br>不受情绪挑拨<br>你会怎么做<br>那么多如果，可能如果我<br>可惜没如果，只剩下结果<br></code></pre></td></tr></table></figure>
 
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>谨以此篇，纪念我的第一篇<code>github</code>博客。</p>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>谨以此篇，纪念我的第一篇 <code>GitHub</code> 博客。</p>
 
                 
             </div>
@@ -595,7 +594,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="「BUAA-CO」P5课上">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="「BUAA-CO」P5课上">
                         
                         <span class="card-title">「BUAA-CO」P5课上</span>
                     </div>
@@ -648,7 +647,7 @@
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="「BUAA-CO」 P4课下">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="「BUAA-CO」 P4课下">
                         
                         <span class="card-title">「BUAA-CO」 P4课下</span>
                     </div>
@@ -824,7 +823,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">33.6k</span>
+                        class="white-color">57k</span>
             
             
             
