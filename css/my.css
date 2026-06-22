@@ -8,7 +8,7 @@
 code, pre {
   font-family: "Consolas", "Menlo", "Monaco", "Courier New", monospace !important;
   font-size: 14px !important;
-}
+} 
 
 /* 折叠后：保留代码块的外观（背景/圆角/边距），但内容区只显示一条“顶栏高度” */
 .code-area.code-closed pre {
@@ -112,6 +112,176 @@ figure.highlight::after {
 /* 正文整体下移，避免挡字 */
 figure.highlight pre {
   padding-top: 54px !important;
+}
+
+/* Hexo uses a table for highlighted code; exclude it from article table styles. */
+#articleContent figure.highlight table,
+#articleContent figure.highlight tbody,
+#articleContent figure.highlight tr,
+#articleContent figure.highlight td {
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+#articleContent figure.highlight table {
+  width: 100%;
+  max-width: 100%;
+  display: table;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+#articleContent figure.highlight td {
+  width: 100%;
+  min-width: 0;
+  max-width: 0;
+}
+
+#articleContent figure.highlight,
+#articleContent figure.highlight .code-area,
+#articleContent figure.highlight pre {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+#articleContent figure.highlight {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#articleContent figure.highlight pre {
+  overflow-x: auto !important;
+  white-space: pre;
+}
+
+/* Collapse only long code blocks; short blocks remain fully visible. */
+.code-area.code-collapsible.code-closed pre {
+  max-height: 320px !important;
+  padding-bottom: 58px !important;
+  overflow: hidden !important;
+}
+
+.code-area.code-collapsible.code-closed::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 56px;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(transparent, #0f111a);
+}
+
+.code-area .code-expand {
+  top: auto;
+  right: auto;
+  bottom: 8px;
+  left: 50%;
+  width: 46px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #8b949e;
+  font-size: 24px;
+  line-height: 38px;
+  transform: translateX(-50%) !important;
+}
+
+.code-area .code-expand:hover,
+.code-area .code-expand:focus {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.code-area.code-collapsible pre {
+  padding-bottom: 58px !important;
+}
+
+/* VS Code Dark+ inspired syntax highlighting. */
+.code-area pre code.hljs {
+  display: block;
+  padding: 0;
+  color: #d4d4d4 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.code-area .hljs-comment,
+.code-area .hljs-quote {
+  color: #6a9955 !important;
+  font-style: italic;
+}
+
+.code-area .hljs-keyword,
+.code-area .hljs-selector-tag,
+.code-area .hljs-doctag {
+  color: #c586c0 !important;
+}
+
+.code-area .hljs-type,
+.code-area .hljs-built_in,
+.code-area .hljs-class .hljs-title {
+  color: #4ec9b0 !important;
+}
+
+.code-area .hljs-title,
+.code-area .hljs-title.function_,
+.code-area .hljs-function .hljs-title {
+  color: #dcdcaa !important;
+}
+
+.code-area .hljs-string,
+.code-area .hljs-template-tag,
+.code-area .hljs-template-variable {
+  color: #ce9178 !important;
+}
+
+.code-area .hljs-number {
+  color: #b5cea8 !important;
+}
+
+.code-area .hljs-literal,
+.code-area .hljs-variable.language_ {
+  color: #569cd6 !important;
+}
+
+.code-area .hljs-variable,
+.code-area .hljs-params,
+.code-area .hljs-attr,
+.code-area .hljs-property {
+  color: #9cdcfe !important;
+}
+
+.code-area .hljs-meta,
+.code-area .hljs-symbol,
+.code-area .hljs-bullet {
+  color: #d7ba7d !important;
+}
+
+.code-area .hljs-regexp,
+.code-area .hljs-link {
+  color: #d16969 !important;
+}
+
+.code-area .hljs-tag,
+.code-area .hljs-name,
+.code-area .hljs-selector-id,
+.code-area .hljs-selector-class {
+  color: #569cd6 !important;
+}
+
+.code-area .hljs-addition {
+  color: #b5cea8 !important;
+}
+
+.code-area .hljs-deletion {
+  color: #ce9178 !important;
 }
 
 

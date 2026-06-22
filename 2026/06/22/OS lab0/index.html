@@ -511,7 +511,7 @@
 <li>节头表表项：说明代码段，数据段等节的信息，用于链接段。</li>
 </ul>
 <h4 id="理解MIPS布局"><a href="#理解MIPS布局" class="headerlink" title="理解MIPS布局"></a>理解MIPS布局</h4><p>MIPS的虚拟地址空间分布如图：</p>
-<p><img src="/images%5CMIPS%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4.png" alt="MIPS虚拟地址空间"></p>
+<p><img src="/images/MIPS%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4.png" alt="MIPS虚拟地址空间"></p>
 <ul>
 <li><code>kuseg</code>:需要TLB进行虚拟地址和物理地址的转换；对这段地址的存取都会经过cache。</li>
 <li><code>kseg0</code>:不需要TLB进行虚拟地址和物理地址的转换；对这段地址的存取都会经过cache。</li>
@@ -755,7 +755,7 @@
 
 <h3 id="中层，磁盘数据组织"><a href="#中层，磁盘数据组织" class="headerlink" title="中层，磁盘数据组织"></a>中层，磁盘数据组织</h3><h4 id="用fsformat构造文件系统镜像"><a href="#用fsformat构造文件系统镜像" class="headerlink" title="用fsformat构造文件系统镜像"></a>用fsformat构造文件系统镜像</h4><p>这一部分主要解决磁盘里一开始应该放什么，我们引入<code>tools/fsformat.c</code>。这是一个运行在宿主机上的工具，不是MOS内部运行的程序，它负责把<code>tests/lab5_x/rootfs</code>目录下的文件按照MOS文件系统的格式写入到磁盘镜像<code>fs.img</code>中。</p>
 <p>在理清楚<code>fsformat</code>的流程之前，我们介绍一下文件系统的磁盘布局：</p>
-<p><img src="/images%5C%E7%A3%81%E7%9B%98%E5%B8%83%E5%B1%80.png" alt="磁盘布局"></p>
+<p><img src="/images/%E7%A3%81%E7%9B%98%E5%B8%83%E5%B1%80.png" alt="磁盘布局"></p>
 <p>代码文件中会涉及几个重要的结构体：Block(磁盘块), Super(文件系统超级块), File(文件控制块)</p>
 <figure class="highlight c"><table><tr><td class="code"><pre><code class="hljs c"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Block</span> &#123;</span><br>    <span class="hljs-type">uint8_t</span> data[BLOCK_SIZE];<br>    <span class="hljs-type">uint32_t</span> type;<br>&#125; disk[NBLOCK];<br></code></pre></td></tr></table></figure>
 

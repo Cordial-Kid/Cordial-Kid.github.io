@@ -472,7 +472,7 @@
 <p>第一次作业中，我的主结构是 <code>InputThread -&gt; 全局 RequestQueue -&gt; DispatchThread -&gt; 各电梯局部 RequestQueue -&gt; Elevator</code>。这一版使用生产者消费者模型，把输入、分配、执行三层职责拆开，让每个电梯线程只关心自己的局部队列和轿厢内乘客。架构图如下<br><img src="/images/OO%E4%BA%8C%E4%B8%89%E4%BA%8B2.1%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="2.1次作业架构图"></p>
 <p>第二次作业加入维修请求后，系统不再只是“多部电梯并行跑”，因此我引入了 <code>ElevState</code>，把 <code>NORMAL</code>、<code>REP_ACCEPT</code>、<code>REPAIR</code>、<code>TEST</code> 等状态。与此同时，<code>DispatchThread</code> 开始真正承担“全局调度器”的角色，而不只是转发请求架构图如下：<br><img src="/images/OO%E4%BA%8C%E4%B8%89%E4%BA%8B2.2%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="2.2次作业架构图"></p>
 <p>第三次作业加入双轿厢升级和回收后，并发难点进一步上升。此时新增的 <code>ShaftContext</code>、<code>ShaftState</code>、<code>PassengerRegistry</code> 和 <code>isBusyMap</code> 让系统从“多线程执行”变成了“多线程共享资源并协同执行”。我觉得这也是二单元最核心的训练：不仅要会写线程，还要会给共享状态建模。最终的架构如下:<br><img src="/images/OO%E4%BA%8C%E4%B8%89%E4%BA%8B2.3%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="2.3次作业架构图"></p>
-<p>总体架构：<br><img src="/images%5COO%E4%BA%8C%E4%B8%89%E4%BA%8BUnit2%E6%9E%B6%E6%9E%84%E7%AE%80%E5%9B%BE.png" alt="Unit2架构简图"></p>
+<p>总体架构：<br><img src="/images/OO%E4%BA%8C%E4%B8%89%E4%BA%8BUnit2%E6%9E%B6%E6%9E%84%E7%AE%80%E5%9B%BE.png" alt="Unit2架构简图"></p>
 <h3 id="Unit2-Hack点"><a href="#Unit2-Hack点" class="headerlink" title="Unit2-Hack点"></a>Unit2-Hack点</h3><p>到了第二单元Hack点就变得多样化起来，不仅有TLE，还有各种各样的WA，每个人都有自己的原因，我把我出现的bug整理如下，如果能帮诸位在强测抢一点分那最好不过了。<strong>这里再说一句，强测很好过，恶心的数据点大多数来自互测，所以大家没必要对自己的强测太过担心</strong></p>
 <h4 id="hack点1：电梯维修时输入乘客"><a href="#hack点1：电梯维修时输入乘客" class="headerlink" title="hack点1：电梯维修时输入乘客"></a>hack点1：电梯维修时输入乘客</h4><p>设想一种情况，假设输入数据的限制时间是50s以内，一共有6部电梯，在49.5s时候维修5部，50s的时候放入一堆从底层到顶层的请求。那么在这种情况下你的乘客会被分配给谁呢？如果全部分给了那部不在维修中的电梯那你不就超时了吗。</p>
 <p>所以我们在电梯维修状态下也需要为其分配乘客，即向电梯的等待队列里面添加元素，但是要<strong>注意RECEIVE</strong>输出的时机，要符合题目的要求。</p>
@@ -487,7 +487,7 @@
 <figure class="highlight text"><table><tr><td class="code"><pre><code class="hljs text">[1.0]UPDATE-1<br>[1.0]UPDATE-2<br>[1.0]UPDATE-3<br>[1.0]UPDATE-4<br>[1.0]UPDATE-5<br>[1.0]UPDATE-6<br>[2.0]1-WEI-60-FROM-F1-TO-F7<br>[15.0]RECYCLE-7<br>[15.0]RECYCLE-8<br>[15.0]RECYCLE-9<br>[15.0]RECYCLE-10<br>[15.0]RECYCLE-11<br>[15.0]RECYCLE-12<br>[15.5]2-WEI-60-FROM-F1-TO-F7<br></code></pre></td></tr></table></figure>
 
 <p>在15秒的时候，只有电梯<code>1,2,3,4,5,6</code>可以被分配乘客请求，但是电梯处于<code>DOUBLE</code>状态，无法到达<code>F1</code>接客，所以在我的<code>Dispatch</code>算法中不会被分配乘客请求，导致电梯线程一直在wait，无法被唤醒，无法唤醒就无法切换状态，无法切换状态就无法被分配乘客请求，形成死循环。</p>
-<p><img src="/images%5COO%E4%BA%8C%E4%B8%89%E4%BA%8B%E6%AD%BB%E5%BE%AA%E7%8E%AF.png" alt="死循环"></p>
+<p><img src="/images/OO%E4%BA%8C%E4%B8%89%E4%BA%8B%E6%AD%BB%E5%BE%AA%E7%8E%AF.png" alt="死循环"></p>
 <p>我的切换状态函数只在电梯<code>run</code>的情况下才可以执行：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">run</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) &#123;<br>        syncStateWithShaft();     <span class="hljs-comment">// 状态切换</span><br>        <span class="hljs-comment">// 其他逻辑</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -530,7 +530,7 @@
 <li>#protected</li>
 </ul>
 <p>示例如下：</p>
-<p><img src="/images%5CUML%E7%B1%BB%E5%9B%BE.png" alt="UML类图"></p>
+<p><img src="/images/UML%E7%B1%BB%E5%9B%BE.png" alt="UML类图"></p>
 <h4 id="类与类之间的6种关系"><a href="#类与类之间的6种关系" class="headerlink" title="类与类之间的6种关系"></a>类与类之间的6种关系</h4><ul>
 <li>依赖（Dependency）：一个类临时用到另一个类。比如A类的某一个方法把B类作为参数传入。</li>
 <li>关联（Association）：类和类有长期的服务关系。比如A类把B类作为全局变量。</li>
@@ -539,7 +539,7 @@
 <li>实现（Implementation）：类实现接口。等于Java中的<code>impements</code></li>
 <li>继承（Generalization）：子类继承父类,A类继承B类。等于Java中的<code>extends</code></li>
 </ul>
-<p><img src="/images%5C%E7%B1%BB%E5%9B%BE%E5%85%B3%E7%B3%BB.png" alt="类图的6种关系"></p>
+<p><img src="/images/%E7%B1%BB%E5%9B%BE%E5%85%B3%E7%B3%BB.png" alt="类图的6种关系"></p>
 <h3 id="状态图"><a href="#状态图" class="headerlink" title="状态图"></a>状态图</h3><p>UML状态图用于描述一个特定的对象在其生命周期中所经历的各种状态。主要包括以下四个元素：</p>
 <ul>
 <li>初始状态</li>
