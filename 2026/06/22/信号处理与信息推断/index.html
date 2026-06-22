@@ -474,7 +474,7 @@
 <p>这就是所谓的<strong>信息量</strong>大。信息量大主要有两种情况：<br>$$<br>\frac{P(A \mid \overline{H})}{P(A \mid H)} \approx 0<br>$$<br><strong>强烈支持H</strong></p>
 <p>$$<br>\frac{P(A \mid H)}{P(A \mid \overline{H})} \approx 0<br>$$<br><strong>强烈反对H</strong></p>
 <p>其中隐含着一条原则：<strong>找到排他性证据的难度，远远大于解释的难度</strong>。所以，当我们在生活中要支持某个原因时，一个排他性证据的说服力远大于一万句解释的说服力。</p>
-<h3 id="条件独立"><a href="#条件独立" class="headerlink" title="条件独立"></a>条件独立</h3><p>若事件A，B关于事件C条件独立，有<br>$$<br>\left{<br>\begin{array}{l}<br>P(A,B \mid C) &#x3D; P(A \mid C) \cdot P(B \mid C) \<br>P(A \mid B,C) &#x3D; P(A \mid C) \<br>P(B \mid A,C) &#x3D; P(B \mid C)<br>\end{array}<br>\right.<br>$$<br>在C发生的情况下，A&#x2F;B的信息不能帮助我们更好地推断B&#x2F;A发生地概率。这说明相关性并不等于因果性，统计规律也不能说明两个事件之间的因果关联。</p>
+<h3 id="条件独立"><a href="#条件独立" class="headerlink" title="条件独立"></a>条件独立</h3><p>若事件A，B关于事件C条件独立，有<br>$$<br>\left{<br>\begin{aligned}<br>P(A,B \mid C) &#x3D; P(A \mid C) \cdot P(B \mid C) \<br>P(A \mid B,C) &#x3D; P(A \mid C) \<br>P(B \mid A,C) &#x3D; P(B \mid C)<br>\end{aligned}<br>\right.<br>$$<br>在C发生的情况下，A&#x2F;B的信息不能帮助我们更好地推断B&#x2F;A发生地概率。这说明相关性并不等于因果性，统计规律也不能说明两个事件之间的因果关联。</p>
 <p>例如：统计规律发现，伦敦司机穿夹克时事故发生率升高，但是实际原因是:天气下雨，会导致司机穿夹克，并且天气下雨也会导致事故率升高。也就是说穿夹克和事故率高是关于下雨条件独立的。</p>
 <h3 id="在线贝叶斯"><a href="#在线贝叶斯" class="headerlink" title="在线贝叶斯"></a>在线贝叶斯</h3><p>在多数情况下，多个观测并不是同时到来的，我们希望每来一个观测，我们就根据当前观测得到一个估计。而在更新时我们有两个选择：</p>
 <ul>
