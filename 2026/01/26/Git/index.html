@@ -397,7 +397,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2026-04-30
+                    2026-06-22
                 </div>
                 
 
@@ -455,7 +455,7 @@
 
 <ol start="2">
 <li><p><strong>git init</strong>：在本地创建一个新的Git仓库，然后手动关联到远程仓库。<br>例如我们在E:\Projects目录下打开Git Bash，执行以下命令：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git init<br>git add .<br>git commit -m <span class="hljs-string">&quot;initial commit&quot;</span><br>git remote add origin &lt;远程仓库地址&gt;      //关联远程仓库<br>git branch -M main         //把当前分支强制重命名为main<br>git push -u origin main<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">git init<br>git branch -M main         //把当前分支强制重命名为main<br>git remote add origin &lt;远程仓库地址&gt;      //关联远程仓库<br>git add .<br>git commit -m <span class="hljs-string">&quot;initial commit&quot;</span><br>// 以下两种方式选其一<br>git push -u origin main   // 如果你新建的远程仓库是空的<br>git pull origin main --allow-unrelated-histories   // 如果你新建的远程仓库不是空的(README,LICENSE等文件已经存在)<br></code></pre></td></tr></table></figure></li>
 </ol>
 <p>Git会在E:\Projects目录下创建一个.git文件夹，表示这是一个Git仓库。结构图如下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><code class="hljs bash">├─ 当前目录<br>│  ├─ .git/<br>│  ├─ README.md<br>│  └─ ...<br></code></pre></td></tr></table></figure>
