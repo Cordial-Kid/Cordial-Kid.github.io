@@ -447,8 +447,8 @@
 <p>关于面向对象的思想，个人认为在 OOpre 的博客中已经讲得较为详尽，大家具体可以参照这篇 Blog: <a href="https://cordial-kid.github.io/2026/03/04/OOPre%E9%97%AF%E5%85%B3%E6%9C%89%E6%84%9F/">OOpre闯关有感</a>。当然，在正课中如果遇到了新的有用的思想我会在这里跟大家补充分享的。</p>
 <p>本着前人栽树，后人乘凉的原则，笔者希望可以将自己每单元较为成熟的架构和大家分享，帮助大家省去重构的麻烦。同时分享几个容易被hack的点，帮助大家在编程过程中规避bug。(如果大家的作业和2026年的很像的话希望可以帮助到大家)😁</p>
 <h2 id="Unit1"><a href="#Unit1" class="headerlink" title="Unit1"></a>Unit1</h2><h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><p>本单元主要是表达式计算，表达式的计算主要分为三大步：<code>词法分析</code>,<code>语法分析</code>和<code>计算结果</code>。词法分析主要是将输入解析成token，语法分析主要是将token解析成抽象语法树，计算结果主要是通过访问抽象语法树来计算结果。具体的实现细节请看笔者的架构图。</p>
-<p>这里是Unit1的设计的类：<br><img src="/images%5COOUnit1%E7%B1%BB%E5%9B%BE.png" alt="Unit1类图"></p>
-<p>这里是Unit1架构简图：<br><img src="/images%5COOUnit1%E6%9E%B6%E6%9E%84%E7%AE%80%E5%9B%BE.png" alt="Unit1架构简图"></p>
+<p>这里是Unit1的设计的类：<br><img src="/images/OOUnit1%E7%B1%BB%E5%9B%BE.png" alt="Unit1类图"></p>
+<p>这里是Unit1架构简图：<br><img src="/images/OOUnit1%E6%9E%B6%E6%9E%84%E7%AE%80%E5%9B%BE.png" alt="Unit1架构简图"></p>
 <p>Mainclass是程序的入口，负责调用各个类来实现客户要求的功能。在Mainclass内部首先要调用的就是<code>input</code>类，负责从标准输入中读取表达式(<strong>这里强烈建议实现Input类</strong>)，然后将输入的表达式传递给<code>lexer</code>类进行词法分析，得到一个token列表，然后将token列表传递给<code>parser</code>类进行语法分析，得到一个抽象语法树，最后将抽象语法树调用<code>Poly</code>类进行计算，得到最终的结果并调用output类进行输出和优化(这里依旧强烈建议实现Output类)。</p>
 <p>在上述过程中，无论是<code>选择表达式</code>、<code>求导</code>还是<code>函数</code>等等新增的功能都算作是 <strong>Factor</strong>。架构如此清晰，你怎么能错呢，牢弟？</p>
 <h3 id="Unit1-Hack点"><a href="#Unit1-Hack点" class="headerlink" title="Unit1-Hack点"></a>Unit1-Hack点</h3><p>如果你有一个清晰的架构，你几乎不可能出现<code>WA</code>的问题，大多是TLE问题，但是这个问题真的很恶心，因为评测机几乎测不出来这种边界bug这就需要大家从往届学长留下的测试点中找点灵感了。</p>
